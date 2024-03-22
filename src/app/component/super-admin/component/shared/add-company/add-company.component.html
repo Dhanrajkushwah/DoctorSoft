@@ -1,0 +1,84 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4 *ngIf="!cid">Admin Add</h4>
+    <h6 *ngIf="!cid">Create Admin</h6>
+    <h4 *ngIf="cid">Admin Update</h4>
+    <h6 *ngIf="cid">Update  Admin</h6>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="addUserForm">
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label> Name</label>
+            <input type="text" formControlName="name" placeholder="Enter Name" />
+            <small *ngIf="addUserForm.controls['name'].errors && ckForm" class="text-danger">Enter Your Name
+            </small>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label> E-Mail Address</label>
+            <input type="text" formControlName="email" placeholder="E-Mail Address" />
+            <small *ngIf="addUserForm.controls['email'].errors && ckForm" class="text-danger">Enter Your Email
+            </small>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label> Password </label>
+            <input type="password" formControlName="password" placeholder="Password" />
+            <small *ngIf="addUserForm.controls['password'].errors && ckForm" class="text-danger">Enter Password</small>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label> Image</label>
+            <div class="image-upload">
+              <input formControlName="image" (change)="Onupload($event)" type="file" />
+              <div class="image-uploads">
+                <img src="assets/img/icons/upload.svg" alt="img" />
+                <h4>Drag and drop a file to upload</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 mx-2">
+          <div class="product-list">
+            <ul class="row">
+              <li class="ps-0">
+                <div class="productviews" [ngClass]="{ 'd-none': removeClass === false }">
+                  <div class="productviewsimg">
+                    <img [src]="imagesBox" alt="img" />
+                  </div>
+                  <div class="productviewscontent">
+                    <div class="productviewsname">
+                      <h2 *ngIf="imgs">
+                        {{imgs.name}}
+                      </h2>
+                      <h3>581kb</h3>
+                    </div>
+
+
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <button type="submit" *ngIf="!cid" class="btn btn-submit me-2" (click)="onSubmit()">
+            Submit
+          </button>
+          <button type="submit" *ngIf="cid" class="btn btn-submit me-2" (click)="updateCompanys()">
+            Update
+          </button>
+          <a [routerLink]="routes.productList" class="btn btn-cancel">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

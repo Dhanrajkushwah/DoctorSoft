@@ -1,0 +1,59 @@
+.noon{
+    display: none !important;
+}
+.block{
+    display: block !important;
+}
+div.dt-buttons .dt-button {
+    display: none !important;
+}
+
+.text-xs {
+  font-size: 0.625rem !important;
+}
+
+
+.example-card {
+    max-width: 300px;
+
+    
+  }
+  .img{
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+
+  .card .card-header .card-header-right {
+    right: 10px;
+    top: 10px;
+    float: right;
+    padding: 0;
+    position: absolute;
+}
+
+.card .card-header .card-header-right .btn.dropdown-toggle {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  right: 8px;
+  top: 12px;
+}
+.card .card-header .card-header-right .btn.dropdown-toggle {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: #888;
+}
+.btn-group > .btn, .btn-group-vertical > .btn {
+  position: relative;
+  flex: 1 1 auto;
+}
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+  cursor: pointer;
+}

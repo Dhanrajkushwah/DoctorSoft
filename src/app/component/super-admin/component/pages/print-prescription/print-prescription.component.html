@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-success pdf float-end" (click)="makePDF()">Export to pdf</button>  
+        </div>
+    </div>
+</div>
+
+ <!-- <h1>Pooja</h1> -->
+
+<div class="container my-3" >
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card p-5 rounded-0">
+        <div class="card">
+          <div class="container">
+            <div id="content" #content
+              class="row"
+              style="
+             
+                border-radius: 2% 2% 0% 0%;
+              "
+            >
+              <div class="col-md-2 mt-1">
+                <img
+                  class="img-fluid"
+                  src="https://seeklogo.com/images/H/hospital-clinic-plus-logo-7916383C7A-seeklogo.com.png"
+                />
+              </div>
+      <div >
+              <div class="col-md-7 mt-1">
+                <p><b>Dr: {{doctorname}}</b></p>
+                <p>Physiotherapist | MRN: PPA-0002</p>
+                <p>
+                  <span style="color: rgb(93, 94, 93)">+91 9888734224</span>
+                  | onyxphysio@gmail.com
+                </p>
+              </div>
+              <div class="col-md-3 float-end mt-1">
+                <p><b>Date of Receipt</b></p>
+                <!-- Date of visit: {{a.datetime| date} -->
+                <p>:{{invoicedate | date}}</p>
+              </div>
+            <div class="row p-2">
+              <div class="col-md-7 mt-2">
+                <p >
+                  <b>Patient: {{patientname}} | +917740048480</b>
+                </p>
+                <p>Patient ID: {{patientid}}</p>
+              </div>
+              <div class="col-md-5 mt-2">
+                <p>Invoice no : {{invoicenumber}}</p>
+              </div>
+            </div>
+            <div class="table-responsive mt-5 pt-5">
+              <table class="table border" >
+                <thead style="background-color: rgb(233, 243, 248)">
+                  <tr>
+                    <th scope="col">Services</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Price (₹)</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Discount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td>
+                      {{servicename}}
+                    </td>
+                    <td>{{quantitys}}</td>
+                    <td>{{prices}}</td>
+                    <td>{{discounts}}</td>
+                    <td>{{TotalAmount}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="row p-2 mt-5 pt-5">
+              <div class="col-md-12">
+                <div class="float-end">
+                  <p>
+                    Total Price
+                    <span>
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; {{prices}}</span
+                    >
+                  </p>
+                  <p>
+                    Total Discount
+                    <span>
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{discounts}}</span
+                    >
+                  </p>
+                  <hr />
+                  <p>
+                    <b>Final Amount</b>
+                    <span>
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                     {{TotalAmount}}</span
+                    >
+                  </p>
+                  <hr />
+                </div>
+              </div>
+            </div>
+     </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

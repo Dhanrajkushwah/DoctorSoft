@@ -1,0 +1,171 @@
+<!-- <a>Add-Custmer Model</a> -->
+<div class="page-header">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item bread-cr" ><a class="bread-cr" routerLink="/dashboard">Home</a></li>
+          <li class="breadcrumb-item bread-cr"><a class="bread-cr" routerLink="/dashboard">Dashboard</a></li>
+          <li class="breadcrumb-item active " aria-current="page">Create User Page</li>
+      </ol>
+  </nav>
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10">
+                <h1  *ngIf="editData == true">Edit User</h1>
+                <h1 *ngIf="!editData == true">Create User</h1>
+            </div>
+        </div>
+
+    </div>
+    <form [formGroup]="userform">
+        <div class="row p-2">
+            <div class="col-md-6 col-sm-12">
+                <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text"formControlName="name" placeholder="Enter User Name" autocomplete="off" />
+                    <small
+                    *ngIf="userform.controls['name'].errors && ckForm"
+                    class="text-danger"
+                    >Please Enter valid name
+                  </small>
+                </div>
+                </div>
+            </div>
+     
+            <div class="col-md-6 col-sm-12" *ngIf="!editData">
+                <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" matInput formControlName="password" placeholder="Enter Password" autocomplete="off" />
+                    <small
+                    *ngIf="userform.controls['password'].errors && ckForm"
+                    class="text-danger"
+                    >Password is required
+                  </small>
+                </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="row p-2">
+            <div class="col-md-6 col-sm-12">
+                <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>E-Mail Address</label>
+                    <input type="text" formControlName="email" placeholder="Enter E-Mail Address" autocomplete="off"/>
+                    <small
+                    *ngIf="userform.controls['email'].errors && ckForm"
+                    class="text-danger"
+                    >Please enter valid email
+                  </small>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Job Title</label>
+                    <input type="text" formControlName="jobtitle" placeholder="Enter job Title" autocomplete="off"/>
+                    <small
+                    *ngIf="userform.controls['jobtitle'].errors && ckForm"
+                    class="text-danger"
+                    >Job Title is required
+                  </small>
+                </div>
+                </div>
+            </div>
+         
+        </div>
+        <div class="row p-2">
+          <div class="col-md-12 col-sm-12">
+            <div class="col-lg-12" >
+                <div class="form-group">
+                  <label>Image</label>
+                  <div class="image-upload">
+                    <input formControlName="image" (change)="Onupload($event)" type="file" />
+                    <div class="image-uploads">
+                      <img src="assets/img/icons/upload.svg" alt="img"/>
+                      <h4>Drag and drop a file to upload</h4>
+                    </div>
+                  </div>
+                  <small
+                *ngIf="userform.controls['image'].errors && ckForm"
+                class="text-danger"
+                >User image is required
+              </small>
+                </div>
+                
+              </div>
+              
+              <div class="col-lg-12 mx-2">
+                <div class="product-list mx-1">
+                  <ul class="row">
+                    <li class="ps-0">
+                      <div
+                        class="productviews"
+                        [ngClass]="{ 'd-none': removeClass === false }"
+                      >
+                        <div class="productviewsimg" >
+                          <img [src]="imagesBox" alt="img" />
+                        </div>
+                        <div class="productviewscontent">
+                          <div class="productviewsname">
+                            <h2>macbookpro.jpg</h2>
+                            <h3>581kb</h3>
+                          </div>
+                          <a
+                            href="javascript:void(0);"
+                            class="hideset"
+                            (click)="removeBtn()"
+                            >x</a
+                          >
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+
+            <!-- <div class="col-md-6 col-sm-12">
+                <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>User Image</label>
+                    <div data-repeater-list="home_logo">
+                        <div class="card mb-3 border shadow-none product_Image">
+                          <div class="px-2 py-2">
+                              <div class="row align-items-center">
+                                  <div class="col">
+                                      <input formControlName="image" (change)="Onupload($event)" type="file" />
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+                      <small
+                      *ngIf="userform.controls['image'].errors && ckForm"
+                      class="text-danger"
+                      >User image is required
+                    </small>
+                  </div>
+                </div>
+                </div>
+            </div> -->
+        </div>
+      </div>
+        <div class="row mb-2" style="float: right;">
+            <div class="col-sm-12" mat-dialog-action>
+                <div class="col-md-12 col-sm-12 mx-2">
+                        
+                            <button *ngIf="!editData"  class="btn btn-submit me-2" (click)=" submit()"
+                            value="Create">Submit</button>
+                            <button  *ngIf="editData"  class="btn btn-submit me-2" (click)=" submit()"
+                            value="Create">Update</button>
+                            <a  class="btn btn-cancel" routerLink="/admin/user/" >Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

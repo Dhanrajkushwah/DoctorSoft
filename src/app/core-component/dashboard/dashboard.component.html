@@ -1,0 +1,942 @@
+<!-- // Super Admin Dashboard // -->
+<div *ngIf="super_token" style="padding-top: 10px;">
+  <h2>Super Admin Dashboard</h2>
+  <form [formGroup]="firstFormGroup">
+
+    <div class="container-fluid text-center p-0">
+      <div class="row row-cols-md-4 row-col-md-2 mb-2">
+        <div class="col-md-3">
+          <div class="card shadow-sm border-0 bgd">
+            <div class="card-body text-start d-flex flex-row gap-4 text-light">
+              <div>
+                <i style="font-size: 1.5rem;" class="fa-light fa-hospital-user"></i>
+              </div>
+              <div>
+                <h2 class="card-subtitle mb-2">{{doctor}}</h2>
+                <p class="card-title text-light">Registered  Doctor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card shadow-sm border-0 bgd">
+            <div class="card-body text-start d-flex flex-row gap-4 text-light">
+              <div>
+                <i style="font-size: 1.5rem;" class="fa-light fa-user-doctor "></i>
+              </div>
+              <div>
+                <h2 class="card-subtitle mb-2">12</h2>
+                <p class="card-title text-light">Online Consultations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card shadow-sm border-0 bgd">
+            <div class="card-body text-start d-flex flex-row gap-4 text-light">
+              <div>
+                <i style="font-size: 1.5rem;" class="fa-light fa-users-medical"></i>
+              </div>
+              <div>
+                <h2 class="card-subtitle mb-2">05</h2>
+                <p class="card-title text-light">Offline Consultations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card shadow-sm border-0 bgd">
+            <div class="card-body text-start d-flex flex-row gap-4 text-light">
+              <div>
+                <i style="font-size: 1.5rem;" class="fa-light fa-hospital "></i>
+              </div>
+              <div>
+                <h2 class="card-subtitle mb-2">$8348</h2>
+                <p class="card-title text-light">Revenue</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <canvas baseChart id="chartBar2" class="chart h-300" [data]="transparencyChartDataDoctor">
+        </canvas>
+      </div>
+    </div>
+  </form>
+   
+  
+
+</div>
+  
+<!-- // Admin Dashboard // -->
+<div *ngIf="admin_token"  style="padding-top: 10px;">
+  <h2>Doctor Dashboard</h2>
+  <form [formGroup]="firstFormGroup">
+    <mat-tab-group animationDuration="0ms">
+      <mat-tab label=Day>
+        <br>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field style="width:25%; height:80px;">
+                <mat-label>Choose Date Day Wise</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="firstCtrl">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-center p-0">
+          <div class="row row-cols-md-4 row-col-md-2 mb-2">
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size: 1.5rem;" class="fa-light fa-hospital-user"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">{{appointmentDatas}}</h2>
+                    <p class=" text-light ">All Appointment</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-user-doctor"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Scheduled</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size: 1.5rem;" class="fa-light fa-users-medical"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Waiting in clinic</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital "></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">{{appointmentDatas}}</h2>
+                    <p class=" text-light">Active</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital "></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Completed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Cancelled</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="container-fluid text-center p-0">
+              <div class="row row-cols-md-4 row-col-md-2 g-2">
+                <div class="col-md-12">
+                  <div class="p-3 shadow-sm text-start">
+                    <h4 class="pb-3 mb-3 border-bottom fw-normal">Appointment Details</h4>
+                    <div class="card">
+                      <div class="card-body">
+                        <div id="chart">
+                          <ng-container *ngIf="super_token">
+                            <apx-chart [series]="Areachart.series" [chart]="Areachart.chart" [xaxis]="Areachart.xaxis"
+                              [stroke]="Areachart.stroke" [tooltip]="Areachart.tooltip"
+                              [dataLabels]="Areachart.dataLabels"></apx-chart>
+
+                          </ng-container>
+                          <ng-container *ngIf="!super_token">
+                            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                              [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                              [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis"
+                              [colors]="chartOptions.colors"></apx-chart>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="container-fluid text-center p-0">
+              <div class="row row-cols-md-4 row-col-md-2 g-2">
+                <div class="col-md-12">
+                  <div class="p-3 shadow-sm text-start">
+                    <h4 class="pb-3 mb-3 border-bottom fw-normal">Collection Details</h4>
+                    <div class="card">
+                      <div class="card-body">
+                        <div id="chart">
+                          <ng-container *ngIf="super_token">
+                            <apx-chart [series]="Areachart.series" [chart]="Areachart.chart" [xaxis]="Areachart.xaxis"
+                              [stroke]="Areachart.stroke" [tooltip]="Areachart.tooltip"
+                              [dataLabels]="Areachart.dataLabels"></apx-chart>
+                          </ng-container>
+                          <ng-container *ngIf="!super_token">
+                            <apx-chart [series]="chartOptions1.series" [chart]="chartOptions1.chart"
+                              [dataLabels]="chartOptions1.dataLabels" [plotOptions]="chartOptions1.plotOptions"
+                              [yaxis]="chartOptions1.yaxis" [xaxis]="chartOptions1.xaxis"
+                              [colors]="chartOptions1.colors"></apx-chart>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Weekly">
+        <br>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-11">
+              <mat-form-field appearance="fill" style="width:25%; height:80px;">
+                <mat-label>Enter Date Range Weekly</mat-label>
+                <mat-date-range-input [rangePicker]="picker1">
+                  <input matStartDate placeholder="Start date" formControlName="firstCtrl">
+                  <input matEndDate placeholder="End date" formControlName="firstCtrl">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker1></mat-date-range-picker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-center p-0">
+          <div class="row row-cols-md-4 row-col-md-2 mb-2">
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size: 1.5rem;" class="fa-light fa-hospital-user"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">{{appointmentDatas}}</h2>
+                    <p class=" text-light ">All Appointment</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-user-doctor"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Scheduled</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size: 1.5rem;" class="fa-light fa-users-medical"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Waiting in clinic</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                   <i style="font-size:  1.5rem;" class="fa-light fa-hospital "></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">{{appointmentDatas}}</h2>
+                    <p class=" text-light">Active</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital "></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Completed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital "></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Cancelled</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <canvas baseChart id="chartBar2" class="chart h-300" [data]="transparencyChartDataweek">
+            </canvas>
+          </div>
+          <div class="col-md-6">
+            <canvas baseChart id="chartBar2" class="chart h-300" [data]="transparencyChartDataweekcollection">
+            </canvas>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Monthly">
+        <br>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-11">
+              <mat-form-field appearance="fill" style="width:25%; height:80px;">
+                <mat-label>Enter Date Range Monthly</mat-label>
+                <mat-date-range-input [rangePicker]="picker2">
+                  <input matStartDate placeholder="Start date" formControlName="firstCtrl">
+                  <input matEndDate placeholder="End date" formControlName="firstCtrl">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker2></mat-date-range-picker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-center p-0">
+          <div class="row row-cols-md-4 row-col-md-2 mb-2">
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size: 1.5rem;" class="fa-light fa-hospital-user"></i>                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">{{appointmentDatas}}</h2>
+                    <p class=" text-light ">All Appointment</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-user-doctor"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Scheduled</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size: 1.5rem;" class="fa-light fa-users-medical"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Waiting in clinic</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital "></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">{{appointmentDatas}}</h2>
+                    <p class=" text-light">Active</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital "></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Completed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Cancelled</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <canvas baseChart id="chartBar2" class="chart h-300" [data]="transparencyChartDatamonth">
+            </canvas>
+          </div>
+          <div class="col-md-6">
+            <canvas baseChart id="chartBar2" class="chart h-300" [data]="transparencyChartDatamonthcollection">
+            </canvas>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Yearly">
+        <br>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-11">
+              <mat-form-field appearance="fill" style="width:25%; height:80px;">
+                <mat-label>Enter Date Range Yearly</mat-label>
+                <mat-date-range-input [rangePicker]="picker3">
+                  <input matStartDate placeholder="Start date" formControlName="firstCtrl">
+                  <input matEndDate placeholder="End date" formControlName="firstCtrl">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker3></mat-date-range-picker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-center p-0">
+          <div class="row row-cols-md-4 row-col-md-2 mb-2">
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size: 1.5rem;" class="fa-light fa-hospital-user"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">{{appointmentDatas}}</h2>
+                    <p class=" text-light ">All Appointment</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-user-doctor"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Scheduled</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size: 1.5rem;" class="fa-light fa-users-medical"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Waiting in clinic</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital "></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">{{appointmentDatas}}</h2>
+                    <p class=" text-light">Active</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital "></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Completed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card shadow-sm border-0 bg-success">
+                <div class="card-body text-start d-flex flex-row gap-4 text-light">
+                  <div>
+                    <i style="font-size:  1.5rem;" class="fa-light fa-hospital"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-subtitle mb-2">00</h2>
+                    <p class=" text-light">Cancelled</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <canvas baseChart id="chartBar2" class="chart h-300" [data]="transparencyChartDatayear">
+            </canvas>
+          </div>
+          <div class="col-md-6">
+            <canvas baseChart id="chartBar2" class="chart h-300" [data]="transparencyChartDatayearcollection">
+            </canvas>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+  <br>
+
+</div>
+
+<!-- // Client Dashboard // -->
+<div *ngIf="client_token" style="padding-top: 10px;">
+  <h2>Patient Dashboard</h2>
+  <div class="container-fluid text-center p-0">
+    <div class="row row-cols-md-4 row-col-md-2 mb-2">
+      <div class="col-md-3">
+        <div class="card shadow-sm border-0 bgd" >
+          <div class="card-body text-start d-flex flex-row gap-4 text-light">
+            <div>
+              <i style="font-size: 1.5rem;" class="fa-light fa-hospital-user"></i>
+            </div>
+            <div>
+
+              <p class="card-title text-light">Blood Group</p>
+              <h2 class="card-subtitle mb-2">O+</h2>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card shadow-sm border-0 bgd">
+          <div class="card-body text-start d-flex flex-row gap-4 text-light">
+            <div>
+              <i style="font-size: 1.5rem;" class="fa-light fa-user-doctor"></i>
+            </div>
+            <div>
+
+              <p class="card-title text-light">Oxygen Level</p>
+              <h2 class="card-subtitle mb-2">95%</h2>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card shadow-sm border-0 bgd">
+          <div class="card-body text-start d-flex flex-row gap-4 text-light">
+            <div>
+
+              <i style="font-size: 1.5rem;" class="fa-light fa-heartbeat" aria-hidden="true"></i>
+            </div>
+            <div>
+
+              <p class="card-title text-light">Heart Rate</p>
+              <h2 class="card-subtitle mb-2">78 bmp</h2>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card shadow-sm border-0 bgd">
+          <div class="card-body text-start d-flex flex-row gap-4 text-light">
+            <div>
+              <i style="font-size: 1.5rem;" class="fa-light fa-hospital"></i>
+            </div>
+            <div>
+
+              <p class="card-title text-light">Glucose Level</p>
+              <h2 class="card-subtitle mb-2">78</h2>
+              <!-- <p class="card-text">
+                <i class="fa-regular fa-chevron-up"></i>
+                <span>+20% Increased</span>
+              </p> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid text-center p-0">
+    <div class="row row-cols-md-4 row-col-md-2 g-2">
+      <!-- <div class="col-md-6">
+        <div class="p-3 shadow-sm text-start">
+          <h4 class="pb-3 mb-3 border-bottom fw-normal">Patient Check-up</h4>
+          <div class="card">
+            <div class="card-body">
+              <div id="chart">
+                <ng-container *ngIf="super_token">
+                  <apx-chart [series]="Areachart.series" [chart]="Areachart.chart" [xaxis]="Areachart.xaxis"
+                    [stroke]="Areachart.stroke" [tooltip]="Areachart.tooltip" [dataLabels]="Areachart.dataLabels"></apx-chart>
+      
+                </ng-container>
+                <ng-container *ngIf="!super_token">
+                  <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                    [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                    [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis" [colors]="chartOptions.colors"></apx-chart>
+                </ng-container>
+      
+      
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div> -->
+      <!-- <div class="col-md-6 col-sm-12">
+        <div class="p-3 shadow-sm text-start">
+          <h4 class="pb-3 mb-3 border-bottom fw-normal">Patient Availability</h4>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Doctor</th>
+                  <th scope="col">Speciality</th>
+                  <th scope="col">Availability</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rajesh</td>
+                  <td>Dental</td>
+                  <td>
+                    <button type="button" class="btn btn-success rounded-0 py-0">Available</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Gautam</td>
+                  <td>Cardiologist</td>
+                  <td>
+                    <button type="button" class="btn btn-warning rounded-0 py-0">On Leave</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Deepak</td>
+                  <td>Dental</td>
+                  <td>
+                    <button type="button" class="btn btn-danger rounded-0 py-0">Not Available</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Pooja</td>
+                  <td>Neurologist</td>
+                  <td>
+                    <button type="button" class="btn btn-success rounded-0 py-0">Available</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rajesh</td>
+                  <td>Dental</td>
+                  <td>
+                    <button type="button" class="btn btn-success rounded-0 py-0">Available</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Gautam</td>
+                  <td>Cardiologist</td>
+                  <td>
+                    <button type="button" class="btn btn-warning rounded-0 py-0">On Leave</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Deepak</td>
+                  <td>Dental</td>
+                  <td>
+                    <button type="button" class="btn btn-danger rounded-0 py-0">Not Available</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Pooja</td>
+                  <td>Neurologist</td>
+                  <td>
+                    <button type="button" class="btn btn-success rounded-0 py-0">Available</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <div class="container-fluid text-center p-0">
+    <div class="row row-cols-md-4 row-col-md-2 g-2">
+      <div class="col-md-12">
+        <div class="p-3 shadow-sm text-start">
+          <h4 class="pb-3 mb-3 border-bottom fw-normal">Appointments</h4>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Doctor</th>
+                  <th scope="col">Check-up</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of appointmentByPatient">
+                  <td>Manoj Kumar</td>
+                  <td>Dental</td>
+                  <td>{{data.datetime |date}}</td>
+                  <td>{{data.slot}}</td>
+                  <td>
+                    <button type="button" class="btn btn-success rounded-0 py-0">Completed</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <h2>Patient Dashboard</h2>
+    <div class="col-lg-3 col-sm-6 col-12 d-flex">
+      <div class="dash-count">
+        <div class="dash-counts">
+          <h4>{{client}}</h4>
+          <h5 >Total Client</h5>
+        </div>
+        <div class="dash-imgs">
+          <i-feather name="user"></i-feather>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12 d-flex">
+      <div class="dash-count das1">
+        <div class="dash-counts">
+          <h4>{{user}}</h4>
+          <h5 >Total User</h5>
+        </div>
+        <div class="dash-imgs">
+          <i-feather name="user-check"></i-feather>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12 d-flex">
+      <div class="dash-count das2">
+        <div class="dash-counts">
+          <h4>{{deal}}</h4>
+          <h5 >Total Deal</h5>
+        </div>
+        <div class="dash-imgs">
+          <i-feather name="file-text"></i-feather>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12 d-flex">
+      <div class="dash-count das3">
+        <div class="dash-counts">
+          <h4>{{lead}}</h4>
+          <h5 >Total Lead</h5>
+        </div>
+        <div class="dash-imgs">
+          <i-feather name="file"></i-feather>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5 col-sm-12 col-12 d-flex">
+      <div class="card flex-fill">
+        <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+          <h4 class="card-title mb-0">Recently created deals</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive dataview">
+            <table  class="table datatable">
+              <thead>
+                <tr>
+                  <th >S.No</th>
+                  <th >DEAL NAME</th>
+                  <th >CREATED AT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let dashboard of dealData; let i = index  ">
+                  <td>{{ i+1 }}</td>
+                  <td class="productimgname">
+                    {{dashboard.dealName}}
+                  </td>
+                  <td>{{ dashboard.createdAt | date : 'shortDate' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7 col-sm-12 col-12 d-flex">
+      <div class="card flex-fill">
+        <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+          <h5 class="card-title mb-0">Deal calls by day</h5>
+          <div class="graph-sets">
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="chart">
+            <ng-container *ngIf="super_token">
+              <apx-chart [series]="Areachart.series" [chart]="Areachart.chart" [xaxis]="Areachart.xaxis"
+                [stroke]="Areachart.stroke" [tooltip]="Areachart.tooltip" [dataLabels]="Areachart.dataLabels"></apx-chart>
+  
+            </ng-container>
+            <ng-container *ngIf="!super_token">
+              <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis" [colors]="chartOptions.colors"></apx-chart>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  
+    <div class="col-lg-5 col-sm-12 col-12 d-flex">
+      <div class="card flex-fill">
+        <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+          <h4 class="card-title mb-0">Recently created leads</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive dataview">
+            <table class="table datatable">
+              <thead>
+                <tr>
+                  <th >S.No</th>
+                  <th >LEAD NAME</th>
+                  <th >CREATED AT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let dashboard of leadData ; let i = index ">
+                  <td>{{ i+1 }}</td>
+                  <td class="productimgname">
+                    {{dashboard.user}}
+                  </td>
+                  <td>{{ dashboard.createdAt | date : 'shortDate' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7 col-sm-12 col-12 d-flex">
+      <div class="card flex-fill">
+        <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+          <h5 class="card-title mb-0">Lead calls by day</h5>
+          <div class="graph-sets">
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="chart">
+            <ng-container *ngIf="super_token">
+              <apx-chart [series]="Areachart.series" [chart]="Areachart.chart" [xaxis]="Areachart.xaxis"
+                [stroke]="Areachart.stroke" [tooltip]="Areachart.tooltip" [dataLabels]="Areachart.dataLabels"></apx-chart>
+  
+            </ng-container>
+            <ng-container *ngIf="!super_token">
+              <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis" [colors]="chartOptions.colors"></apx-chart>
+            </ng-container>
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

@@ -1,0 +1,46 @@
+
+	<div class="page-header">
+		<div class="page-title">
+			<h4>User Add</h4>
+			<h6>Create new User</h6>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-body">
+			<form [formGroup]="addUserForm" >
+				<div class="row">
+					<div class="col-lg-4 col-sm-6 col-12">
+						<div class="form-group">
+							<label> Name</label>
+							<input type="text" formControlName="username" placeholder="Enter Name">
+							<small *ngIf="addUserForm.controls['username'].errors && ckForm" class="text-danger">Enter Your Name </small>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 col-12">
+						<div class="form-group">
+							<label> E-Mail Address</label>
+							<input type="text" 
+							 formControlName="email" placeholder="E-Mail Address">
+							<small *ngIf="addUserForm.controls['email'].errors && ckForm" class="text-danger">Enter Your Email </small>
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 col-12">
+						<div class="form-group">
+							<label> Password </label>
+							<input type="password" formControlName="password" placeholder="Password">
+							<small *ngIf="addUserForm.controls['password'].errors && ckForm" class="text-danger">Enter Password</small>
+						</div>
+					</div>
+				
+					<div class="col-lg-12">
+						
+						<button type="submit" class="btn btn-submit me-2" (click)="onSubmit()">Submit</button>
+						<a [routerLink]="routes.productList" class="btn btn-cancel">Cancel</a>
+					</div>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+

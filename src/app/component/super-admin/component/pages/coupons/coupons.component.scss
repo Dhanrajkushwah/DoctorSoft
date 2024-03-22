@@ -1,0 +1,69 @@
+.action-btn {
+    width: 29px;
+    height: 28px;
+    border-radius: 9.3552px;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.page-header .btn-added {
+    background: #005dac;
+    color: #fff;
+}
+
+
+.dataTable-dropdown label select.dataTable-selector {
+    width: 75px;
+    margin-right: 10px;
+}
+.dataTable-top > nav:first-child, .dataTable-top > div:first-child, .dataTable-bottom > nav:first-child, .dataTable-bottom > div:first-child {
+    float: left;
+}
+
+.dataTable-top > nav:last-child, .dataTable-top > div:last-child, .dataTable-bottom > nav:last-child, .dataTable-bottom > div:last-child {
+    float: right;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.dataTable-top, .dataTable-bottom {
+    padding: 8px 10px;
+}
+
+.dataTable-dropdown label select.dataTable-selector {
+    width: 75px;
+    margin-right: 10px;
+}
+select.form-control, select.custom-select, select.dataTable-selector, select.dataTable-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.form-control, .custom-select, .dataTable-selector, .dataTable-input {
+    display: block;
+    width: 100%;
+    padding: 0.575rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #293240;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 6px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.dataTable-selector {
+    padding: 6px;
+}
+
+
+

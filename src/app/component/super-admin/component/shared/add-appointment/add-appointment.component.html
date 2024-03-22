@@ -1,0 +1,324 @@
+<div class="mb-4">
+    <h2 class=" m-0">Create New Appointment</h2>
+    <span *ngIf="!client_id" style="cursor: pointer;" (click)="cancelCoupan()"><i
+            class="fa fa-arrow-left"></i>Appointment List</span>
+</div>
+
+<div class="card mt-3">
+    <form [formGroup]="appointmentForm">
+        <div class="card-body">
+            <div class="row mt-4">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="">First Name <span class="mandatory">*</span></label>
+                        <input type="text" autocomplete="off" class="form-control" formControlName="firstname"
+                            placeholder="First Name" autocomplete="off"
+                            [ngClass]="{'is-invalid':checkForm && appointmentForm.controls['firstname'].errors}">
+                        <small *ngIf="checkForm && appointmentForm.controls['firstname'].errors"
+                            class="text-danger">Please Enter
+                            First Name</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="">Last Name <span class="mandatory">*</span></label>
+                        <input type="text" autocomplete="off" class="form-control" formControlName="lastname"
+                            placeholder="Last Name" autocomplete="off"
+                            [ngClass]="{'is-invalid':checkForm && appointmentForm.controls['lastname'].errors}">
+                        <small *ngIf="checkForm && appointmentForm.controls['lastname'].errors"
+                            class="text-danger">Please Enter
+                            Last Name</small>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="">DOB <span class="mandatory">*</span></label>
+                        <input type="date" autocomplete="off" class="form-control" [max]="getToday()"
+                            formControlName="dateofBirth" placeholder="dob" autocomplete="off"
+                            [ngClass]="{'is-invalid':checkForm && appointmentForm.controls['dateofBirth'].errors}">
+                        <small *ngIf="checkForm && appointmentForm.controls['dateofBirth'].errors"
+                            class="text-danger">Please
+                            Select Date</small>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="">Age <span class="mandatory">*</span></label>
+                        <input type="number" autocomplete="off" class="form-control" formControlName="age"
+                            placeholder="Patient Age" autocomplete="off"
+                            [ngClass]="{'is-invalid':checkForm && appointmentForm.controls['age'].errors}">
+                        <small *ngIf="checkForm && appointmentForm.controls['age'].errors" class="text-danger">Please
+                            Enter
+                            Age</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+
+                    <div class="form-group">
+                        <label>Gender <span class="mandatory">*</span></label>
+                        <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" formControlName="gender" type="radio" name="gender"
+                                id="inlineRadio1" value="Male">
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" formControlName="gender" type="radio" name="gender"
+                                id="inlineRadio2" value="Female">
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" formControlName="gender" type="radio" name="gender"
+                                id="inlineRadio3" value="Other">
+                            <label class="form-check-label" for="inlineRadio3">Other</label>
+                        </div>
+                        <small *ngIf="checkForm && appointmentForm.controls['gender'].errors" class="text-danger">Please
+                            Enter Gender</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="">Mobile <span class="mandatory">*</span></label>
+                        <input type="text" autocomplete="off" class="form-control" formControlName="phone"
+                            placeholder="Mobile" autocomplete="off"
+                            [ngClass]="{'is-invalid':checkForm && appointmentForm.controls['phone'].errors}">
+                        <small *ngIf="checkForm && appointmentForm.controls['phone'].errors" class="text-danger">Please
+                            Enter
+                            Mobile</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="">Type <span class="mandatory">*</span></label>
+                        <select formControlName="type" (change)="typeConsultation($event)"   class="form-control" placeholder="Select Type"
+                            [ngClass]="{'is-invalid':checkForm && appointmentForm.controls['type'].errors  }">
+                            <option value="Online">Online Video Consultation</option>
+                            <option value="Offline">Clinic Consultation</option>
+                        </select>
+                        <small *ngIf="checkForm && appointmentForm.controls['type'].errors" class="text-danger">Please
+                            Enter
+                            Type</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12" *ngIf="!Selected" >
+                    <div class="form-group" >
+                        <label for="">Meeting URL <span class="mandatory">*</span></label>
+                        <input type="text"  autocomplete="off" class="form-control" formControlName="meeting"
+                            placeholder="Meeting URL" autocomplete="off"
+                            [ngClass]="{'is-invalid':checkForm && appointmentForm.controls['meeting'].errors}">
+                        <small *ngIf="checkForm && appointmentForm.controls['meeting'].errors"
+                            class="text-danger">Please
+                            Enter
+                            Meeting URL</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div>
+                        <label for="">Appointment Date & Time <span class="mandatory">*</span></label>
+                        <input type="date" (change)="dateChange($event)" class="form-control" [min]="getToday()"
+                            formControlName="datetime" placeholder="Appointment Date & Time"
+                            [ngClass]="{'is-invalid':checkForm && appointmentForm.controls['datetime'].errors}">
+                        <small *ngIf="checkForm && appointmentForm.controls['datetime'].errors"
+                            class="text-danger">Please
+                            Select Appointment Date & Time</small>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-submit me-2" *ngFor="let btns of button" (click)="slotType(btns)">{{btns}}
+                    </button>
+                    <br>
+                    <br>
+
+                    <mat-button-toggle-group *ngFor="let control of type" (click)="slot(control)">
+                        <mat-button-toggle class="me-2" value="control">{{control}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <br>
+                    <br>
+                </div>
+                <br>
+
+            </div>
+            <div class="row mt-2">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Medical Details
+                            </mat-panel-title>
+
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="">Chief Complaints</label>
+
+                                    <mat-form-field class="example-chip-list" appearance="fill" style="height: 125px;">
+                                        <mat-chip-grid #chipGrid aria-label="Complaint selection">
+                                            <mat-chip-row *ngFor="let complaint of complaint"
+                                                (removed)="remove(complaint)">
+                                                {{complaint}}
+                                                <button matChipRemove [attr.aria-label]="'remove ' + complaint">
+                                                    <mat-icon>cancel</mat-icon>
+                                                </button>
+                                            </mat-chip-row>
+                                        </mat-chip-grid>
+                                        <input placeholder="Enter chief complaint..." formControlName="chiefcomplaint"
+                                            #complaintInput [formControl]="complaintCtrl" [matChipInputFor]="chipGrid"
+                                            [matAutocomplete]="auto"
+                                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                            (matChipInputTokenEnd)="add($event)" />
+                                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                            <mat-option *ngFor="let complaint of filteredComplaints | async"
+                                                [value]="complaint">
+                                                {{complaint}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Add Vitals (optional) <div class="btn btn"><i class="fa-solid fa-plus"></i>
+                                        </div>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="basic-url" class="form-label">Blood Pressure</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" formControlName="bloodpressure" class="form-control"
+                                                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                            <span class="input-group-text" id="basic-addon2">mmHg</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label for="basic-url" class="form-label">SPO2</label>
+                                        <div class="input-group mb-3">
+                                            <select class="form-select" formControlName="spo2"
+                                                aria-label="Default select example">
+                                                <option value="1">80</option>
+                                                <option value="2">85</option>
+                                                <option value="3">90</option>
+                                                <option value="4">95</option>
+                                                <option value="5">98</option>
+                                            </select>
+                                            <span class="input-group-text" id="basic-addon2">%</span>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-2">
+                                        <label for="basic-url" class="form-label">Height</label>
+
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" formControlName="height"
+                                                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                            <span> <select class="form-select" formControlName="heightUnit"
+                                                    aria-label="Default select example">
+                                                    <option value="1">ft</option>
+                                                    <option value="2">in</option>
+                                                    <option value="3">cm</option>
+                                                </select> </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-2">
+                                        <label for="basic-url" class="form-label">Weight</label>
+
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" formControlName="weight"
+                                                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                            <span> <select class="form-select" formControlName="weightUnit"
+                                                    aria-label="Default select example">
+                                                    <option value="1">kg</option>
+                                                    <option value="2">lb</option>
+                                                </select> </span>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-2">
+                                        <label for="basic-url" class="form-label">Temperature</label>
+
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" formControlName="temperature"
+                                                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                            <span> <select class="form-select" formControlName="temperatureUnit"
+                                                    aria-label="Default select example">
+                                                    <option value="1"><span>&#8451;</span> </option>
+                                                    <option value="2"><span>&#8457;</span> </option>
+                                                    <option value="3">K</option>
+                                                </select> </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </mat-expansion-panel>
+                        </div>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+            </div>
+            <div class="row mt-2">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Additional Details
+                            </mat-panel-title>
+
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="">Location</label>
+                                    <input type="text" autocomplete="off" class="form-control"
+                                        formControlName="location" placeholder="Location" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="">Email ID</label>
+                                    <input type="text" autocomplete="off" class="form-control" formControlName="email"
+                                        placeholder="Eamil" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="">Reference</label>
+                                    <input type="text" autocomplete="off" class="form-control"
+                                        formControlName="reference" placeholder="Reference" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+
+        <div class="col-12  m-0 p-0 mx-4 pb-3">
+            <button class="btn btn-submit me-2" (click)="saveAppointment()">Submit</button>
+            <a class="btn btn-cancel" (click)="cancelCoupan()">Cancel</a>
+        </div>
+    </form>
+</div>

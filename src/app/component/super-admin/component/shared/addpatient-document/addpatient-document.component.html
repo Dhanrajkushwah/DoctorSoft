@@ -1,0 +1,69 @@
+<div class="mb-4">
+    <h2 class=" m-0" *ngIf="!loggedPatientId">
+        Upload Attachments For Patient </h2>
+        <h2 class=" m-0"  *ngIf="loggedPatientId">
+            Upload Attachments  </h2>
+    <span style="cursor: pointer;" (click)="cancel()"><i class="fa fa-arrow-left"></i>
+        Upload Attachments </span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="addPrescription">
+            <div class="row">
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Patient Name:</label>
+                        <select formControlName="patientName"  class="form-control"
+                            placeholder="patient Name" [ngClass]="{'is-invalid': addPrescription.controls['patientName'].errors && ck }">
+                            <option value="">Choose Your Patient</option>
+                            <option *ngFor="let doc of loggedPatientData"
+                                [value]="doc.firstname + ' '+doc.lastname ">
+                                {{ doc.firstname }} &nbsp;{{ doc.lastname }}
+                            </option>
+                        </select>
+                        <p class="text-danger" *ngIf="addPrescription.controls['patientName'].errors && ck"> Enter Your
+                            patient Name
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Type:</label>
+                        <select formControlName="type" class="form-control" [ngClass]="{'is-invalid': addPrescription.controls['type'].errors && ck }"> 
+                            <option value="" disabled>Choose Your Type</option>
+                            <option value="Prescription">Prescription</option>
+                            <option value="Medical Report">Medical Report</option>
+                        </select>
+                        <p class="text-danger" *ngIf="addPrescription.controls['type'].errors && ck"> Enter Your
+                            Type
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Document:</label>
+                        <input formControlName="document" class="form-control" placeholder="Enter Document"
+                            (change)="Onupload($event)" type="file"
+                            [ngClass]="{'is-invalid': addPrescription.controls['document'].errors && ck }" />
+                            <p class="text-danger" *ngIf="addPrescription.controls['document'].errors && ck"> Enter Your
+                                Document
+                            </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Date:</label>
+                        <input formControlName="date" class="form-control" placeholder="Enter Date" type="date"  [ngClass]="{'is-invalid': addPrescription.controls['date'].errors && ck }" />
+                        <p class="text-danger" *ngIf="addPrescription.controls['date'].errors && ck"> Enter Your
+                            Date
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <div class="col-sm-12 m-0 p-0">
+                <button class="btn btn-submit me-2" (click)="onSubmit()">Submit</button>
+                <a class="btn btn-cancel" (click)="cancel()">Cancel</a>
+            </div>
+        </div>
+</div>

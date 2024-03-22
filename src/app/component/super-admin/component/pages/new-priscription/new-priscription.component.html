@@ -1,0 +1,150 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-primary pdf float-end" (click)="makePDF()">Export to pdf</button>  
+        </div>
+    </div>
+</div>
+ 
+ <div class="container-fluid my-3">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <div class="card p-5 rounded-0">
+                    <div class="card">
+                        <div class="container" *ngFor="let d of allDoctorData">
+                            <div class="row py-3" style="
+                                            background-color: rgb(233, 243, 248);
+                                            border-radius: 2% 2% 0% 0%;
+                                        ">
+                                <div class="col-md-2 mt-1 ">
+                                    <img class="img-fluid"
+                                        src="https://seeklogo.com/images/H/hospital-clinic-plus-logo-7916383C7A-seeklogo.com.png" />
+                                </div>
+                                <div class="col-md-7 mt-1">
+                                    <div>
+                                        <p class="p-0 m-0 "><b>{{d.firstName}} {{d.lastName}} {{d.middleName}}
+                                            </b></p>
+                                        <p class="p-0 m-0 " *ngFor=" let spec of d.speciality" >{{spec}}</p>
+                                        <p class="p-0 m-0 ">
+                                            <span style="color: rgb(93, 94, 93)">{{d.mobileno}}</span>
+                                            | {{d.email}}
+                                        </p>
+                                    </div>
+                                    <div class=" ">
+                                        <p class="p-0 m-0 "><b>{{d.clinicName}}
+
+                                            </b></p>
+                                        <p class="p-0 m-0 "  *ngFor=" let spec of d.speciality">({{spec}})</p>
+                                        <p class="p-0 m-0 ">
+                                           {{d.clinicAddress}}
+
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3   mt-1">
+                                    <p>{{d.mobileno}}</p>
+                                </div>
+                            </div>
+                            <div class="row my-3 " *ngFor="let p of allPatientData">
+                                <div style="border: 1px solid rgb(87, 87, 87);" class="p-0 m-0">
+                                </div>
+                                <div class="col-md-5 ">
+                                    <p class="p-0 m-0 ">
+                                        Name: {{p.firstname}} {{p.lastname}}
+                                    </p>
+                                </div>
+                                <div class="col-md-7   " *ngFor="let a of appointmentData">
+                                    <div class="float-end ">
+                                        <p class="p-0 m-0">Date of visit: {{a.datetime| date}}</p>
+                                        <p class="p-0 m-0">Patient ID: {{p._id}}</p>
+                                    </div>
+                                </div>
+                                <div style="border: 1px solid rgb(87, 87, 87);" class="p-0 m-0">
+                                </div>
+
+                            </div>
+                            <div class="row my-3" *ngFor="let c of allConsultationData">
+                                <div class="col-md-12">
+                                    <p class="p-0 m-0 fw-bold"> <b>Chief complaints</b></p>
+                                    <ul class="p-0 m-0" *ngFor="let ch of c.chiefComplaints">
+                                        <li>{{ch}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row my-3" *ngFor="let c of allConsultationData">
+                                <div class="col-md-12">
+                                    <p class="p-0 m-0 fw-bold" > <b>Diagnosis</b></p>
+                                    <p class="p-0 m-0" *ngFor="let d of c.diagnosis">{{d}}
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row my-3" *ngFor="let c of allConsultationData">
+                                <div class="col-md-12">
+                                    <table class="table table-bordered" >
+                                        <thead >
+                                          <tr  class="table-primary">
+                                            <th scope="col">S.No</th>
+                                            <th scope="col">Medicine Name</th>
+                                            <th scope="col">Regime and Instraction</th>
+                                  
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let m of medicationArray">
+                                            <th scope="row">1</th>
+                                            <td>{{m.prescribedMedicine}}</td>
+                                            <td> {{m.numberOfDosage}} {{m.unitOfDosage}}  {{m.frequencyOfDosage}} Weekly<br> {{m.timingOfDosage}} for {{m.durationOfDosageInNumber}} {{m.durationOfDosageInUnit}}</td>
+                                  
+                                          </tr>
+                                         
+                                  
+                                        </tbody>
+                                      </table>
+
+                                    </div>
+                                    </div>
+
+                            <div class="row my-3" *ngFor="let c of allConsultationData">
+                                <div class="col-md-12">
+                                    <p class="p-0 m-0 fw-bold"> <b>Advice</b></p>
+                                    <ul>
+                                        <li *ngFor="let a of c.advise" >{{a}}</li>
+                                    </ul>
+
+                                 
+                                </div>
+                            </div>
+
+                            <div class="row  my-3">
+                                <div class="   p-0 m-0  text-end">
+                                    <img src="https://t4.ftcdn.net/jpg/00/00/42/95/240_F_429547_YJTlwk2Ld5kYDAbtCUwFgzmatgUHEg.jpg"
+                                        alt="" class="img-fluid      p-0 m-0" style="width: 100px;">
+                                </div>
+                                <div class="col-md-12 m-0 p-0  "  *ngFor="let d of allDoctorData">
+                                    <div class="float-end">
+                                        <p class="p-0 m-0">{{d.firstName}} {{d.lastName}} {{d.middleName}}</p>
+                                        <p class="p-0 m-0"  *ngFor=" let spec of d.speciality" >{{spec}}</p>
+                                        <p class="p-0 m-0" >{{d.specialization}}</p>
+                                        <p class="p-0 m-0">{{d.qualification}}
+                                        </p>
+                                        <p class="p-0 m-0">Physiotherapy</p>
+                                        <p class="p-0 m-0">MRN: 5339
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-5">
+                                <div class="col-md-12">
+                                    <!-- <p class="p-0 m-0 text-center" style="font-size: 12px;"   >Powered by Bajaj Finserv Health Limited</p> -->
+                                    <div style="border: 1px solid rgb(87, 87, 87);" class="p-0 m-0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,30 @@
+
+<div class="mb-4">
+    <h2 class=" m-0">Create New Specialization</h2>
+    <span style="cursor: pointer;" (click)="opensend()"><i class="fa fa-arrow-left"></i>  Specialization List</span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="adddepartment">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Specialization :<span class="mandatory">*</span></label>
+                        <input  type="no"  class=" form-control" class="form-control" formControlName="specialization"
+                            [ngClass]="{'is-invalid': adddepartment.controls['specialization'].errors && ckDep }"
+                            placeholder="Enter your Specialization">
+                        <p class="text-danger" *ngIf="adddepartment.controls['specialization'].errors && ckDep"> Enter Your
+                            Name
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-sm-12 m-0 p-0">
+            <button *ngIf="!id" class="btn btn-submit me-2" (click)="createNewUser()">Submit</button>
+            <button *ngIf="id" class="btn btn-submit me-2" (click)="updatedepartmentss()">Update</button>
+            <a class="btn btn-submit" (click)="opensend()">Cancel</a>
+        </div>
+        </div>
+  
+</div>

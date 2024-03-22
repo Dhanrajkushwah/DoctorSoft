@@ -1,0 +1,122 @@
+<div class="page-header">
+    <div class="page-title">
+        <h4>Manage Coupons</h4>
+        <h6>View/Manage Coupons</h6>
+    </div>
+    <div>
+        <a (click)="addcoupon()" class="btn btn-added"><img src="assets/img/icons/plus.svg"  alt="img" />
+            Add Coupons</a>
+    </div>
+</div>
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="d-block d-sm-flex align-items-center justify-content-between">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="dataTable-top">
+        <div class="dataTable-dropdown">
+            <label><select class="dataTable-selector">
+                    <option value="5">5</option>
+                    <option value="10" selected="">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                </select>
+                 entries per page</label>
+        </div>
+        <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..."
+                type="text">
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card table-card">
+            <div class="card-header card-body table-border-style">
+                <div class="">
+
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+
+                        <div class="dataTable-container">
+                            <div class="table-responsive">
+                            <table class="table mb-0 pc-dt-simple dataTable-table">
+                                <thead>
+                                    <tr>
+                                        <th data-sortable="" style="width: 25.8333%;"><a href="#"
+                                                class="dataTable-sorter">Name</a></th>
+                                        <th data-sortable="" style="width: 36.0417%;"><a href="#"
+                                                class="dataTable-sorter">Code</a></th>
+                                        <th data-sortable="" style="width: 22.7083%;"><a href="#"
+                                                class="dataTable-sorter">Discount (%)</a></th>
+                                        <th data-sortable="" style="width: 11.875%;"><a href="#"
+                                                class="dataTable-sorter">Limit</a></th>
+                                        <th data-sortable="" style="width: 11.4583%;"><a href="#"
+                                                class="dataTable-sorter">Used</a></th>
+                                        <th data-sortable="" style="width: 29.5833%;"><a href="#"
+                                                class="dataTable-sorter">Action</a></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let p of coupondata;">
+                                        <td>{{p.name}}</td>
+                                        <td>{{p.code}}</td>
+                                        <td>{{p.discount}}</td>
+                                        <td>{{p.limit}}</td>
+                                        <td>7</td>
+                                        <td class="Action">
+                                            <div class="action-btn bg-warning ms-2">
+                                                <a href="https://demo.rajodiya.com/leadgo-saas/coupons/1"
+                                                    class="mx-3 btn btn-sm d-inline-flex align-items-center"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                                    data-bs-original-title="Show Coupon">
+                                                    <i class="ti ti-eye text-white"></i>
+                                                </a>
+                                            </div>
+                                            <div class="action-btn bg-info ms-2">
+                                                <a href="#" data-size="lg"
+                                                    data-url="https://demo.rajodiya.com/leadgo-saas/coupons/1/edit"
+                                                    data-ajax-popup="true" data-title="Edit Coupon"
+                                                    class="mx-3 btn btn-sm d-inline-flex align-items-center"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                                    data-bs-original-title="Edit Coupon" aria-label="Edit Coupon"><i
+                                                        class="ti ti-pencil text-white"></i></a>
+                                            </div>
+
+                                            <div class="action-btn bg-danger ms-2">
+                                                <form 
+                                                  
+                                                    accept-charset="UTF-8" id="delete-form-1"><input name="_method"
+                                                        type="hidden" value="DELETE"><input name="_token" type="hidden"
+                                                        value="g1h71t76N1jcIJY3tIWsyMPtAywSVUei9UEL63Wt">
+                                                    <a 
+                                                        class="mx-3 btn btn-sm d-inline-flex align-items-center show_confirm"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                                        data-bs-original-title="Delete Coupon">
+                                                        <span class="text-white"> <i class="ti ti-trash" (click)="deleteCoupan(p._id)"></i></span></a>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                        <div class="dataTable-bottom">
+                            <div class="dataTable-info">Showing 1 to 3 of 3 entries</div>
+                            <nav class="dataTable-pagination">
+                                <ul class="dataTable-pagination-list"></ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

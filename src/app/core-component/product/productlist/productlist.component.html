@@ -1,0 +1,164 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>Manage Company</h4>
+    <h6><a>Home </a> <i class="fa-solid fa-chevron-right"></i> Company</h6>
+  </div>
+  <div class="page-btn">
+    <a [routerLink]="routes.addProduct" class="btn btn-added"
+      ><img src="assets/img/icons/plus.svg" alt="img" /></a
+    >
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+      <div class="card text-white text-center">
+        <div class="card-header border-0 pb-0">
+          <div class="d-flex align-items-center">
+            <div class="d-grid">
+              <div class="badge org p-2 px-3 rounded">Free Plan</div>
+            </div>
+          </div>
+          <div class="card-header-right">
+            <div class="btn-group card-option">
+              <button
+                type="button"
+                class="btn dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="feather icon-more-vertical"></i>
+              </button>
+      
+              <div class="dropdown-menu dropdown-menu-end">
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  data-url="https://demo.rajodiya.com/leadgo-saas/users/edit/2"
+                  data-ajax-popup="true"
+                  data-size="lg"
+                  data-title="Edit User"
+                  ><i class="ti ti-pencil mx-1"></i>Edit</a
+                >
+                <form
+                  method="POST"
+                  action="https://demo.rajodiya.com/leadgo-saas/users/2"
+                  accept-charset="UTF-8"
+                  id="delete-form-2"
+                >
+                  <input name="_method" type="hidden" value="DELETE" /><input
+                    name="_token"
+                    type="hidden"
+                    value="ed7fGFeUapZ8etDIw4pKC6ckcitkWoSJb4wb8tA2"
+                  />
+                  <a href="#!" class="dropdown-item show_confirm">
+                    <i class="ti ti-archive"></i><span class="ms-1"> Delete </span>
+                  </a>
+                </form>
+      
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  data-url="https://demo.rajodiya.com/leadgo-saas/user-reset-password/eyJpdiI6ImpacDF4NE1FS3NiOUJqbDF5OEQ3VFE9PSIsInZhbHVlIjoiUTJaeDdGclMyLzNjTXR4NWVuQTBpUT09IiwibWFjIjoiMWEyZDViN2YxMDU0ZGU5M2QyZGFkZDIxM2M3NjViNWQxNWY5OGMwMGZkYTZhOTQwMWU3MGJjNzI1ZTUyYzdjOCIsInRhZyI6IiJ9"
+                  data-ajax-popup="true"
+                  data-size="md"
+                  data-title="Reset Password"
+                  data-toggle="tooltip"
+                  data-original-title="Reset Password"
+                  ><i class="ti ti-key"></i>
+                  <span>Reset Password</span>
+                </a>
+      
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  data-size="lg"
+                  data-url="https://demo.rajodiya.com/leadgo-saas/user/2/plan"
+                  data-ajax-popup="true"
+                  data-title="Upgrade Plan"
+                  data-toggle="tooltip"
+                  data-original-title="Upgrade Plan"
+                  ><i class="ti ti-award"></i>
+                  Upgrade Plan
+                </a>
+                <a
+                  href="https://demo.rajodiya.com/leadgo-saas/home/2/login-with-admin"
+                  class="dropdown-item"
+                  data-ajax-popup="true"
+                  data-size="md"
+                  data-title="Login As Company"
+                  data-toggle="tooltip"
+                  data-original-title="Login As Company"
+                  ><i class="ti ti-replace py-1"></i>
+                  <span>Login As Company</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="card-body">
+          <a
+            href="https://demo.rajodiya.com/leadgo-saas/storage/uploads/avatar/user-4.jpg"
+            target="_blank"
+          >
+            <img
+              src="https://demo.rajodiya.com/leadgo-saas/storage/uploads/avatar/user-4.jpg"
+              class="img-fluid rounded-circle"
+              width="100"
+            />
+          </a>
+          <h4 class="mt-2">
+            <a href="https://demo.rajodiya.com/leadgo-saas/users/2dit"
+              >Rajodiya Infotech</a
+            >
+          </h4>
+      
+          <h6 class="office-time mb-0 mb-4">owner@example.com</h6>
+          <a
+            href="#"
+            data-url="https://demo.rajodiya.com/leadgo-saas/company-info/2"
+            data-size="lg"
+            data-ajax-popup="true"
+            class="btn btn-outline-primary"
+            data-title="Company Info"
+            >Admin Hub</a
+          >
+      
+          <div class="col-12">
+            <!-- <hr class="my-3"  style="background: #000;"/> -->
+            <mat-divider class="my-3"></mat-divider>
+          </div>
+      
+          <div class="col-12 text-center pb-2">
+            <span class="text-dark text-xs">Plan Expired : Jan 8, 2024</span>
+          </div>
+          <div class="row g-2">
+            <div class="col-6 col-sm-4">
+              <div class="d-grid">
+                <span class="d-block font-weight-bold mb-0 text-dark">8</span>
+                <span class="d-block text-muted">Users</span>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4">
+              <div class="d-grid">
+                <span class="d-block font-weight-bold mb-0 text-dark">11</span>
+                <span class="d-block text-muted">Clients</span>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="d-grid">
+                <span class="d-block font-weight-bold mb-0 text-dark">7</span>
+                <span class="d-block text-muted">Deals</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</div>

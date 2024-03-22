@@ -1,0 +1,54 @@
+<div 
+  [ngClass]="{
+    'expand-menu': miniSidebar === true && expandMenu === true ,
+    'mini-sidebar': miniSidebar === true,
+    'menu-opened': mobileSidebar === true,
+    'slide-nav': mobileSidebar === true
+  }"
+>
+  <!-- Main Wrapper -->
+  <div class="main-wrapper" [ngClass]="{ dark: darkTheme }">
+    
+    <app-common-header></app-common-header>
+    <div>
+      <ng-container *ngIf="sideBaractivePath === false">
+        <app-common-sidebar-one *ngIf="changeLayout === '1'"></app-common-sidebar-one>
+
+      </ng-container>
+      <div [class.container]="changeLayout === '4' || changeLayout === '3'">
+        <div
+          class="page-wrapper"
+          [ngClass]="{
+            'page-wrapper-one': changeLayout === '2',
+            'page-wrapper-two': changeLayout === '3',
+            'page-wrapper-three': changeLayout === '4',
+            'page-wrapper-four': changeLayout === '5',
+            'ms-0': sideBaractivePath === true,
+            'content-wrapper' : page === 'pos'
+          }"
+        >
+          <div class="content">
+          <!-- <div class="container-fluid border mb-3" style="background-color: #005dac;">
+            <div class="row " >
+                  <div class="col-md-1 fw-bold mt-3">
+                    <i class="fa fa-3x fa-user text-light w-50 mx-4 mt-2" aria-hidden="true"></i>
+                 </div>
+                 <div class="col-md-11 mt-4 text-light" *ngFor="let patient of loggedeInPatientData">
+                 <ul>
+                  <li class=" h5">{{patient.firstname}} &nbsp; {{patient.lastname}}</li>
+                  <li>{{patient.phone}}</li>
+                 </ul>
+               </div>
+            </div>
+          </div> -->
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+        <!-- Main Wrapper -->
+      </div>
+    </div>
+    <app-common-layout></app-common-layout>
+    <!-- <app-layout></app-layout> -->
+  </div>
+  <!-- Main Wrapper -->
+</div>

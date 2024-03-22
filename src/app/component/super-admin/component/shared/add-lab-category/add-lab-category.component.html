@@ -1,0 +1,33 @@
+
+<div class="mb-4">
+    <h2 class=" m-0">Create Lab Test Category</h2>
+    <span style="cursor: pointer;" (click)="Cancel()"><i class="fa fa-arrow-left"></i>Lab Test Category List</span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="addDoctorform">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">Category Name
+                        </label>
+                        <input type="text" id="firstName" formControlName="category" class="form-control" placeholder="Category Name"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['category'].errors && ckDep }" />
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="">Category Image</label>
+                        <input class="form-control" type="file" formControlName="categoryImage" class="form-control" (change)="Onupload($event)"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['categoryImage'].errors && ckDep }">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12  m-0 p-0 mt-2">
+                <button class="btn btn-submit me-2"  (click)="addDoctors()">Submit</button>
+                <a class="btn btn-cancel" (click)="Cancel()">Cancel</a>
+            </div>
+        </form>
+        </div>
+</div>

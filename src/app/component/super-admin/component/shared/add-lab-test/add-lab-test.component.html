@@ -1,0 +1,71 @@
+
+<div class="mb-4">
+    <h2 class=" m-0">Create Lab Test</h2>
+    <span style="cursor: pointer;" (click)="cancel()"><i class="fa fa-arrow-left"></i>Lab Test List</span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="addLabtest">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Test Name <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="testName"
+                            [ngClass]="{'is-invalid': addLabtest.controls['testName'].errors && ck }"
+                            placeholder="Test Name">
+                        <p class="text-danger" *ngIf="addLabtest.controls['testName'].errors && ck"> Enter Your Test Name
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Test Price <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="testPrice"
+                            [ngClass]="{'is-invalid': addLabtest.controls['testPrice'].errors && ck }"
+                            placeholder=" Last Name">
+                        <p class="text-danger" *ngIf="addLabtest.controls['testPrice'].errors && ck"> Enter Your Test Price
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for=""> Lab Image <span class="mandatory">*</span></label>
+                            <input class="form-control" type="file" formControlName="testImage"
+                                class="form-control" (change)="OnLabImage($event)"
+                                [ngClass]="{'is-invalid': addLabtest.controls['testImage'].errors && ck }">
+                                <p class="text-danger" *ngIf="addLabtest.controls['testImage'].errors && ck"> Enter Your Lab Image
+                                </p>
+                        </div>
+                     
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label class="form-label" for="specificSizeSelect">Lab Category:</label>
+                        <select   formControlName="testCategory" class="form-select"  id="specificSizeSelect"
+                        [ngClass]="{'is-invalid': addLabtest.controls['testCategory'].errors && ck }">
+                           <option value="">Select Category</option>
+                            <option *ngFor="let c of labtestData"><span>{{c.category}}</span> </option>
+                        </select>
+                        <p class="text-danger" *ngIf="addLabtest.controls['testCategory'].errors && ck"> Enter Your Category 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for=""> Lab Description <span class="mandatory">*</span></label>
+                    <textarea  type="text" formControlName="testDescription"
+                    [ngClass]="{'is-invalid': addLabtest.controls['testDescription'].errors && ck }">
+                    </textarea>
+                        <p class="text-danger" *ngIf="addLabtest.controls['testDescription'].errors && ck"> Enter Your Description 
+                        </p>
+                </div>
+            </div>
+            <br>
+            <div class="col-12  m-0 p-0 mt-2">
+                <button class="btn btn-submit me-2"  (click)="addLabtests()">Submit</button>
+                <a class="btn btn-cancel" (click)="cancel()">Cancel</a>
+            </div>
+        </form>
+        </div>
+</div>

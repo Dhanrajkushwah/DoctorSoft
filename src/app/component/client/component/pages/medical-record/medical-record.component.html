@@ -1,0 +1,43 @@
+<div class="d-flex  pt-3 pb-2 align-items-center justify-content-between">
+    <div><h2 class="m-0 p-0">
+    Medical Record
+    </h2>
+    <p class="p-0 m-0"></p>
+    </div>
+
+    <div (click)="toMedicalRecord()">
+        <button class="btn fs-5  d-flex gap-2 align-items-center" style="background: #005dac; color: #FFF;"> <i
+                class="fa-solid fa-plus"></i>Upload Records</button>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <ng-container *ngIf="loggedPatientData.length !=0; ">
+        <div class="row" >
+            <div class="col-md-3" *ngFor="let data of loggedPatientData">
+                <div class="card" style="height:200px" >
+                    <div class="card-body">
+                        <img [src]="data.document" style=" height:100px; width:200px"  >
+                    </div>
+                    <div class="card-footer">
+                        <p class="m-0 p-0">{{data.type}}<span (click)="download(data.document)"><i class="fa fa-download float-end" aria-hidden="true"></i></span></p>
+                        <p class="m-0 p-0"><b>Date : </b>{{data.date |date}}</p>
+                        <p class="m-0 p-0"><b>Doctor : </b>{{data.doctorName}}</p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+</div>
+<div class="container-fluid" *ngIf="loggedPatientData.length==0">
+    <ng-container >
+        <div class="col-md-12 text-center mt-4 pt-4">
+            <img src="../../../../../../assets/img/norecord.png" style="width : 200px; height: 200px; margin-top: 100px;" alt="">
+            <p>Sorry no record shared yet</p>
+        </div>
+    </ng-container>
+
+</div>

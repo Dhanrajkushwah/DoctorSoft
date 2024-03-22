@@ -1,0 +1,15 @@
+.backimg {
+    height: 300px;
+    width: 100%;
+    background-image: url("https://img.freepik.com/free-photo/abstract-digital-grid-black-background_53876-97647.jpg?t=st=1710400934~exp=1710404534~hmac=4e4b6c8f6893e41026e40096831f0bddad9b36ee3c64fcf21189a720461c7568&w=740");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.login-card {
+    margin-top: 100px;
+    transition: .5s;
+}
+.login-card:hover {
+    box-shadow: 2px 2px 5px 2px rgb(70, 69, 69);
+}

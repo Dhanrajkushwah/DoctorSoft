@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <div class="page-header">
+      <div class="page-title">
+        <h4>Manage Company (Admin)</h4>
+        <h6><a style="color: #005dac;">Home </a> <i class="fa-solid fa-chevron-right"></i> Company (Admin)</h6>
+      </div>
+      <div class="page-btn">
+        <a (click)="addCompany()" class="btn btn-added"
+          ><img src="assets/img/icons/plus.svg" alt="img" /></a
+        >
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">  
+    <div class="col-md-12 mt-4 offset">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 mb-3" *ngFor="let data of company">
+                <div class="card  set_dinner ">
+                    <div class="card-header border-0 pb-1">
+                      <div class=" row d-flex ">
+                        <div class=" col-sm-6 d-grid" style="justify-content: left;text-align: left;">
+                          <div class="badge org p-2 px-3 rounded">Free Plan</div>
+                        </div>
+                        <div class="col-sm-6 card-header-right d-grid" style=" justify-content: right;text-align: right;">
+                          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                              <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                              <button   mat-menu-item (click)="editCompany(data._id)">
+                                  <mat-icon>create</mat-icon> Edit
+                              </button>
+                              
+                              <button   (click)="OnDelete(data._id)"  mat-menu-item> Delete
+                                  <mat-icon>delete_forever</mat-icon>
+                              </button>
+                              <button  mat-menu-item> Reset Password
+                                  <mat-icon> vpn_key</mat-icon>
+                              </button>
+                          </mat-menu>
+                      </div>
+                      </div>
+                      
+                    </div>
+
+                    <div class="card-body">
+                      <div style="text-align: center;">
+                      <a  target="_blank" > 
+                        <img src={{data.image}} class="img-fluid"  width="100"/>
+                      </a>
+                      <h4 class="mt-2">
+                        <a href="https://demo.rajodiya.com/leadgo-saas/users/2dit"
+                          >{{data.username}}</a
+                        >
+                      </h4>
+                      <p style="color: #005dac;">{{data.email}}</p>
+                      <a
+                        href="#"
+                        data-url="https://demo.rajodiya.com/leadgo-saas/company-info/2"
+                        data-size="lg"
+                        data-ajax-popup="true"
+                        class="btn btn-outline-primary"
+                        data-title="Company Info"
+                        >Admin Hub</a
+                      >
+                    </div>
+                      <div class="col-12">
+                        <mat-divider class="my-3"></mat-divider>
+                      </div>
+                  
+                      <div class="col-12 text-center pb-2">
+                        <span class="text-dark text-xs">Plan Expired : Jan 8, 2024</span>
+                      </div>
+                      <div class="row justify-content-center">
+                        <div class="col-3">
+                          <div class="d-grid">
+                            <span class="d-block font-weight-bold mb-0 text-dark  text-center">8</span>
+                            <span class="d-block text-muted">Users</span>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="d-grid">
+                            <span class="d-block font-weight-bold mb-0 text-dark  text-center">11</span>
+                            <span class="d-block text-muted">Clients</span>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="d-grid">
+                            <span class="d-block font-weight-bold mb-0 text-dark  text-center">7</span>
+                            <span class="d-block text-muted">Deals</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+</div>

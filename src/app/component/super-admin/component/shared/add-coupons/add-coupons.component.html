@@ -1,0 +1,46 @@
+<div class="page-header">
+    <div class="page-title">
+        <h4>Create New Coupon</h4>
+        <h6>Neww Coupon</h6>
+    </div>
+</div>
+<div class="card">
+    <form [formGroup]="addcoupon">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text"  formControlName="name" [ngClass]="{'is-invalid': addcoupon.controls['name'].errors && ckcoupn }" placeholder="Coupon Name" >
+                    <p class="text-danger"
+                    *ngIf="addcoupon.controls['name'].errors && ckcoupn">  Enter Your Coupon Name
+                  </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                    <label>Discount</label>
+                    <input type="text"  formControlName="discount" [ngClass]="{'is-invalid': addcoupon.controls['discount'].errors && ckcoupn }" placeholder="Discount" >
+                    <p class="text-danger"
+                    *ngIf="addcoupon.controls['discount'].errors && ckcoupn">  Enter Your Discount
+                  </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                    <label>Limit</label>
+                    <input type="text"  formControlName="limit" [ngClass]="{'is-invalid': addcoupon.controls['limit'].errors && ckcoupn }" placeholder="Limit" >
+                    <p class="text-danger"
+                    *ngIf="addcoupon.controls['limit'].errors && ckcoupn">  Enter your Limit
+                  </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12  m-0 p-0">
+            <button  class="btn btn-submit me-2" (click)="addcouponsss()">Submit</button>
+            <a  class="btn btn-cancel" (click)="cancelCoupan()">Cancel</a>
+        </div>
+    </div>
+    </form>
+</div>

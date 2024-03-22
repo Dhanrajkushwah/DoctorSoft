@@ -1,0 +1,61 @@
+<div class="mb-4">
+    <h2 class=" m-0">Create Package</h2>
+    <span style="cursor: pointer;" (click)="cancel()"><i class="fa fa-arrow-left"></i>Package List</span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="addPackage">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group"> 
+                        <label>Offer Tittle <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="offerTitle"
+                            [ngClass]="{'is-invalid': addPackage.controls['offerTitle'].errors && ck }"
+                            placeholder="Offer Tittle">
+                        <p class="text-danger" *ngIf="addPackage.controls['offerTitle'].errors && ck"> Enter Your Offer Tittle
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Offer Name <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="offerName"
+                            [ngClass]="{'is-invalid': addPackage.controls['offerName'].errors && ck }"
+                            placeholder="Offer Name ">
+                        <p class="text-danger" *ngIf="addPackage.controls['offerName'].errors && ck"> Enter Your Offer Name
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Offer Test Package</label>
+                        <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                            <mat-select class="form-control" multiple style="border: none;padding: 0px!important;"
+                                formControlName="offertestPackage" (selectionChange)="change($event)"
+                                [ngClass]="{'is-invalid': addPackage.controls['offertestPackage'].errors && ck }">
+                                <mat-option *ngFor="let speci of allspeciality"
+                                    [value]="speci.testpackageName">{{speci.testpackageName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <p class="text-danger" *ngIf="addPackage.controls['offertestPackage'].errors && ck"> Enter Your Offer Test Package
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for=""> Offer Price <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="offerPrice"
+                        [ngClass]="{'is-invalid': addPackage.controls['offerPrice'].errors && ck }"
+                        placeholder=" Offer Price">
+                    <p class="text-danger" *ngIf="addPackage.controls['offerPrice'].errors && ck"> Enter Your Offer Price
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12  m-0 p-0 mt-2">
+                <button class="btn btn-submit me-2"  (click)="addPackages()">Submit</button>
+                <a class="btn btn-cancel" (click)="cancel()">Cancel</a>
+            </div>
+        </form>
+        </div>
+</div>

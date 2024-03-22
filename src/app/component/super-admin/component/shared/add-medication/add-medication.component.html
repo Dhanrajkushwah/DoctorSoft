@@ -1,0 +1,82 @@
+<div class="mb-4">
+    <h2 class=" m-0">
+      Medication  </h2>
+    <span style="cursor: pointer;" (click)="cancel()"><i class="fa fa-arrow-left"></i>
+        Medication</span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="addPrescription">
+            <div class="row">
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Patient Name:</label>
+                        <select formControlName="patientName"  class="form-control"
+                            placeholder="patient Name" [ngClass]="{'is-invalid': addPrescription.controls['patientName'].errors && ck }">
+                            <option value="">Choose Your Patient</option>
+                            <option *ngFor="let doc of patientData"
+                                [value]="doc.name">
+                                {{ doc.firstname }}&nbsp;  {{ doc.lastname }}
+                            </option>
+                        </select>
+                        <p class="text-danger" *ngIf="addPrescription.controls['patientName'].errors && ck"> Enter Your
+                            patient Name
+                        </p>
+                    </div>
+                </div>
+             
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Medicine Name:</label>
+                        <select formControlName="medicineName"  class="form-control"
+                        placeholder="patient Name" [ngClass]="{'is-invalid': addPrescription.controls['medicineName'].errors && ck }">
+                        <option value="">Choose Your Medicine</option>
+                        <option *ngFor="let doc of medicineData"
+                            [value]="doc.medicine">
+                            {{ doc.medicine }}
+                        </option>
+                    </select>
+                    <p class="text-danger" *ngIf="addPrescription.controls['medicineName'].errors && ck"> Enter Your
+                        patient Name
+                    </p>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Dosage:</label>
+                        <input formControlName="dosage" class="form-control" placeholder="Enter Dosage"  [ngClass]="{'is-invalid': addPrescription.controls['dosage'].errors && ck }" >
+                        <p class="text-danger" *ngIf="addPrescription.controls['dosage'].errors && ck"> Enter Your
+                            Dosage
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Frequency:</label>
+                        <input formControlName="frequency" class="form-control" placeholder="Enter Frequency"  [ngClass]="{'is-invalid': addPrescription.controls['frequency'].errors && ck }" >
+                        <p class="text-danger" *ngIf="addPrescription.controls['frequency'].errors && ck"> Enter Your
+                            Frequency
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Timing:</label>
+                        <input formControlName="timing" class="form-control" placeholder="Enter Timing"  [ngClass]="{'is-invalid': addPrescription.controls['timing'].errors && ck }" >
+                        <p class="text-danger" *ngIf="addPrescription.controls['timing'].errors && ck"> Enter Your
+                            Timing
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-sm-12 p-0 m-0">
+            <button class="btn btn-submit me-2" (click)="onSubmit()">Submit</button>
+            <a class="btn btn-cancel" (click)="cancel()">Cancel</a>
+        </div>
+        </div>
+    
+</div>

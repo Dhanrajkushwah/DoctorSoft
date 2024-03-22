@@ -1,0 +1,46 @@
+<div mat-dialog-content>
+    <div class="d-flex  pt-3 pb-2 align-items-center justify-content-between">
+        <div>
+            <h2 class="m-0 p-0">
+                Login Doctor Profile
+            </h2>
+            <p class="p-0 m-0">View/Manage Login Doctor Profile</p>
+
+        </div>
+    </div>
+
+    <div class="row">
+
+
+        <div class="col-12">
+            <div class="card table-card">
+                <div class="card-header card-body table-border-style">
+                    <div class="row">
+
+                        <div class="col-3">
+                            Doctor Name:- {{name}}
+                        </div>
+                        <div class="col-3">
+                            Doctor Mobile:- {{mobile}}
+                        </div>
+                        <div class="col-3">
+                            Doctor Email:- {{email}}
+                        </div>
+                        <div class="col-3">
+                            Doctor City:- {{city}}
+                        </div>
+
+                    </div>
+                    <br>
+                    
+                    <div class="row">
+                        <div class="col-3">
+                            <button class="btn btn-submit me-2" (click)="editDoctor(doctor_id)">Profile Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

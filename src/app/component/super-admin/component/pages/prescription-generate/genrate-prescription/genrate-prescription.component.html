@@ -1,0 +1,886 @@
+
+
+
+
+    <div class="container-fluid  rounded mb-4 " style="background-color: #3E4EB0; " *ngFor="let app of allAppointmentData">
+        <div class="row">
+            <div class="col-md-12 mt-2 mb-3">
+                <div class="d-flex  justify-content-between">
+                    <!-- first section -->
+                    <div class=" d-flex">
+                        <div>
+                            <i class="fa-solid fa-user fs-3 mt-2 " style="color: #74C0FC;"></i>
+                        </div>
+                        <div class="ms-2 text-light  ">
+                            <p class="p-0 m-0" style="font-size: small;"><b>{{app.firstname}}&nbsp; {{app.lastname}} </b><i class="fa-thin fa-pen "
+                                    style="color: #f8fafc;"></i> </p>
+                            <p class="p-0 m-0 " style="font-size: small;">{{app.gender}}/{{app.age}} Years old| {{app.phone}}</p>
+                        </div>
+                    </div>
+                    <!-- sec section -->
+                    <div>
+                        <form class="d-flex float-end">
+                            <button class="btn border"   type="submit"
+                                style="color: white; background-color:  #6471c0; ">
+                                Consultation Date : {{app.datetime|date}}</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <form action="" [formGroup]="addConsultationForm">
+    <mat-tab-group animationDuration="0ms">
+
+        <mat-tab label="Create New Prescription">
+            <div>
+                <div class="row">
+              
+                    <div class="col-md-12">
+                        <div class="container-fluid my-3 shadow" style="background-color: white;">
+                            <div class="row">
+                                <div class="col-md-12 mb-4" style="max-height: 400px;">
+                                    <h3 class="h3 mt-3">Chief Complaints</h3>
+                                 
+                                        <mat-form-field class="example-chip-list" appearance="fill" style="height: 125px;">
+                                            <mat-chip-grid
+                                             #chipGrid 
+                                             aria-label="Fruit selection">
+                                                <mat-chip-row 
+                                                *ngFor="let complaint of complaint"
+                                                    (removed)="remove(complaint)">
+                                                    {{complaint}}
+                                                    <button matChipRemove [attr.aria-label]="'remove ' + complaint">
+                                                        <mat-icon>cancel</mat-icon>
+                                                    </button>
+                                                </mat-chip-row>
+                                            </mat-chip-grid>
+                                            <input placeholder="Enter chief complaint..."
+                                                formControlName="chiefComplaints"
+                                                 #complaintInput
+                                                [formControl]="complaintCtrl"
+                                                 [matChipInputFor]="chipGrid"
+                                                [matAutocomplete]="auto"
+                                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                (matChipInputTokenEnd)="add($event)" />
+                                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                                <mat-option *ngFor="let complaint of filteredComplaint | async"
+                                                    [value]="complaint">
+                                                    {{complaint}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                        </mat-form-field>
+                                  
+    
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="container-fluid my-3 shadow" style="background-color: #ffffff;"  *ngFor="let app of allAppointmentData">
+                            
+                            <div class="row">
+                                <h3 class="h3 mt-3">Examinations (Optional)</h3>
+    
+                                <div class="col-md-2">
+                                    <label for="basic-url" class="form-label">Blood Pressure</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text"
+                                        formControlName="bloodPressure"
+                                         class="form-control"
+                                          aria-label="Recipient's username"
+                                           [value]="app.bloodpressure"
+                                         aria-describedby="basic-addon2" />
+                                        <span class="input-group-text" id="basic-addon2">mmHg</span>
+                                    </div>
+                                </div>
+    
+                                <div class="col-md-2">
+                                    <label for="basic-url" class="form-label">SPO2</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-select"  formControlName="SPO2"
+                                         aria-label="Default select example">
+                                            <option value="1">80</option>
+                                            <option value="2">85</option>
+                                            <option value="3">90</option>
+                                            <option value="4">95</option>
+                                            <option value="5">98</option>
+                                        </select>
+                                        <span class="input-group-text" id="basic-addon2">%</span>
+                                    </div>
+                                </div>
+    
+    
+    
+                                <div class="col-md-2">
+                                    <label for="basic-url" class="form-label">Height</label>
+    
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control"
+                                        formControlName="height"
+                                         aria-label="Recipient's username"
+                                            aria-describedby="basic-addon2" />
+                                        <span> <select class="form-select"    formControlName="heightUnit"
+                                             aria-label="Default select example">
+                                                <option value="1">ft</option>
+                                                <option value="2">in</option>
+                                                <option value="3">cm</option>
+                                            </select> </span>
+                                    </div>
+                                </div>
+    
+    
+                                <div class="col-md-2">
+                                    <label for="basic-url" class="form-label">Weight</label>
+    
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control"
+                                        formControlName="weight"
+                                         aria-label="Recipient's username"
+                                            aria-describedby="basic-addon2" />
+                                        <span> <select class="form-select"
+                                            formControlName="weightUnit" aria-label="Default select example">
+                                                <option value="1">kg</option>
+                                                <option value="2">lb</option>
+                                            </select> </span>
+                                    </div>
+                                </div>
+    
+    
+    
+                                <div class="col-md-2">
+                                    <label for="basic-url" class="form-label">Temperature</label>
+    
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control"
+                                        formControlName="temperature"
+                                         aria-label="Recipient's username"
+                                            aria-describedby="basic-addon2" />
+                                        <span> <select class="form-select"
+                                            formControlName="temperatureUnit"
+                                             aria-label="Default select example">
+                                                <option value="1"><span>&#8451;</span> </option>
+                                                <option value="2"><span>&#8457;</span> </option>
+                                                <option value="3">K</option>
+                                            </select> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Examination Notes</label>
+                                        <mat-form-field class="example-chip-list" appearance="fill" style="height: 120px;">
+                                          
+                                            <mat-chip-grid
+                                             #chipGridExam
+                                              aria-label="Enter fruits">
+                                              <mat-chip-row 
+                                              *ngFor="let exam of allExam"
+                                             (removed)="removeExam(exam)"
+                                             [editable]="true"
+                                            (edited)="edit(exam, $event)"
+                                         >
+                                                {{exam}}
+                                                <button 
+                                                matChipRemove
+                                                 [attr.aria-label]="'remove ' + exam">
+                                                  <mat-icon>cancel</mat-icon>
+                                                </button>
+                                              </mat-chip-row>
+                                              <input placeholder="Examination notes..."
+                                              formControlName="examinationNotes"
+                                                     [matChipInputFor]="chipGridExam"
+                                                     [formControl]="examinationNotesCtrl"
+                                                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                     [matChipInputAddOnBlur]="addOnBlur"
+                                                     (matChipInputTokenEnd)="addExam($event)"/>
+                                            </mat-chip-grid>
+                                          </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <h3 class="h3 mt-3">Diagnosis(required)</h3>
+                                  <mat-form-field class="example-full-width" appearance="fill" style="height: 120px;"   
+                                  >
+                                 
+                                    <mat-chip-grid #chipGrid1 aria-label="Fruit selection">
+    
+                                      <mat-chip-row 
+                                      *ngFor="let diag of diagnosis" (removed)="removeDiag(diag)">
+                                        {{diag}}
+                                        <button
+                                         matChipRemove
+                                          [attr.aria-label]="'remove ' + diag">
+                                          <mat-icon>cancel</mat-icon>
+                                        </button>
+                                      </mat-chip-row>
+                                    </mat-chip-grid>
+                                    <input 
+                                    placeholder="Diagnosis..."
+                                    formControlName="diagnosis"
+                                     #diagnosisInput
+                                      [formControl]="DiagnosisCtrl"
+                                      [matChipInputFor]="chipGrid1"
+                                       [matAutocomplete]="autoDiag"
+                                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                      (matChipInputTokenEnd)="addDiag($event)"
+                                      />
+                                    <mat-autocomplete #autoDiag="matAutocomplete"
+                                     (optionSelected)="selectedDiag($event)">
+                                      <mat-option *ngFor="let diag of filteredDiagnosis | async" [value]="diag">
+                                        {{diag}}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                  </mat-form-field>
+                             
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid my-3 shadow" style="background-color: #ffffff;">
+                            <div class="row">
+                                <h3 class="h3 mt-3">Medication</h3>
+                                <div class="col-md-12 ">
+                                    <div class="row">
+                                        <div>
+                                            <div class="container-fluid c1 py-3 my-2" formArrayName="medication">
+                                                <div class="row">
+                                                    <div class="table-responsive">
+                                                    
+                                                        <div class="table-responsive">
+    
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th> <button class="btn" (click)="addMedicationControl()" style="background-color: #3E4EB0;" ><i
+                                                                            class="fa-solid fa-plus text-light"></i></button></th>
+                                                                        <th scope="col"    >Prescribed Medicine</th>
+                                                                        <th scope="col">Dosage</th>
+                                                                        <th scope="col">Frequency</th>
+                                                                        <th scope="col">Timing</th>
+                                                                        <th scope="col" class="" >Duration</th>
+                                                                       
+                                                        
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody *ngFor="let control of medication.controls; let i=index" style="white-space: nowrap;"
+                                                                    [formGroupName]="i">
+                                                                    <tr>
+                                                                        <td></td>
+
+                                                                        <td style="width: 200px;">
+                                                        
+                                                                            <select name="" id="" class="form-select" formControlName="prescribedMedicine" style="width: 200px;">
+                                                                                <option value="">Select Medicine</option>
+                                                                                <option *ngFor="let drug of allDrug">{{drug.medicine}}</option>
+                                                        
+                                                                            </select>
+                                                                        </td>
+                                                        
+                                                                        <td style="width: 200px;">
+                                                                            <div class="d-flex ">
+                                                                                <select class="form-select me-1"  formControlName="numberOfDosage" style="width: 200px;">
+                                                                                    <option value=""> no. of dosage</option>
+                                                                                    <option>3</option>
+                                                                                </select>
+                                                        
+                                                                                <select class="form-select" formControlName="unitOfDosage">
+                                                                                    <option value=""> unit of dosage</option>
+                                                                                    <option>TB</option>
+                                                                                    <option>MG</option>
+                                                                                    <option>Units</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td style="width: 200px;">
+                                                                            <select class="form-select" formControlName="frequencyOfDosage" style="width: 150px;">
+                                                                                <option value=""> frequency of dosage</option>
+                                                                                <option>0 - 1 mg - 0</option>
+                                                                                <option>0 - 1 mg - 0</option>
+                                                                                <option>0 - 1 mg - 1 mg
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                        
+                                                                        <td style="width: 200px;">
+                                                                            <select class="form-select  " formControlName="timingOfDosage" style="width: 120px;">
+                                                                                <option value=""> timing of dosage</option>
+                                                                                <option>Before food</option>
+                                                                                <option>In morning</option>
+                                                                                <option>In afternoon</option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td style="width: 200px;">
+                                                                            <div class="d-flex">
+                                                        
+                                                                                <select class="form-select me-1" formControlName="durationOfDosageInNumber" style="width: 100px;">
+                                                                                    <option value=""> numbers of dosage</option>
+                                                                                    <option>1</option>
+                                                                                    <option>2</option>
+                                                                                    <option>3</option>
+                                                                                </select>
+                                                                                <select class="form-select" formControlName="durationOfDosageInUnit" style="width: 150px;">
+                                                                                    <option value=""> weeks,days,month</option>
+                                                                                    <option>Day</option>
+                                                                                    <option>Weeks</option>
+                                                                                    <option>Month</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                        
+                                                                </tbody>
+                                                            </table>
+                                                        
+                                                        </div>
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                            <div class="row">
+                                <div class="col-md-12 mt-3">
+                                    <label>Note</label>
+                                    <textarea formControlName="extraNote"  cols="10" rows="5" class="form-control"></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 mt-3">
+                                        <label>Therapies and Treatment</label>
+                                        <textarea formControlName="therapiesAndTreatment"  cols="10" rows="5" class="form-control"></textarea>
+                                      
+                                    </div>
+                                </div>
+                               <div class="row">
+                                <div class="col-md-6 mt-3 mb-3">
+                                    <label>No of DAYS/SESSION  advised</label>
+                                   <input formControlName="noOfSessionAdvised" type="number" class="form-control">
+                                </div>
+                                <div class="col-md-6 mt-3 mb-3">
+                                    <label>Days/ Week/ Month</label>
+                                    <select formControlName="sessionAdvisedDaysWeek"  class="form-select">
+                                        <option value="" >Select</option>
+                                        <option >Day</option>
+                                        <option >Week</option>
+                                        <option >Month</option>
+                                    </select>
+                                </div>
+                               </div>
+                               
+                            </div>
+                        </div>
+                        <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <h3 class="h3 mt-3">Advice</h3>
+                                    <mat-form-field class="example-chip-list" appearance="fill" style="height:120px">
+                                  
+                                        <mat-chip-grid
+                                         #chipGridAdv
+                                          aria-label="Add Advise">
+                                          <mat-chip-row *ngFor="let adv of advise" 
+                                          (removed)="removeAdvise(adv)">
+                                            {{adv}}
+                                            <button matChipRemove [attr.aria-label]="'remove ' + adv">
+                                              <mat-icon>cancel</mat-icon>
+                                            </button>
+                                          </mat-chip-row>
+                                        </mat-chip-grid>
+                                        <input
+                                         placeholder="Add Advise..."
+                                         formControlName="advise"
+                                         #adviseInput 
+                                         [formControl]="adviseCtrl"
+                                          [matChipInputFor]="chipGridAdv" 
+                                          [matAutocomplete]="autoAdv"
+                                          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                          (matChipInputTokenEnd)="addAdvise($event)"/>
+                                        <mat-autocomplete #autoAdv="matAutocomplete"
+                                         (optionSelected)="selectedAdvise($event)">
+                                          <mat-option *ngFor="let adv of filteredAdvise | async" [value]="adv">
+                                            {{adv}}
+                                          </mat-option>
+                                        </mat-autocomplete>
+                                      </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <h3 class="h3 mt-3">Referal</h3>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">Refer to</label>
+                                                <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                                                    <mat-select formControlName="referTo" class="form-control" multiple style="border: none;padding: 0px!important;">
+                                                        <mat-option value="LABORATORY" >LABORATORY</mat-option>
+                                                        <mat-option value=" RADIOLOGY & IMAGING" > RADIOLOGY & IMAGING</mat-option>
+                                                        <mat-option value="PHYSIO-MART" >PHYSIO-MART</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                              
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="superSpeciality">Super Speciality</label>
+                                                <mat-form-field  appearance="outline" style="width:100%;height: 5px !important;">
+                                                    <mat-select formControlName="superSpeciality" class="form-control" multiple style="border: none;padding: 0px!important;">
+                                                        <mat-option *ngFor="let super of medical_specializations" [value]="super">{{super}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                              
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <h3 class="h3 mt-3">Attachment (Optional)</h3>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <select 
+                                                formControlName="attachmentType"
+                                                name=""
+                                                 id="" class="form-select">
+                                                    <option value="">Select Attachment type</option>
+                                                    <option>Prescription</option>
+                                                    <option>Lab Report</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input type="file" formControlName="attachmentFile"
+                                                 class="form-control"
+                                                 (change)="OnuploadAttachment($event)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                            <div class="row">
+                                <h3 class="h3 mt-3">Follow Up</h3>
+                                <div class="col-md-12 ">
+                                    <div class="row">
+                                        <div>
+                                            <div class="container-fluid c1 py-3 my-2">
+                                                <div class="row">
+                                                    <table class="table table-hover table-bordered"
+                                                       >
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Follow Up after</th>
+                                                                <th scope="col">Date & Time</th>
+                                                                <th scope="col">Type of Consultation</th>
+                                                                <th scope="col">Follow Up Notes</th>
+    
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width:200px">
+                                                                    <div class="d-flex">
+                                                                        <input type="number" formControlName="followupNumberOfDaysWeeks"
+                                                                         class="form-control me-2"
+                                                                        placeholder=" no.of days, weeks, months" style="width:100px">
+                                                                    <select formControlName="followupFrequency"  class="form-select" style="width:100px">
+                                                                        <option value="">Select</option>
+                                                                        <option>Days</option>
+                                                                        <option>Months</option>
+                                                                        <option>Weeks</option>
+                                                                    </select>
+                                                                    </div>
+
+                                                                   
+                                                                </td>
+                                                                <td style="width:200px">
+                                                                    <div class="d-flex">
+                                                                    <input type="date" formControlName="followupDate" class="form-control me-2" style="width:100px">
+                                                                    <input type="time" formControlName="followupTime" class="form-control" style="width:100px">
+                                                                </div>
+                                                                </td>
+                                                                <td style="width:200px">
+                                                                    <div class="d-flex">
+                                                                    <select formControlName="typeOfConsultation" name="" id="" class="form-select" style="width:200px">
+                                                                        <option value="">Select</option>
+                                                                        <option>Inclinic Consultation</option>
+                                                                        <option>Tele Consultation</option>
+                                                                    </select>
+                                                                </div>
+                                                                </td>
+    
+                                                                <td style="width:200px">
+                                                                    <div class="d-flex">
+                                                                    <input type="text" formControlName="followupNotes" class=" form-control" style="width:200px"
+                                                                        id=" " placeholder="Ex-  Come with blood test">
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-lg-4 col-sm-6 col-12 mx-3 d-flex justify-content-between mb-4">
+                                <!-- <div class="form-group"> -->
+                                    <button class=" btn  btn-secondary" (click)="saveConsulatation()" >Preview Prescription</button>
+                                    <button class="btn btn-primary" (click)="saveConsulatation()" >End Consultation</button>
+                                   
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+
+       </mat-tab>
+        <mat-tab label="Medical Background">
+            <div>
+                <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h3 class="h3 mt-3">
+                                Medical History</h3>
+                            <mat-form-field class="example-chip-list" appearance="fill" style="height:100px">
+                                <mat-label>Medical History</mat-label>
+                                <mat-chip-grid 
+                                #chipGridMed 
+                               
+                                aria-label="Enter Madical History">
+                                  <mat-chip-row *ngFor="let med of allMedicalHistory"
+                                                (removed)="removeMed(med)"
+                                                [editable]="true"
+                                                (edited)="editMed(med, $event)"
+                                               >
+                                                
+                                    {{med}}
+                                    <button matChipRemove [attr.aria-label]="'remove ' + med">
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip-row>
+                                  <input placeholder="Madical History..."
+                                  [matChipInputFor]="chipGridMed"
+                                  formControlName="medicalHistory"
+                                  [formControl]="MedicalHistoryCtrl"
+                                        
+                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodesMed"
+                                         [matChipInputAddOnBlur]="addOnBlur"
+                                         (matChipInputTokenEnd)="addMed($event)"/>
+                                </mat-chip-grid>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h3 class="h3 mt-3">
+                                Family History</h3>
+                            <mat-form-field class="example-chip-list" appearance="fill" style="height:100px">
+                                <mat-label>Family History</mat-label>
+                                <mat-chip-grid 
+                                #chipGridFamily 
+                               
+                                aria-label="Enter Madical History">
+                                  <mat-chip-row *ngFor="let family of allFamilyHistory"
+                                                (removed)="removeFamilyHistory(family)"
+                                                [editable]="true"
+                                                (edited)="editfamily(family, $event)"
+                                               >
+                                                
+                                    {{family}}
+                                    <button matChipRemove [attr.aria-label]="'remove ' + family">
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip-row>
+                                  <input placeholder="Family History..."
+                                  [matChipInputFor]="chipGridFamily"
+                                  formControlName="familyHistory"
+                                  [formControl]="familyHistoryCtrl"
+                                        
+                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodesfamily"
+                                         [matChipInputAddOnBlur]="addOnBlur"
+                                         (matChipInputTokenEnd)="addFamilyHistory($event)"/>
+                                </mat-chip-grid>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h3 class="h3 mt-3">Drug Allergies</h3>
+                      
+                            <mat-form-field class="example-chip-list" appearance="fill" style="height:100px">
+                                <mat-label>Drug Allergies</mat-label>
+                                <mat-chip-grid 
+                                #chipGridDrug
+                               
+                                aria-label="Enter Madical History">
+                                  <mat-chip-row *ngFor="let drug of allDrugAllergy"
+                                                (removed)="removeDrugAllrgy(drug)"
+                                                [editable]="true"
+                                                (edited)="editDrug(drug, $event)"
+                                               >
+                                                
+                                    {{drug}}
+                                    <button matChipRemove [attr.aria-label]="'remove ' + drug">
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip-row>
+                                  <input placeholder="Drug Allergy..."
+                                  [matChipInputFor]="chipGridDrug"
+                                  formControlName="drugAllergies"
+                                  [formControl]="drugAllergyCtrl"
+                                        
+                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodesfamily"
+                                         [matChipInputAddOnBlur]="addOnBlur"
+                                         (matChipInputTokenEnd)="addDrugAllergy($event)"/>
+                                </mat-chip-grid>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h3 class="h3 mt-3">Other Allergies</h3>
+                            <mat-form-field class="example-chip-list" appearance="fill" style="height:100px">
+                                <mat-label>Other Allergies</mat-label>
+                                <mat-chip-grid 
+                                #chipGridOther
+                               
+                                aria-label="Enter Madical History">
+                                  <mat-chip-row *ngFor="let Other of allOtherAllergy"
+                                                (removed)="removeOtherAllrgy(Other)"
+                                                [editable]="true"
+                                                (edited)="editOther(Other, $event)"
+                                               >
+                                                
+                                    {{Other}}
+                                    <button matChipRemove [attr.aria-label]="'remove ' + Other">
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip-row>
+                                  <input placeholder="Other Allergy..."
+                                  [matChipInputFor]="chipGridOther"
+                                  formControlName="otherAllergies"
+                                  [formControl]="otherAllergyCtrl"
+                                        
+                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodesfamily"
+                                         [matChipInputAddOnBlur]="addOnBlur"
+                                         (matChipInputTokenEnd)="addOtherAllergy($event)"/>
+                                </mat-chip-grid>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h3 class="h3 mt-3">Surgeries</h3>
+                           
+                            <mat-form-field class="example-chip-list" appearance="fill" style="height:100px">
+                                <mat-label>Surgeries</mat-label>
+                                <mat-chip-grid 
+                                #chipGridSurgery
+                               
+                                aria-label="Enter Madical History">
+                                  <mat-chip-row *ngFor="let surgery of allSurgery"
+                                                (removed)="removeSurgery(surgery)"
+                                                [editable]="true"
+                                                (edited)="editSurgery(surgery, $event)"
+                                               >
+                                                
+                                    {{surgery}}
+                                    <button matChipRemove [attr.aria-label]="'remove ' + surgery">
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip-row>
+                                  <input placeholder="Surgeries..."
+                                  [matChipInputFor]="chipGridSurgery"
+                                  formControlName="surgeries"
+                                  [formControl]="surgeryCtrl"
+                                        
+                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodesfamily"
+                                         [matChipInputAddOnBlur]="addOnBlur"
+                                         (matChipInputTokenEnd)="addSurgery($event)"/>
+                                </mat-chip-grid>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid my-3 shadow " style="background-color: #ffffff;">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h3 class="h3 mt-3">Immunization History</h3>
+                        
+                            <mat-form-field class="example-chip-list" appearance="fill" style="height:100px">
+                                <mat-label>Immunization History</mat-label>
+                                <mat-chip-grid 
+                                #chipGridImm
+                               
+                                aria-label="Enter Madical History">
+                                  <mat-chip-row *ngFor="let immune of allimmuniazationHistory"
+                                                (removed)="removeImmunization(immune)"
+                                                [editable]="true"
+                                                (edited)="editImmunization(immune, $event)"
+                                               >
+                                                
+                                    {{immune}}
+                                    <button matChipRemove [attr.aria-label]="'remove ' + immune">
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip-row>
+                                  <input placeholder="Immunization History..."
+                                  [matChipInputFor]="chipGridImm"
+                                  formControlName="immunizationHistory"
+                                  [formControl]="immuniazationHistoryCtrl"
+                                        
+                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodesfamily"
+                                         [matChipInputAddOnBlur]="addOnBlur"
+                                         (matChipInputTokenEnd)="addImmnunizationHistory($event)"/>
+                                </mat-chip-grid>
+                              </mat-form-field>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-4 col-sm-6 col-12 mx-3 d-flex justify-content-between">
+                        <div class="form-group">
+                            <button class="btn btn-primary" (click)="saveConsulatation()">Generate Prescription </button>
+                            <button class=" btn  btn-secondary mx-2" (click)="cancel()"> Cancel</button>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Past Visits">
+            <div class="mt-4"  *ngFor="let p of pastVisitData">
+                <cdk-accordion class="example-accordion">
+                    <cdk-accordion-item  #accordionItem="cdkAccordionItem"
+                        class="example-accordion-item" role="button" tabindex="0" [attr.id]="'accordion-header-'"
+                        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' ">
+                        <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                          
+                            <span class="example-accordion-item-description">
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <label style=" font-weight: 600;">{{p.createdAt| date}}</label>
+                                        <button  *ngFor="let d of p.diagnosis" type="button" class="btn btn-light text-primary mx-2">{{d}}</button>
+                                        <!-- <button type="button" class="btn btn-light text-primary ">Cervical spondylosis</button> -->
+                                    </div>
+                                    <div class="col-md-6 text-end ">
+                                        <i class="fa-light fa-share-nodes text-primary mx-3" style="font-size: 23px;"></i>
+                                        <i class="fa-light fa-print text-primary mx-3" style="font-size:23px;"></i>
+                                        <i class="fa-thin fa-download text-primary mx-3"style="font-size:23px;"></i>
+                                        <button type="button" class="btn btn-primary">Represcribe</button>
+                                        
+                                    </div>
+                                </div>
+                                <ng-container *ngIf="accordionItem.expanded; else  elseBlock">
+                                    <button class="btn  dropdown-toggle text-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Close Prescription
+                                        </button>
+                                  </ng-container>
+                                  <ng-template #elseBlock>
+                                    <button class="btn  dropdown-toggle text-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Open Prescription
+                                        </button>
+                                  </ng-template>
+                               
+                            </span>
+                        </div>
+                        <div class="example-accordion-item-body" role="region"
+                            [style.display]="accordionItem.expanded ? '' : 'none'" [attr.id]="'accordion-body-' "
+                            [attr.aria-labelledby]="'accordion-header-'">
+                            <div class="container ">
+                              
+                              <hr>
+                              <div class="mt-3">
+                                <p class="h6"><b>Chief complaints</b></p>
+                                <ul *ngFor="let c of p.chiefComplaints">
+                                  <li>{{c}}</li>
+                                </ul>
+                                <p class="h6"><b>Diagnosis</b></p>
+                                <ul style="display: flex;" *ngFor="let d of p.diagnosis">
+                                  <li class="me-5">{{d}}</li>
+                                 
+                                </ul>
+                                <p class="h6"><b>Medication</b></p>
+                              </div>
+                              <table class="table table-bordered" >
+                                <thead >
+                                  <tr  class="table-primary">
+                                    <th scope="col">S.No</th>
+                                    <th scope="col">Medicine Name</th>
+                                    <th scope="col">Regime and Instraction</th>
+                          
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>SHELLWEL D3 SHOT</td>
+                                    <td>Weekly<br> Before meal for 3 Months</td>
+                          
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <div class="mt-3">
+                                <p class="h6"> <b>Advice</b></p>
+                                <ul *ngFor="let a of p.advise">
+                                  <li>{{a}}</li>
+                                </ul>
+                              </div>
+                          
+                            </div>
+                          
+                        </div>
+                    </cdk-accordion-item>
+                </cdk-accordion>
+    
+               
+            </div> 
+        </mat-tab>
+      </mat-tab-group>
+    </form>
+   
+   
+   
+  
+ 
+   

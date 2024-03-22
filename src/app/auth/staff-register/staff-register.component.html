@@ -1,0 +1,748 @@
+<div class="account-content">
+    <div class="login-wrapper">
+        <div class="login-content">
+            <div class="col-lg-3 col-sm-12 col-md-12" style="justify-content: center !important;text-align: center !important;">
+                <img src="assets/img/logo.jpg" style="border-radius: 50%;" alt="img" width="50%" />
+            </div>
+            <div class="login-userset">
+              <div class="respon">        
+                <div class="login-userheading">
+                    <h3>Doctor Registration Form</h3>
+                </div>
+              </div>
+                <div class="formdata">  
+            
+                        <form [formGroup]="addDoctorform">
+                            <div class="container">
+                                <div class="row">
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="registered" class="form-label"> Registered As</label>
+                                            <select id="registered" class="form-select" formControlName="registered"
+                                                class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['registered'].errors && ckDep }">
+                                                <option value="Clinic/Center">Clinic/Center</option>
+                                                <option value="Home Visit therapist">Home Visit therapist</option>
+                                                <option value="freelancer"> freelancer</option>
+                                                <option value="Doctor">Doctor</option>
+                                                <option value="Gym">Gym</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="title" class="form-label">Title</label>
+                                            <select id="title" class="form-select" formControlName="title" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['title'].errors && ckDep }">
+                                                <option value>Title</option>
+                                                <option value="Dr.">Dr.</option>
+                                                <option value="Mr.">Mr.</option>
+                                                <option value="Mrs.">Mrs.</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="firstName" class="form-label">First
+                                                Name</label>
+                                            <input type="text" id="firstName" formControlName="firstName" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['firstName'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="row">
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="middleName" class="form-label">Middle
+                                                Name</label>
+                                            <input type="text" id="middleName" class="form-control" placeholder="Middle Name"
+                                                formControlName="middleName" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['middleName'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="lastName" class="form-label">Last
+                                                Name</label>
+                                            <input type="text" id="lastName" class="form-control" placeholder="Last Name"
+                                                formControlName="lastName" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['lastName'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="disabledTextInput" class="form-label">D.O.B</label>
+                                            <input type="date" id="disabledTextInput" class="form-control" placeholder="D.O.B"
+                                                formControlName="dateOfBirth" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['dateOfBirth'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                </div>
+                
+                                <div class="row">
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="expreience" class="form-label">Experience<span>(Optional)</span> </label>
+                                            <input type="text" id="expreience" class="form-control" placeholder="Experience"
+                                                formControlName="expreience" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['expreience'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="year" class="form-label">Year</label>
+                                            <input type="month" id="start" name="start" class="form-control" placeholder="Year"
+                                                formControlName="year" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['year'].errors && ckDep }" />
+                
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="mobileno" class="form-label">Mobile
+                                                No.</label>
+                                            <input type="text" id="mobileno" class="form-control" placeholder="Mobile No."
+                                                formControlName="mobileno" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['mobileno'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" id="email" class="form-control" placeholder="E.Mail"
+                                                formControlName="email" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['email'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="password" class="form-label">Password</label>
+                                            <input type="password" id="password" class="form-control" placeholder="password"
+                                                formControlName="password" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['password'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="website" class="form-label">Website</label>
+                                            <input type="text" id="website" class="form-control" placeholder="Website"
+                                                formControlName="website" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['website'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="bloodGroup" class="form-label">Blood Group</label>
+                                            <select id="bloodgroup" class="form-select" formControlName="bloodGroup"
+                                                class="form-control" placeholder="Select Blood Group"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['bloodGroup'].errors && ckDep }">
+                                                <option value="O -ve">O -ve</option>
+                                                <option value="O +ve">O +ve</option>
+                                                <option value="A -ve"> A -ve</option>
+                                                <option value="A +ve">A +ve</option>
+                                                <option value="B -ve">B -ve</option>
+                                                <option value="B +ve">B +ve</option>
+                                                <option value="AB -ve">AB -ve</option>
+                                                <option value="AB +ve">AB +ve</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                
+                
+                
+                
+                
+                                </div>
+                
+                                <h2>PERMANENT RESIDENCE</h2>
+                
+                                <div class="row">
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="specificSizeSelect">Country:</label>
+                                            <select (change)="setContry_by_state($event)" formControlName="country" class="form-select"
+                                                id="specificSizeSelect">
+                                                <option value="">select</option>
+                                                <option *ngFor="let country of allContry "><span>{{country.name}}</span> </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="specificSizeSelect">State:</label>
+                                            <select formControlName="state" (change)="getall_city($event)" class="form-select"
+                                                placeholder="select State" id="specificSizeSelect">
+                                                <option value="">select</option>
+                                                <option *ngFor="let s of allState"><span>{{s.name}}</span> </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="specificSizeSelect">City:</label>
+                                            <select formControlName="city" class="form-select" id="specificSizeSelect">
+                                                <option value="">select</option>
+                                                <option *ngFor="let city of allCity"><span>{{city.name}}</span> </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="district" class="form-label">Dist</label>
+                                            <input type="text" id="district" class="form-control" placeholder="Select District"
+                                                formControlName="district" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['district'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="tehsil" class="form-label">Tehsil</label>
+                                            <input type="text" id="tehsil" class="form-control" placeholder="Tehsil"
+                                                formControlName="tehsil" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['tehsil'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="village" class="form-label">Block/Village</label>
+                                            <input type="text" id="village" class="form-control" placeholder="Block/Village"
+                                                formControlName="village" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['village'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="houseNumber" class="form-label">Hous
+                                                No</label>
+                                            <input type="text" id="houseNumber" class="form-control" placeholder="Hous No"
+                                                formControlName="houseNumber" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['houseNumber'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                                </div>
+                
+                
+                
+                                <div class="row">
+                                    <div class="form-group col-md-6 d-flex mb-1">
+                                        <h2> CLINIC ADDRESS</h2>
+                                    </div>
+                                    <mat-accordion>
+                                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    Clinic Address Add <i class="fa-solid fa-plus"></i>
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for=""> Clnic Name <span>(Optional)</span></label>
+                                                        <input type="text" autocomplete="off" class="form-control"
+                                                            formControlName="clinicName" placeholder="Clnic Name " autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-sm-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for=""> Clnic Address <span>(Optional)</span></label>
+                                                        <input type="text" autocomplete="off" class="form-control"
+                                                            formControlName="clinicAddress" placeholder="Clnic Address" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-sm-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="">Clnic Mobile <span>(Optional)</span></label>
+                                                        <input type="text" autocomplete="off" class="form-control"
+                                                            formControlName="clinicMobileno" placeholder="Clnic Mobile" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for=""> Clnic Phone <span>(Optional)</span></label>
+                                                        <input type="text" autocomplete="off" class="form-control"
+                                                        formControlName="clinicPhoneno" placeholder="Clnic Phone" autocomplete="off">
+                                                    </div>
+                
+                
+                                                </div>
+                                                <div class="col-lg-4 col-sm-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for=""> Clnic Email <span>(Optional)</span></label>
+                                                        <input type="text" autocomplete="off" class="form-control"
+                                                            formControlName="clinicEmail" placeholder="Clnic Eamil" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-sm-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for=""> Clnic Website <span>(Optional)</span></label>
+                                                        <input type="text" autocomplete="off" class="form-control"
+                                                            formControlName="clinicWebsite" placeholder="Clnic Website" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </div>
+                
+                                <div class="row mt-3">
+                                  <div class="col-lg-4 col-sm-6 col-12">
+                                      <div class="form-group">
+                                          <label for="mapDirection" class="form-label">Google Map
+                                              / Direction</label>
+                                          <input type="text" id="mapDirection" class="form-control"
+                                              placeholder="Google Map / Direction" formControlName="mapDirection" class="form-control"
+                                              [ngClass]="{'is-invalid': addDoctorform.controls['mapDirection'].errors && ckDep }" />
+                                      </div>
+                                  </div>
+                
+                                  <div class="col-lg-4 col-sm-6 col-12">
+                                      <div class="form-group">
+                                          <label for="">Signature <span>(Optional)</span></label>
+                                          <input class="form-control" type="file" formControlName="signature" class="form-control"
+                                              (change)="OnuploadSign($event)"
+                                              [ngClass]="{'is-invalid': addDoctorform.controls['signature'].errors && ckDep }">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-12">
+                                      <div class="form-group">
+                                          <label for="signature" class="form-label">Signature <span>(Optional)</span></label>
+                                          <signature-pad formControlName="dsignature"  id="dsignature"
+                                              #signature [options]="signaturePadOptions" (drawStart)="drawStart($event)"
+                                              (drawEnd)="drawComplete($event)">
+                                          </signature-pad>
+                                          <img [src]="imgs" alt="">
+                                      </div>
+                                  </div>
+                              </div>
+                
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="areaWhereServe" class="form-label">Area Where
+                                                Serve <span>(Optional)</span></label>
+                                            <input type="text" id="areaWhereServe" class="form-control" placeholder="Area Where Serve"
+                                                style="height: 80px" formControlName="areaWhereServe" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['areaWhereServe'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="">Clinic Interior Exterior Picture <span>(Optional)</span></label>
+                                            <input class="form-control" type="file" formControlName="clinicInteriorExteriorPic"
+                                                class="form-control" (change)="Onupload($event)"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['clinicInteriorExteriorPic'].errors && ckDep }">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="">Qualification Picture </label>
+                                            <input class="form-control" type="file" formControlName="qualficationPicture"
+                                                (change)="Onuploadquali($event)" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['qualficationPicture'].errors && ckDep }">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="">Registration Certificate </label>
+                                            <input class="form-control" type="file" (change)="Onuploadregis($event)"
+                                                formControlName="registrationCertificate" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['registrationCertificate'].errors && ckDep }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="">Profile Picture </label>
+                                            <input class="form-control" type="file" (change)="Onuploadpro($event)"
+                                                formControlName="profilePicture" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['profilePicture'].errors && ckDep }">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="">Clinic Latterhead Picture <span>(Optional)</span> </label>
+                                            <input class="form-control" type="file" (change)="Onuploadclinic($event)"
+                                                formControlName="clinicLatterheadPicture" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['clinicLatterheadPicture'].errors && ckDep }">
+                                        </div>
+                                    </div>
+                
+                                </div>
+                
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Speciality</label>
+                                            <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                                                <mat-select class="form-control" multiple style="border: none;padding: 0px!important;"
+                                                    formControlName="speciality" (selectionChange)="change($event)"
+                                                    [ngClass]="{'is-invalid': addDoctorform.controls['speciality'].errors && ckDep }">
+                                                    <mat-option *ngFor="let speci of allspeciality"
+                                                        [value]="speci">{{speci}}</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Qualification</label>
+                                            <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                                                <mat-select class="form-control" multiple style="border: none;padding: 0px!important;"
+                                                    formControlName="qualification"
+                                                    [ngClass]="{'is-invalid': addDoctorform.controls['qualification'].errors && ckDep }">
+                                                    <mat-option *ngFor="let qualific of doctorData"
+                                                        [value]="qualific">{{qualific}}</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="disabledTextInput" class="form-label">Specialization</label>
+                                            <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                                                <mat-select class="form-control" multiple style="border: none;padding: 0px!important;"
+                                                    formControlName="specialization"
+                                                    [ngClass]="{'is-invalid': addDoctorform.controls['specialization'].errors && ckDep }">
+                                                    <mat-option *ngFor="let specialization of specializationData"
+                                                        [value]="specialization">{{specialization}}</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Sub-Specialization</label>
+                                            <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                                                <mat-select class="form-control" multiple style="border: none;padding: 0px!important;"
+                                                    formControlName="subSpecialization"
+                                                    [ngClass]="{'is-invalid': addDoctorform.controls['subSpecialization'].errors && ckDep }">
+                                                    <mat-option *ngFor="let subspeciality of allsubspeciality"
+                                                        [value]="subspeciality">{{subspeciality}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                                <h2> SERVICES </h2>
+                                <div class="row">
+                                    <!-- <h3 style="text-align: center;">Services</h3> -->
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Services</label>
+                                            <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                                                <mat-select class="form-control" multiple style="border: none;padding: 0px!important;"
+                                                    formControlName="services"
+                                                    [ngClass]="{'is-invalid': addDoctorform.controls['services'].errors && ckDep }">
+                                                    <mat-option *ngFor="let service of allservice" [value]="service">{{service}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                                <h2> ACCOUNT DETAILS </h2>
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="disabledTextInput" class="form-label"> A/c
+                                                No</label>
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder=" A/c No"
+                                                formControlName="accountNumber" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['accountNumber'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="disabledTextInput" class="form-label">IFSC
+                                                No</label>
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="IFDC NO"
+                                                formControlName="ifdcNumber" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['ifdcNumber'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="disabledTextInput" class="form-label">Account
+                                                Holder Name</label>
+                                            <input type="text" id="disabledTextInput" class="form-control"
+                                                placeholder="Account Holder Name" formControlName="accountHolderName"
+                                                class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['accountHolderName'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="disabledTextInput" class="form-label">Bank Name
+                                            </label>
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Bank Name"
+                                                formControlName="bankName" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['bankName'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-lg-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="disabledTextInput" class="form-label">Bank
+                                                Address </label>
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Bank Address"
+                                                formControlName="bankAddress" class="form-control"
+                                                [ngClass]="{'is-invalid': addDoctorform.controls['bankAddress'].errors && ckDep }" />
+                                        </div>
+                                    </div>
+                
+                                </div>
+                
+                                <div class="row">
+                                    <div class="form-group col-md-6 d-flex mb-1">
+                                        <h2> E-Aggrement Aggrement</h2>
+                                    </div>
+                                    <mat-accordion>
+                                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                     E-Aggrement Aggrement <i class="fa-solid fa-plus"></i>
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for=""> E-Aggrement <span>(Optional)</span></label>
+                                                        <input class="form-control" type="file" formControlName="eAggrement"
+                                                            class="form-control" (change)="OnuploadeAggrement($event)"
+                                                            [ngClass]="{'is-invalid': addDoctorform.controls['eAggrement'].errors && ckDep }">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </div>
+                
+                                <div class="row">
+                                    <div class="col-md-12 d-flex mt-3" formArrayName="details">
+                                        <table class="table table-responsive table-hover table-bordered">
+                                            <thead>
+                                                <tr style="text-align: center;">
+                                                    <th>S.No.</th>
+                                                    <th>Services/Treatment/Package</th>
+                                                    <th>Clinic Price</th>
+                                                    <th>Discount Physiowala</th>
+                                                    <th>Amount</th>
+                                                    <th> <button class="btn btn-primary" (click)="addProductControl()"><i
+                                                                class="fa-solid fa-plus"></i></button></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody *ngFor="let control of details.controls; let i=index" [formGroupName]="i" >
+                                                 <tr >
+                                                    <td>{{i+1}}</td>
+                                                    <td>
+                                                     
+                                                        <select formControlName="services" (change)="setContry_by_statesss($event,i)"
+                                                            class="form-select" placeholder="Service">
+                                                            <option value="">Choose Your services</option>
+                                                            <option *ngFor="let doc of Service" [value]="doc">
+                                                                {{ doc }}
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                       
+                                                        <input type="text" (input)="onChangeEvent($event,i)" formControlName="clinicPrice"
+                                                            class="form-control" id="clinicPrice " placeholder="Clinic Price">
+                                                    </td>
+                                                    <td>
+                                                       
+                                                        <input type="text"  formControlName="Discount"
+                                                            [value]="Serviceper" class="form-control" id="Discount "
+                                                            placeholder="Discount" >
+                                                    </td>
+                                                    <td>
+                                                
+                                                        <input type="text" formControlName="Amount"
+                                                            [value]="details.get('amount')?.value" class="form-control" id="Amount "
+                                                            placeholder="Amount" readonly>
+                                                    </td>
+                                                    <td>
+                                                        <button (click)="removeFormArrayBill(i)" mat-icon-button
+                                                            matTooltip="Click to Delete" class="btn  btn-secondary">
+                                                            <mat-icon aria-label="Delete">delete</mat-icon>
+                                                        </button>
+                                                    </td>
+                                                </tr> 
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                          
+                                   <!--  <div class="row">
+                                        <div class="col-md-6 p-1">
+                                            <button #tooltip="matTooltip" matTooltip="ADD" class="btn  align-items-center ms-2"
+                                                (click)="addProductControl()" style="background-color: #005DAC; color: #ffffff"> <i
+                                                    class="fa-solid fa-plus mx-2"></i>Invoice detail</button>
+                                        </div>
+                                    </div>
+                
+                
+                                <div class="mt-3"  formArrayName="details">
+                                    <div class="row"*ngFor="let control of details.controls; let i=index" [formGroupName]="i">
+                                        
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Service Name</label>                                  
+                                                   <select formControlName="services" (change)="setContry_by_statesss($event)"
+                                        class="form-select" placeholder="Service">
+                                        <option value="">Choose Your services</option>
+                                        <option *ngFor="let doc of Service" [value]="doc">
+                                            {{ doc }}
+                                        </option>
+                                    </select>
+                                            </div>
+                                        </div>
+                                       
+                                    
+                                   
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label for="">Price</label>
+                                                <input type="text" (input)="onChangeEvent($event)" formControlName="clinicPrice"
+                                        class="form-control" id="clinicPrice " placeholder="Clinic Price">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="">Discount</label>
+                                                <input type="text"  formControlName="Discount"
+                                        [value]="Serviceper" class="form-control" id="Discount "readonly
+                                        placeholder="Enter Discount 20% to 60%">
+                                            </div>
+                                        </div>
+                                   
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for=""> Amount</label>
+                                                <input type="text" formControlName="Amount"
+                                        [value]="details.get('amount')?.value" class="form-control" id="Amount "
+                                        placeholder="Amount" readonly>
+                                            </div>
+                                        </div>
+                
+                                  
+                                        <div class="col-md-1 px-0 mt-3 pt-1">
+                                                <button (click)="removeFormArrayBill(i)" mat-icon-button matTooltip="Click to Delete" class="btn  btn-secondary"
+                                                                color="secondary">
+                                                                <mat-icon aria-label="Delete">delete</mat-icon>
+                                                 </button>
+                                                            
+                                        </div>
+                
+                                    </div>
+                                </div> -->
+                
+                
+                
+                                
+                                <div class="row mt-3">
+                                    <div class="form-group col-md-6 d-flex mb-1">
+                                        <input type="checkbox" formControlName="terms"
+                                            [ngClass]="{'is-invalid': addDoctorform.controls['terms'].errors && ckDep }">
+                                        <span class="mx-2">Please accept the <a href="/super-admin/doctor/add-doctor-update">terms and
+                                                conditions</a></span>
+                                    </div>
+                                    <p class="text-danger" *ngIf="addDoctorform.controls['terms'].errors && ckDep">Please accept the
+                                        terms
+                                    </p>
+                                    <mat-accordion>
+                                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    Terms and Conditions
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                            <div>
+                                                <h2>Please Read Carefully</h2>
+                                                <p>The following terms and conditions, in addition to those laid out in the Website
+                                                    Privacy Policy apply to the Medical Center Enterprise ("the hospital", "we")
+                                                    Website. Please read these terms and conditions carefully each time you access this
+                                                    site or any of our other Websites, as the terms may change from time to time.
+                
+                                                    1. Agreement.
+                                                    http://www.mcehospital.com ("the hospital Web site", "this Web Site") is an
+                                                    Internet-based online information and communication service provided by Medical
+                                                    Center Enterprise (“the hospital”, "we"). It is sometimes referred to in this
+                                                    Agreement as the Service. You agree to be bound by the terms and conditions of this
+                                                    Agreement, which includes the hospital's Website Privacy Policy linked to this
+                                                    Agreement. The hospital may modify this Agreement at any time. You agree to review
+                                                    this Agreement periodically to ensure that you are aware of any modifications. Your
+                                                    continued access or use of the hospital Web site after the modifications have become
+                                                    effective shall be deemed as evidence of your acceptance of the modified Agreement.
+                                                </p>
+                                                <h2>Privacy</h2>
+                                                <p>
+                                                    We take your personal privacy seriously. In addition to the publicly accessible
+                                                    pages on this Web site, there are sections on the site where you can request more
+                                                    information or submit personal information to be considered for a specific
+                                                    employment opportunity with the hospital.</p>
+                                            </div>
+                                        </mat-expansion-panel>
+                
+                                    </mat-accordion>
+                                </div>
+
+                                <div class="row mt-4">
+                                <div class="form-login">
+                                    <button  class="btn btn-login" type="submit" (click)="addDoctor()">
+                                        Sign Up
+                                    </button>
+                        
+                                </div>
+                                <div class="signinform text-center">
+                                    <h4>
+                                        Already a user? <a routerLink="/sign-in/signin" class="hover-a">Sign In</a>
+                                    </h4>
+                                </div>
+                            </div>
+                            </div>                         
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

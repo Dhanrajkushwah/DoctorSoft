@@ -1,0 +1,30 @@
+
+<div class="mb-4">
+    <h2 class=" m-0">Create New Therapy</h2>
+    <span style="cursor: pointer;" (click)="opensend()"><i class="fa fa-arrow-left"></i> Therapy List</span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="addPrescription">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Therapy :<span class="mandatory">*</span></label>
+                        <input  type="no"  class=" form-control" class="form-control" formControlName="therapy"
+                            [ngClass]="{'is-invalid': addPrescription.controls['therapy'].errors && ck }"
+                            placeholder="Enter your Therapy">
+                        <p class="text-danger" *ngIf="addPrescription.controls['therapy'].errors && ck"> Enter Your
+                            Therapy
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-sm-12 p-0 m-0">
+            <button *ngIf="!id" class="btn btn-submit me-2" (click)="addPrescriptions()">Submit</button>
+            <button *ngIf="id" class="btn btn-submit me-2" (click)="UpdatePrescriptions()">Update</button>
+            <a class="btn btn-submit" (click)="opensend()">Cancel</a>
+        </div>
+        </div>
+   
+</div>

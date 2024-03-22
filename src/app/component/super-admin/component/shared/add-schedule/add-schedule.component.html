@@ -1,0 +1,102 @@
+<div class="mb-4">
+    <h2 class=" m-0">Add Schedule</h2>
+    <span style="cursor: pointer;"  (click)="opeschedule()"><i class="fa fa-arrow-left"></i>  Schedule List</span>
+</div>
+
+<div class="card">
+    <form [formGroup]="addDoctorform">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Select Doctor: <span class="mandatory">*</span></label>
+                        <select formControlName="selectDoctor" class="form-control"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['selectDoctor'].errors && ckDep }">
+                            <option value="">Choose Your Doctor</option>
+                            <option *ngFor="let dpt of doctorData" [ngValue]="dpt.name">
+                                {{ dpt.name }}
+                            </option>
+                        </select>
+                        <p class="text-danger" *ngIf="addDoctorform.controls['selectDoctor'].errors && ckDep"> Enter Your
+                            Doctor
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="appt">Set Time :<span class="mandatory">*</span></label>
+                        <input formControlName="startTime" type="time" class="form-control" id="appt" name="appt" min="09:00" max="18:00"
+                            required [ngClass]="{'is-invalid': addDoctorform.controls['startTime'].errors && ckDep }" />
+                            <p class="text-danger" *ngIf="addDoctorform.controls['startTime'].errors && ckDep"> Enter Your
+                                Set Time
+                            </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="appt">End Time :<span class="mandatory">*</span></label>
+                        <input formControlName="endtime" type="time" class="form-control" id="appt" name="appt" min="09:00" max="18:00"
+                            required  [ngClass]="{'is-invalid': addDoctorform.controls['endtime'].errors && ckDep }"
+                            placeholder="Enter your End Time" />
+                            <p class="text-danger" *ngIf="addDoctorform.controls['endtime'].errors && ckDep"> Enter Your
+                                End Time
+                            </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Per Patient Time :<span class="mandatory">*</span></label>
+                        <input  type="number" class="form-control" formControlName="perPatientTime"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['perPatientTime'].errors && ckDep }"
+                            placeholder="Enter your Per Patient Time">
+                        <p class="text-danger" *ngIf="addDoctorform.controls['perPatientTime'].errors && ckDep"> Enter Your
+                            Per Patient Time
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Select Day : <span class="mandatory">*</span></label>
+                        <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                            <mat-select  multiple style="border: none;padding: 0px!important;"  formControlName="selectDay"  [ngClass]="{'is-invalid': addDoctorform.controls['selectDay'].errors && ckDep }">
+                              <mat-option *ngFor="let topping of selectarr" [value]="topping">{{topping}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                    <p class="text-danger" *ngIf="addDoctorform.controls['selectDay'].errors && ckDep"> Enter Your
+                        Select Day
+                    </p>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12" style="margin-top: 10px;">
+                    <div class="form-group">
+                        <label>Visibility : <span class="mandatory">*</span></label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" formControlName="visibility" type="radio"
+                                name="visibility" id="visibility" value="yes" [ngClass]="{'is-invalid': addDoctorform.controls['visibility'].errors && ckDep }">
+                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" formControlName="visibility" type="radio"
+                                name="visibility" id="visibility" value="no"  [ngClass]="{'is-invalid': addDoctorform.controls['visibility'].errors && ckDep }">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                        <p class="text-danger" *ngIf="addDoctorform.controls['visibility'].errors && ckDep"> Enter Your
+                            Visibility
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+    <div class="col-sm-12 pb-2">
+        <button class="btn btn-submit me-2" (click)="addDoctor()">Submit</button>
+        <a class="btn btn-cancel" (click)="opeschedule()">Cancel</a>
+    </div>
+</div>

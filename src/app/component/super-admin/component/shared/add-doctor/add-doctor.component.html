@@ -1,0 +1,613 @@
+
+<div class="card">
+    <div class="mb-4">
+        <h2 class=" m-0" style="padding-left: 20px; padding-top: 20px;">Doctor Profile <img class="img-fluid" style="width: 25px;" height="25px" src="../../../../../../assets/img/star.png" > </h2>
+      </div>
+  <div class="card-body">
+      <form [formGroup]="addDoctorform">
+          <div class="container">
+            <div class="row">
+                <h2>PERSONAL DETAILS <i class="fa-solid fa-circle-exclamation"></i></h2>
+                  <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label class="ms-4" for="specificSizeSelect"> Doctor image </label>
+                        <div class="image-upload-wrap" style="width: 60%;">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <img [src]="profilePicture"  style=" border-radius: 70px; height: 80px; width: 90px;">
+                                        <!-- <input type="file" readonly id="profilePicture" class="form-control" (change)="Onuploadpro($event)"  formControlName="profilePicture" (change)="onSelectFile($event)"> -->
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+              </div>
+
+              <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="registered" class="form-label"> Registered As</label>
+                    <input  type="text" id="registered" class="form-select" formControlName="registered"  readonly
+                        class="form-control"
+                       >
+                      
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="title" class="form-label">Title</label>
+                    <input  type="text" id="registered" class="form-select" formControlName="title"  readonly class="form-control"
+                    >
+                    <!-- <select id="title" class="form-select" formControlName="title" class="form-control" readonly
+                        [ngClass]="{'is-invalid': addDoctorform.controls['title'].errors && ckDep }">
+                        <option value>Title</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                    </select> -->
+                </div>
+            </div>
+       </div>
+
+              <div class="row">
+                
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="firstName" class="form-label">First
+                              Name</label>
+                          <input type="text" readonly id="firstName" formControlName="firstName" class="form-control"
+                              [ngClass]="{'is-invalid': addDoctorform.controls['firstName'].errors && ckDep }" />
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="middleName" class="form-label">Middle
+                            Name</label>
+                        <input type="text" readonly id="middleName" class="form-control" placeholder="Middle Name"
+                            formControlName="middleName" class="form-control"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['middleName'].errors && ckDep }" />
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="lastName" class="form-label">Last
+                            Name</label>
+                        <input type="text" readonly id="lastName" class="form-control" placeholder="Last Name"
+                            formControlName="lastName" class="form-control"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['lastName'].errors && ckDep }" />
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="disabledTextInput" class="form-label">D.O.B</label>
+                          <input type="date" readonly class="form-control" placeholder="D.O.B"
+                              formControlName="dateOfBirth" class="form-control"
+                              [ngClass]="{'is-invalid': addDoctorform.controls['dateOfBirth'].errors && ckDep }" />
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="expreience" class="form-label">Experience<span></span> </label>
+                        <input type="text" readonly id="expreience" class="form-control" placeholder="Experience"
+                            formControlName="expreience" class="form-control"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['expreience'].errors && ckDep }" />
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="year" class="form-label">Year</label>
+                        <input type="month" readonly id="start" name="start" class="form-control" placeholder="Year"
+                            formControlName="year" class="form-control"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['year'].errors && ckDep }" />
+
+                    </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="mobileno" class="form-label">Mobile
+                              No.</label>
+                          <input type="number" readonly id="mobileno" class="form-control" placeholder="Mobile No."
+                              formControlName="mobileno" class="form-control"
+                              [ngClass]="{'is-invalid': addDoctorform.controls['mobileno'].errors && ckDep }" />
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" readonly id="email" class="form-control" placeholder="E.Mail"
+                            formControlName="email" class="form-control" readonly
+                            [ngClass]="{'is-invalid': addDoctorform.controls['email'].errors && ckDep }" />
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" readonly id="password" class="form-control" placeholder="password"
+                            formControlName="password" class="form-control" readonly
+                            [ngClass]="{'is-invalid': addDoctorform.controls['password'].errors && ckDep }" />
+                    </div>
+                </div>
+
+            </div>
+
+                  <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="ms-4" for="specificSizeSelect"> Signature </label>
+                            <div class="image-upload-wrap" style="width: 60%;">
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <img [src]="signatures"  style=" border-radius: 70px; height: 80px; width: 90px;">
+                                            <!-- <input type="file" readonly id="profilePicture" class="form-control" (change)="Onuploadpro($event)"  formControlName="profilePicture" (change)="onSelectFile($event)"> -->
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                  </div>
+
+                   
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="website" class="form-label">Website</label>
+                            <input type="text" readonly id="website" class="form-control" placeholder="Website"
+                                formControlName="website" class="form-control"
+                                [ngClass]="{'is-invalid': addDoctorform.controls['website'].errors && ckDep }" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="bloodGroup" class="form-label">Blood Group</label>
+                            <select id="bloodgroup" readonly class="form-select" formControlName="bloodGroup"
+                                class="form-control" placeholder="Select Blood Group"
+                                [ngClass]="{'is-invalid': addDoctorform.controls['bloodGroup'].errors && ckDep }">
+                                <option value="O -ve">O -ve</option>
+                                <option value="O +ve">O +ve</option>
+                                <option value="A -ve"> A -ve</option>
+                                <option value="A +ve">A +ve</option>
+                                <option value="B -ve">B -ve</option>
+                                <option value="B +ve">B +ve</option>
+                                <option value="AB -ve">AB -ve</option>
+                                <option value="AB +ve">AB +ve</option>
+                            </select>
+                        </div>
+                    </div>
+  
+                </div>
+
+             
+
+              <h2>PERMANENT RESIDENCE</h2>
+
+              <div class="row">
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label class="form-label" for="specificSizeSelect">Country:</label>
+                          <input type="text" readonly formControlName="country" class="form-control"
+                              id="specificSizeSelect">
+
+                              <!-- <option *ngFor="let country of allContry " [value]="country.name"><span >{{country.name}}</span> </option> -->
+                          <!-- </select> -->
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label class="form-label" for="specificSizeSelect">State:</label>
+                          <input type="text" formControlName="state" readonly  class="form-control"
+                              placeholder="Enter State" id="specificSizeSelect">
+                           
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label class="form-label" for="specificSizeSelect">City:</label>
+                          <input type="text" formControlName="city" readonly class="form-control" id="specificSizeSelect">
+                              <!-- <option *ngFor="let city of allCity" [value]="city.name"><span >{{city.name}}</span> </option>
+                          </select> -->
+                      </div>
+                  </div>
+         
+              </div>
+
+              <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="district" class="form-label">Dist</label>
+                        <input type="text" readonly id="district" class="form-control" placeholder="Dist"
+                            formControlName="district" class="form-control"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['district'].errors && ckDep }" />
+                    </div>
+                </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="tehsil" class="form-label">Tehsil</label>
+                          <input type="text" readonly id="tehsil" class="form-control" placeholder="Tehsil"
+                              formControlName="tehsil" class="form-control"
+                              [ngClass]="{'is-invalid': addDoctorform.controls['tehsil'].errors && ckDep }" />
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="village" class="form-label">Block/Village</label>
+                          <input type="text" readonly id="village" class="form-control" placeholder="Block/Village"
+                              formControlName="village" class="form-control"
+                              [ngClass]="{'is-invalid': addDoctorform.controls['village'].errors && ckDep }" />
+                      </div>
+                  </div>
+
+                 
+              </div>
+             
+
+              <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="houseNumber" class="form-label">Hous
+                            No</label>
+                        <input type="text" readonly id="houseNumber" class="form-control" placeholder="Hous No"
+                            formControlName="houseNumber" class="form-control"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['houseNumber'].errors && ckDep }" />
+                    </div>
+                </div>
+
+              <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                    <label for="houseNumber" class="form-label">Hous
+                        No</label>
+                    <input type="text" readonly id="houseNumber" class="form-control" placeholder="Hous No"
+                        formControlName="houseNumber" class="form-control"
+                        [ngClass]="{'is-invalid': addDoctorform.controls['houseNumber'].errors && ckDep }" />
+                </div>
+            </div>
+        </div>
+
+
+<div class="row">
+    <h2>CLINIC ADDRESS <i class="fa-solid fa-circle-exclamation"></i></h2>
+      <div class="col-lg-4 col-sm-6 col-12">
+        <div class="form-group">
+            <label class="ms-4" for="specificSizeSelect"> Clinic image </label>
+            <div class="image-upload-wrap" style="width: 60%;">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <img [src]="clinicInteriorExteriorPic"  style=" border-radius: 70px; height: 80px; width: 90px;">
+                            <!-- <input type="file" readonly id="profilePicture" class="form-control" (change)="Onuploadpro($event)"  formControlName="profilePicture" (change)="onSelectFile($event)"> -->
+                    </div>
+                </div>
+            </div>   
+        </div>
+  </div>
+
+  <div class="col-lg-8 col-sm-6 col-12">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Clinic Address  
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for=""> Clnic Name <span></span></label>
+                        <input type="text" readonly autocomplete="off" class="form-control"
+                            formControlName="clinicName" placeholder="Enter Clnic Name" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for=""> Clnic Address <span></span></label>
+                        <input type="text" readonly autocomplete="off" class="form-control"
+                            formControlName="clinicAddress" placeholder="Enter Clnic Address" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="">Clnic Mobile <span></span></label>
+                        <input type="" readonly autocomplete="off" class="form-control"
+                            formControlName="clinicMobileno" placeholder="Enter Clnic Mobile" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for=""> Clnic Phone <span></span></label>
+                        <input type="text" readonly autocomplete="off" class="form-control"
+                            formControlName="clinicPhoneno" placeholder="Enter Clnic Phone" autocomplete="off">
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for=""> Clnic Email <span></span></label>
+                        <input type="email" readonly autocomplete="off" class="form-control" readonly
+                            formControlName="clinicEmail" placeholder="Enter Clnic Email" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for=""> Clnic Website <span></span></label>
+                        <input type="text" readonly autocomplete="off" class="form-control"
+                            formControlName="clinicWebsite" placeholder="Enter Clnic Website" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+</div>
+             
+
+
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="form-group">
+                          <label for="areaWhereServe" class="form-label">Area Where
+                              Serve <span></span></label>
+                          <input type="text" readonly id="areaWhereServe" class="form-control" placeholder="Area Where Serve"
+                              style="height: 80px" formControlName="areaWhereServe" class="form-control"
+                             />
+                      </div>
+                  </div>
+              </div>
+
+
+
+              <div class="row mt-3">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="mapDirection" class="form-label">Google Map
+                            / Direction</label>
+                        <input type="text" readonly id="mapDirection" class="form-control"
+                            placeholder="Google Map / Direction" formControlName="mapDirection" 
+                           />
+                    </div>
+                </div>
+
+                <!-- <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="">Signature <span></span></label>
+                        <input class="form-control" readonly type="file" formControlName="signature" class="form-control"
+                            (change)="OnuploadSign($event)"
+                            [ngClass]="{'is-invalid': addDoctorform.controls['signature'].errors && ckDep }">
+                    </div>
+                </div> -->
+                <!-- <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="signature" class="form-label">Signature <span></span></label>
+                        <signature-pad formControlName="dsignature"  id="dsignature"
+                            #signature [options]="signaturePadOptions" (drawStart)="drawStart($event)"
+                            (drawEnd)="drawComplete($event)">
+                        </signature-pad>
+                        <img [src]="imgs" alt="">
+                    </div>
+                </div> -->
+            </div>
+
+             
+
+              <div class="row">
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label>Speciality</label>
+                          <input   class="form-control" readonly formControlName="speciality" >
+                          <!-- <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                              <mat-select [disabled]="readOnly"  class="form-control" multiple style="border: none;padding: 0px!important;"
+                                  formControlName="speciality" (selectionChange)="change($event)"
+                               >
+                                  <mat-option *ngFor="let speci of allspeciality"
+                                  [value]="speci">{{speci}}</mat-option>
+                              </mat-select>
+                          </mat-form-field> -->
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label>Qualification</label>
+                          <input type="text" class="form-control" readonly formControlName="qualification" >
+
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="disabledTextInput" class="form-label">Specialization</label>
+                        <input class="form-control" readonly formControlName="specialization" >
+
+                      </div>
+                  </div>
+
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label>Sub-Specialization</label>
+                          <input  class="form-control" readonly formControlName="subSpecialization" >
+                          <!-- <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                              <mat-select class="form-control" multiple style="border: none;padding: 0px!important;"
+                                  formControlName="subSpecialization"
+                                  [ngClass]="{'is-invalid': addDoctorform.controls['subSpecialization'].errors && ckDep }">
+                                  <mat-option *ngFor="let subspeciality of allsubspeciality"
+                                      [value]="subspeciality">{{subspeciality}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field> -->
+                      </div>
+                  </div>
+
+              </div>
+              <h2> SERVICES </h2>
+              <div class="row">
+                  <!-- <h3 style="text-align: center;">Services</h3> -->
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label>Services</label>
+                          <input   class="form-control" readonly formControlName="services" >
+                          <!-- <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                              <mat-select class="form-control" multiple style="border: none;padding: 0px!important;"
+                                  formControlName="services"
+                               >
+                                  <mat-option *ngFor="let service of allservice" [value]="service">{{service}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field> -->
+                      </div>
+                  </div>
+
+              </div>
+              <h2> BANK DETAILS </h2>
+              <div class="row">
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="disabledTextInput" class="form-label"> A/c
+                              No</label>
+                          <input type="text" readonly class="form-control" placeholder=" A/c No"
+                              formControlName="accountNumber" class="form-control"
+                            />
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="disabledTextInput" class="form-label">IFSC
+                              No</label>
+                          <input type="text" readonly class="form-control" placeholder="IFDC NO"
+                              formControlName="ifdcNumber" class="form-control"
+                             />
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="disabledTextInput" class="form-label">Account
+                              Holder Name</label>
+                          <input type="text" readonly class="form-control"
+                              placeholder="Account Holder Name" formControlName="accountHolderName"
+                              class="form-control"
+                               />
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="disabledTextInput" class="form-label">Bank Name
+                          </label>
+                          <input type="text" readonly class="form-control" placeholder="Bank Name"
+                              formControlName="bankName" class="form-control"
+                              />
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label for="disabledTextInput" class="form-label">Bank
+                              Address </label>
+                          <input type="text" readonly class="form-control" placeholder="Bank Address"
+                              formControlName="bankAddress" class="form-control"
+                             />
+                      </div>
+                  </div>
+
+              </div>
+
+
+                  <!-- <div class="row mt-2">
+                      <div class="col-md-6 p-1">
+                          <button #tooltip="matTooltip" matTooltip="ADD" class="btn  align-items-center ms-2"
+                              (click)="addProductControl()" style="background-color: #005DAC; color: #ffffff"> <i
+                                  class="fa-solid fa-plus mx-2"></i>Invoice detail</button>
+                      </div>
+                  </div>
+
+              <div class="mt-3"  formArrayName="details">
+                  <div class="row"*ngFor="let control of details.controls; let i=index" [formGroupName]="i">
+
+                      <div class="col-md-3">
+                          <div class="form-group">
+                              <label for="">Service Name</label>
+                                 <select formControlName="services" readonly (change)="setContry_by_statesss($event , i)"
+                      class="form-select" placeholder="Service">
+                      <option value="">Choose Your services</option>
+                      <option *ngFor="let doc of Service" [value]="doc">
+                          {{ doc }}
+                      </option>
+                  </select>
+                          </div>
+                      </div>
+
+
+
+                      <div class="col-md-1">
+                          <div class="form-group">
+                              <label for="">Price</label>
+                              <input type="text" readonly (input)="onChangeEvent($event,i)" formControlName="clinicPrice"
+                      class="form-control" id="clinicPrice " placeholder="Clinic Price">
+                          </div>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="form-group">
+                              <label for="">Discount</label>
+                              <input type="text" readonly  formControlName="Discount"
+                       class="form-control" readonly
+                      placeholder="Enter Discount 20% to 60%">
+                          </div>
+                      </div>
+
+                      <div class="col-md-2">
+                          <div class="form-group">
+                              <label for=""> Amount</label>
+                              <input type="text" readonly formControlName="Amount"
+                      [value]="details.get('amount')?.value" class="form-control" id="Amount "
+                      placeholder="Amount" readonly>
+                          </div>
+                      </div>
+
+
+                      <div class="col-md-1 px-0 mt-3 pt-1">
+                              <button (click)="removeFormArrayBill(i)" mat-icon-button matTooltip="Click to Delete" class="btn  btn-secondary"
+                                              color="secondary">
+                                              <mat-icon aria-label="Delete">delete</mat-icon>
+                               </button>
+
+                      </div>
+
+                  </div>
+              </div> -->
+
+          </div>
+      </form>
+      <div class="row mt-4">
+          <div class="col-lg-4 col-sm-6 col-12 mx-3 d-flex justify-content-between">
+              <div class="form-group">
+                  <button class="btn btn-submit" (click)="UpdateDoctor()">Save</button>
+                  <button (click)="Cancel()" class=" btn  btn-cancel mx-2"> Cancel</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+</div>

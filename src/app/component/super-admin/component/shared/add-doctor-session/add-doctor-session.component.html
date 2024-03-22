@@ -1,0 +1,215 @@
+<div class="mb-4">
+    <h2 class=" m-0">Add Doctor Sessions</h2>
+</div>
+
+<div class="card">
+    <form [formGroup]="adddoctorsessform">
+        <div class="card-body">
+            <div class="row d-flex">
+
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Doctor <span class="mandatory">*</span></label>
+                        <input formControlName="doctorname" readonly  class="form-control"
+                        [ngClass]="{'is-invalid': adddoctorsessform.controls['doctorname'].errors && ck }"
+                        >
+                        <p class="text-danger" *ngIf="adddoctorsessform.controls['doctorname'].errors && ck"> Enter Your
+                            Doctor
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Time Slot(In minutes) <span class="mandatory">*</span></label>
+                        <input (keypress)="numberOnly($event)" class="form-control" formControlName="timeSlot"
+                            [ngClass]="{'is-invalid': adddoctorsessform.controls['timeSlot'].errors && ck }"
+                            placeholder="Time Slot">
+                        <p class="text-danger" *ngIf="adddoctorsessform.controls['timeSlot'].errors && ck"> Enter Your
+                            Time Slot
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Select Day : <span class="mandatory">*</span></label>
+                        <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                            <mat-select class="form-control" multiple style="border: none;padding: 0px!important;"
+                                formControlName="selectDay"
+                                [ngClass]="{'is-invalid': adddoctorsessform.controls['selectDay'].errors && ck }">
+                                <mat-option *ngFor="let topping of selectarr" [value]="topping">{{topping}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <p class="text-danger" *ngIf="adddoctorsessform.controls['selectDay'].errors && ck"> Select Your
+                        Week Day
+                    </p>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Date <span class="mandatory">*</span></label>
+                        <input formControlName="date" type="date" class="form-control" [min]="getToday()"
+                            [ngClass]="{'is-invalid': adddoctorsessform.controls['date'].errors && ck }"
+                            placeholder="Enter  Date">
+                        <p class="text-danger" *ngIf="adddoctorsessform.controls['date'].errors && ck"> Enter Your
+                            Date
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- formArray -->
+            <div class="row mb-3">
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <button class="btn-primary btn"  style="width:100%;" (click)="addMorningControl()">
+                        <i class="fa fa-plus-circle mx-2"  aria-hidden="true"></i>Morning Session </button>
+                </div>
+            </div>
+            <div class="row">
+                <ng-container formArrayName="morningSession">
+                    <ng-container *ngFor="let control of morningSession.controls; let i=index" [formGroupName]="i">
+                     
+                        <div class="col-lg-5 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Morning Session To<span class="mandatory">*</span></label>
+                                <input type="time"   class="form-control" 
+                                    formControlName="morningSessionFrom" placeholder="Morning Session To">
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> Morning Session From <span class="mandatory">*</span></label>
+                                <input type="time" max="18:00" class="form-control" min="09:00"
+                                    formControlName="morningSessionTo" placeholder="Morning Session From">
+                           
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6 col-12"  (click)="deleteMorningSession(i)">
+                            <button mat-icon-button matTooltip="Click to Delete" class="iconbutton mt-4 "
+                            color="warn">
+                            <mat-icon aria-label="Delete">delete</mat-icon>
+                        </button>
+                        </div>
+                       
+                       
+                    </ng-container>
+
+                </ng-container>
+
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <button class="btn btn-primary"  style="width:100%;" (click)="addAfternoonControl()">  <i class="fa fa-plus-circle mx-2"  aria-hidden="true"></i> Afteroon Session</button>
+                </div>
+             </div>
+
+            <div class="row" formArrayName="afternoonSession">
+
+                <ng-container *ngFor="let control of afternoonSession.controls; let i=index" [formGroupName]="i">
+                    <div class="col-lg-5 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Afteroon Time To <span class="mandatory">*</span></label>
+                            <input type="time" max="18:00" class="form-control" min="09:00"
+                                formControlName="afternoonTimeFrom" placeholder="Evening Time To">
+
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label> Afteroon Time From<span class="mandatory">*</span></label>
+                            <input type="time" max="18:00" class="form-control" min="09:00"
+                                formControlName="afternoonTimeTo" placeholder="Evening Time From">
+
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6 col-12" (click)="deleteAfternoonSession(i)" >
+                        <button mat-icon-button matTooltip="Click to Delete" class="iconbutton mt-3"
+                        color="warn">
+                        <mat-icon aria-label="Delete" >delete</mat-icon>
+                    </button>
+                    </div>
+                   
+                  
+                </ng-container>
+
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <button class=" btn btn-primary"  style="width:100%;" (click)="addEveningControl()">  <i class="fa fa-plus-circle mx-2"  aria-hidden="true"></i>Evening Session</button>
+                </div>
+            </div>
+            <div class="row" formArrayName="eveningSession">
+                <ng-container *ngFor="let control of eveningSession.controls; let i=index" [formGroupName]="i">
+                    <div class="col-lg-5 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Evening Time To<span class="mandatory">*</span></label>
+                            <input type="time" max="18:00" class="form-control" min="09:00"
+                                formControlName="eveningTimeFrom" placeholder="Morning Session To">
+
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label> Evening Time From <span class="mandatory">*</span></label>
+                            <input type="time" max="18:00" class="form-control" min="09:00"
+                                formControlName="eveningTimeTo" placeholder="Morning Session From">
+
+                        </div>
+                       
+                    </div>
+                    <div class="col-lg-2 col-sm-6 col-12" (click)=" deleteEveningSession(i)" >
+                        <button mat-icon-button matTooltip="Click to Delete" class="iconbutton mt-3"
+                        color="warn">
+                        <mat-icon aria-label="Delete" >delete</mat-icon>
+                    </button>
+                    </div>
+                   
+
+                </ng-container>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <!-- <button class="btn-secondary" (click)="addNightControl()">Add Night Session</button> -->
+                    <button  class="btn btn-primary " style="width:100%;" (click)="addNightControl()">  <i class="fa fa-plus-circle mx-2"  aria-hidden="true"></i> Night Session</button>
+                </div>
+            </div>
+            <div class="row" formArrayName="nightSession">
+                <ng-container *ngFor="let control of nightSession.controls let i=index" [formGroupName]="i">
+                    <div class="col-lg-5 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label>Night Time To <span class="mandatory">*</span></label>
+                            <input type="time" max="18:00" class="form-control" min="09:00"
+                                formControlName="nightTimeFrom" placeholder="Evening Time To">
+
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label> Night Time From<span class="mandatory">*</span></label>
+                            <input type="time" max="18:00" class="form-control" min="09:00"
+                                formControlName="nightTimeTo" placeholder="Evening Time From">
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-sm-6 col-12" (click)="deletNightSession(i)" >
+                        <button mat-icon-button matTooltip="Click to Delete" class="iconbutton mt-3"
+                        color="warn">
+                        <mat-icon aria-label="Delete">delete</mat-icon>
+                    </button>
+                    </div>
+                   
+                </ng-container>
+
+            </div>
+
+        </div>
+    </form>
+    <div class="col-12 mb-3">
+        <button *ngIf="!id" class="btn btn-submit me-2" (click)="adddoctorsess()">Submit</button>
+        <button *ngIf="id" class="btn btn-submit me-2" (click)="updateDoctorSession()">Update</button>
+        <a class="btn btn-submit" (click)="canceldoc()">Cancel</a>
+
+    </div>
+</div>

@@ -1,0 +1,228 @@
+<div class="row">
+    <div class="m-0 d-flex">
+        <p>
+            <i class="fa-solid fa-house " style="color: #0c76cd;"></i>
+            Home
+            <i class="fa-solid fa-greater-than" style="font-size: 12px; "></i>
+            <span> Patient Profile </span>
+        </p>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row" *ngFor="let app of allpatientdata">
+        <div class="col-md-12 " style="background-color: #003867;  color: #fff;">
+            <div class="d-flex p-2  justify-content-between ">
+                <div class=" d-flex">
+                    <div>
+                        <img class=" border   rounded-pill"
+                            src="https://doctors.bajajfinservhealth.in/static/media/man-avatar.1de9adcdfee719fb708bede12529476c.svg">
+                    </div>
+                    <p class="m-0 p-0 m-1" style="font-size: 14px;"> {{app.firstname}} {{app.lastname}} <i (click)="editPatient(app._id)" style="padding: 10px;" class="fa-solid fa-pen"></i> <br> <span
+                            style="font-size: 11px;" class="">{{app.gender}} / {{app.age}} Years old| {{app.phone}}
+                        </span> </p>
+                    <p class="m-0 p-0 m-1" style="font-size: 14px;" *ngFor="let data of app.chiefcomplaint">{{data}}</p>
+                </div>
+                <div class=" mt-2">
+                    <div class="d-flex  justify-content-around ">
+                        <div class="dropdown">
+                            <button class="btn text-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Call logs
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                            </ul>
+                        </div>
+                        <i class="fa-solid fa-video p-2"></i>
+                        <i class="fa-solid fa-phone p-2"></i>
+                        <i class="fa-solid fa-bars-staggered p-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-tab-group animationDuration="0ms">
+    <mat-tab label="All Visiters">
+        <div class="container-fluid text-center">
+            <div class="row">
+                <div class="col" style="margin-top: 10px;">
+                    <!-- <h4 class="text-start" style="font-weight: 600;color: #9A9A9A; ">Upcoming</h4> -->
+                    <div class="card border-0" style="background-color: #f1f8fe;">
+                        <div class="card-body p-2">
+                            <ul
+                                class="list-group flex-row flex-wrap justify-content-between align-items-baseline gap-2">
+                                <li class="list-group-item border-0 bg-transparent p-0" *ngIf="allAppointmentByPatientId.length==0">
+                                    <p class="h5 text-start">No Appointments</p>
+                                </li>
+                                <li class="list-group-item border-0 bg-transparent d-flex flex-wrap gap-1 p-0">
+                                    <button type="button" class="btn btn-sm"
+                                        style=" margin: 5px;
+                                          border: 2px solid rgb(224, 224, 224);
+                                           background-color:#e8e8e8; border-radius: 5px; "
+                                        (click)="addAppointment()"> <i class="fa-regular fa-solid fa-calendar-days me-1"></i>
+                                        <span
+                                            style="font-weight: 600; color: rgb(75, 141, 234);">Schedule</span></button>
+                                    <button  class="btn d-flex align-items-center"
+                                        style="border: 2px solid blue; background-color:#005DAC; ;">
+                                        <i style="color: white;" class="fa-solid fa-circle-play me-1"></i>
+                                        <span style="font-weight: 600; color: white;">Start</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row"  *ngIf="allAppointmentByPatientId.length!=0">
+                <div class="col">
+                    <h4 class="text-start" style="font-weight: 600; color: #005DAC;"> Appointment ({{appointmentCount}})</h4>
+                    <div class="card border-0 " style="background-color: #f1f8fe;">
+                        <div class="card-body p-2" *ngFor="let data of allAppointmentByPatientId">
+                            <ul class="list-group flex-row justify-content-between align-items-start flex-wrap gap-2">
+                                <li class="list-group-item border-0 bg-transparent p-0">
+                                    <span class="card-text">
+                                        <time datetime="2018-07-07">{{data.datetime |date}}</time>
+                                    </span>
+                                    <span class="card-text ms-2">
+                                        <time datetime="2018-07-07" style="font-weight: 600;">{{data.slot}}</time>
+                                    </span>
+                                </li>
+                                <li class="list-group-item border-0 bg-transparent">
+                                    <!-- <button *ngIf="consultationData"  (click)="priscription(data._id, data.patientId)" class="btn me-4 align-items-center">
+                                        <i class="fa-duotone fa-file me-1"
+                                            style="--fa-primary-color: #ff0000; --fa-secondary-color: #ff0000;"></i>
+                                        <span style="font-weight: 600;">Prescription</span>
+                                    </button> -->
+                                    <button class="btn me-4" (click)="resume(data._id, data.patientId)"
+                                        style="border: 2px solid rgb(0, 136, 255);">
+                                        <i class="fa-solid fa-circle-play me-1"></i>
+                                        <span style="font-weight: 600;">Resume</span>
+                                    </button>
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item>Generate Invoice
+                                            <mat-icon>create</mat-icon>
+                                        </button>
+                                        <button mat-menu-item> Follow Up
+                                            <mat-icon>create</mat-icon>
+                                        </button>
+                                        <button mat-menu-item>Edit Patient
+                                            <mat-icon> vpn_key</mat-icon>
+                                        </button>
+                                        <button mat-menu-item>Remove
+                                            <mat-icon> delete_forever</mat-icon>
+                                        </button>
+                                    </mat-menu>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card border-0 " style="background-color: #f1f8fe;">
+                
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Attachments">
+        <app-sms-schedule-list [PatientId]="id"></app-sms-schedule-list>
+    </mat-tab>
+    <mat-tab label="Private Note"><app-private-note [privatePatientId]="id"></app-private-note>
+    </mat-tab>
+    <mat-tab label="Invoice">
+        <app-invoice-list [InvoicePatientId]="id"></app-invoice-list>
+    </mat-tab>
+    <mat-tab label="Medication">
+      
+
+        <div class="row" *ngFor="let app of allpatientdata">
+            <div class="col text-center" style="padding: 90px;">
+                <img src="./assets/img/empty-medication.8ec9226b418b7e1471bdf6bb9108f0e0.svg"
+                    class="img-thumbnail border-0" alt="">
+                <h4 class="card-title text-center" style="margin-bottom: 32px;">
+                    You have no Medicine for {{app.firstname}} {{app.lastname}}
+                </h4>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label=" Payment Plan">
+        <div class="row" *ngFor="let app of allpatientdata">
+            <div class="col text-center" style="padding-top: 40px;">
+                <img src="./assets/img/payment images.svg" class="img-thumbnail border-0" alt="">
+                <h4 class="card-title text-center" style="margin-bottom: 32px;">
+                    You have no Payment Plans for {{app.firstname}} {{app.lastname}}
+                </h4>
+                <div class="card border-0 " style="background-color: #f1f8fe;">
+                    <div class="card-body p-2">
+                        <ul class="list-group flex-row justify-content-between align-items-start flex-wrap gap-2">
+                            <li class="list-group-item d-flex flex-wrap align-items-center bg-transparent border-0 gap-3 p-0"
+                                aria-current="true">
+                                <ul class="list-group flex-row">
+                                    <li
+                                        class="list-group-item d-flex justify-content-center bg-transparent border-0 p-0">
+                                        <div class="me-2">
+                                            <span class="badge rounded-circle text-bg-primary">
+                                                <i class="fa-sharp fa-solid fa-indian-rupee-sign"
+                                                    style="color: #ffffff;"></i>
+                                            </span>
+                                        </div>
+                                        <div class="text-start">
+                                            <h4 class="mb-0 text-start fw-bold">&#8377;Sample Payment Plan</h4>
+                                            <p class="mb-0" style="font-size: 0.8rem;">Created On: 11/01/2022</p>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item bg-transparent d-flex border-0 p-0">
+                                        <a href="#" class="btn align-items-center ps-2 p-1">
+                                            <i class="fa-regular fa-pencil"></i>
+                                        </a>
+                                        <a href="#" class="btn align-items-center p-1">
+                                            <i class="fa-regular fa-print"></i>
+                                        </a>
+                                        <a href="#" class="btn align-items-center p-1">
+                                            <i class="fa-sharp fa-regular fa-share-nodes"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li
+                                class="list-group-item d-flex flex-wrap justify-content-center bg-transparent border-0 p-0">
+                                <div class="me-3">
+                                    <p class="text-start mb-0">Pending Bal.</p>
+                                    <h5 class="mb-0 text-start fw-bold">&#8377;12000.00</h5>
+                                </div>
+                                <div class="vr me-3 mt-2" style="height: 2rem;"></div>
+                                <div class="me-3">
+                                    <p class="text-start mb-0">Total Bal.</p>
+                                    <h5 class="mb-0 text-start fw-bold">&#8377;12000.00</h5>
+                                </div>
+                                <a href="#" class="btn align-items-center p-1">
+                                    <i class="fa-regular fa-chevron-down"></i>
+                                </a>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="card border-0 mt-2" style="background-color: #f1f8fe;">
+                    <div class="card-body p-2 text-start">
+                        We will soon be deprecating Payment plans. All remaining balances will be transferred to a new
+                        field called Pending balance against every patient.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

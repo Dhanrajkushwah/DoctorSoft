@@ -1,0 +1,81 @@
+<div class="mb-4">
+    <h2 class=" m-0">Create Time Slot</h2>
+    <span style="cursor: pointer;" (click)="cancelCoupan()"><i class="fa fa-arrow-left"></i>Time Slot</span>
+</div>
+<div class="card">
+    <form [formGroup]="addPrescription">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label> Doctor Name</label>
+                        <select formControlName="doctorname"  [(ngModel)]="inputValue" (ngModelChange)="handleChange()" 
+                        class="form-control"  [ngClass]="{'is-invalid': addPrescription.controls['doctorname'].errors && ck }">
+                            <option  value="" >---Choose Doctor---</option>
+                            <option *ngFor="let dpt of departmentData" [ngValue]="dpt.doctorname">
+                                {{ dpt.doctorname }}
+                            </option>
+                        </select>
+                        <p class="text-danger" *ngIf="addPrescription.controls['doctorname'].errors && ck"> Enter Your Doctor
+                            Name
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Start Date:</label>
+                        <input formControlName="startDate"  type="date" class="form-control"  placeholder="Enter Medicine" />
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>End Date:</label>
+                        <input formControlName="endDate" type="date" class="form-control" placeholder="Enter Quantity" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label> Add Time Slot</label>
+                        <button type="button" class="btn btn-submit"  (click)="addQuantity()">+</button>
+                    </div>
+                </div>
+            </div>
+
+                <div formArrayName="timeSlot">
+                    <div *ngFor="let quantity of medicineName().controls; let i=index" [formGroupName]="i">
+                        <div class="row">
+                        <div class="col-lg-3 col-sm-3 col-12">
+                            <div class="form-group">
+                                <label>Enter Time:</label>
+                                <input formControlName="time" class="form-control" placeholder="Enter Time" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-3 col-12">
+                            <div class="form-group">
+                                <label>Enter Slot Time:</label>
+                        <select formControlName="slot" class="form-control"  >
+                            <option value="" >Choose Slot Time</option>
+                            <option>AM</option>
+                            <option>PM</option>
+                        </select>
+                    </div>
+                    
+
+                </div>
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label></label>
+                    <button type="button" class="btn btn-submit" style="margin-top: 10px;" (click)="removeQuantity(i)">-</button>
+                </div>
+            </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="col-12  m-0 p-0">
+                <button class="btn btn-submit me-2" (click)="addPrescriptions()">Submit</button>
+                <a class="btn btn-cancel" (click)="cancelCoupan()">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

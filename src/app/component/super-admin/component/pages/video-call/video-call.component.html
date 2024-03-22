@@ -1,0 +1,76 @@
+
+<div class="d-flex  pt-3 pb-2 align-items-center justify-content-between">
+    <div><h2 class="m-0 p-0">
+        Video Consultation
+    </h2>
+    <p class="p-0 m-0">View/Manage Video Consultation List</p>
+    </div>
+</div>
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="d-block d-sm-flex align-items-center justify-content-between">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="dataTable-top">
+        <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..."
+                (keyup)="applyFilter($event)" #input type="text">
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card table-card">
+            <div class="card-header card-body table-border-style">
+                <div class="">
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                        <div class="dataTable-container">
+                            <div class="table-responsive">
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                                    <ng-container matColumnDef="sno">
+                                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                                        <td mat-cell *matCellDef="let element let i=index"> {{i+1}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="name">
+                                        <th mat-header-cell *matHeaderCellDef>Patient Name </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="dateapp">
+                                        <th mat-header-cell *matHeaderCellDef> Appointment Date </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.datetime}}</td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="slot">
+                                        <th mat-header-cell *matHeaderCellDef> Appointment Slot </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.slot}}</td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="link">
+                                        <th mat-header-cell *matHeaderCellDef> Meeting Link </th>
+                                        <td mat-cell *matCellDef="let element" > {{element.meeting}}
+                                        <button *ngIf="element.meeting" mat-button color="primary"  [cdkCopyToClipboard]="element.meeting">copy</button>
+                                        </td>
+
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"
+                                        </td>
+                                    </tr>
+                                </table>
+                                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                                    aria-label="Select page of periodic elements">
+                                </mat-paginator>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

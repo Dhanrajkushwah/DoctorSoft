@@ -1,0 +1,86 @@
+<div class="mb-4">
+    <h2 class=" m-0">Create Package</h2>
+    <span style="cursor: pointer;" (click)="cancel()"><i class="fa fa-arrow-left"></i>Package List</span>
+</div>
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="addPackage">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Package Name <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="packageName"
+                            [ngClass]="{'is-invalid': addPackage.controls['packageName'].errors && ck }"
+                            placeholder="Package Name">
+                        <p class="text-danger" *ngIf="addPackage.controls['packageName'].errors && ck"> Enter Your
+                            Package Name
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Package Tittle <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="packageTitle"
+                            [ngClass]="{'is-invalid': addPackage.controls['packageTitle'].errors && ck }"
+                            placeholder="Package Name">
+                        <p class="text-danger" *ngIf="addPackage.controls['packageTitle'].errors && ck"> Enter Your
+                            Package Tittle
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Package Price <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="packagePrice"
+                            [ngClass]="{'is-invalid': addPackage.controls['packagePrice'].errors && ck }"
+                            placeholder="Package Price">
+                        <p class="text-danger" *ngIf="addPackage.controls['packagePrice'].errors && ck"> Enter Your
+                            Package Price
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for=""> Package Image <span class="mandatory">*</span></label>
+                        <input class="form-control" type="file" formControlName="packageImage" class="form-control"
+                            (change)="OnLabImage($event)"
+                            [ngClass]="{'is-invalid': addPackage.controls['packageImage'].errors && ck }">
+                        <p class="text-danger" *ngIf="addPackage.controls['packageImage'].errors && ck"> Enter Your
+                            Package Image
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12">
+                    <mat-form-field appearance="outline" style="width:100%;height: 5px !important;">
+                        <mat-select class="form-control" multiple style="border: none; margin-top: -10px;"
+                            formControlName="packagePlan"
+                            [ngClass]="{'is-invalid': addPackage.controls['packagePlan'].errors && ck }">
+                            <mat-option *ngFor="let speci of allPackages"
+                                [value]="speci.testpackageName">{{speci.testpackageName}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p class="text-danger" *ngIf="addPackage.controls['packagePlan'].errors && ck"> Enter Your Package
+                        Image
+                    </p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="form-group">
+                    <label for=""> Package Description <span class="mandatory">*</span></label>
+                    <textarea type="text" formControlName="packageDescription"
+                        [ngClass]="{'is-invalid': addPackage.controls['packageDescription'].errors && ck }">
+                    </textarea>
+                    <p class="text-danger" *ngIf="addPackage.controls['packageDescription'].errors && ck"> Enter Your
+                        Package Description
+                    </p>
+                </div>
+            </div>
+            <br>
+            <div class="col-12  m-0 p-0 mt-2">
+                <button class="btn btn-submit me-2" (click)="addPackages()">Submit</button>
+                <a class="btn btn-cancel" (click)="cancel()">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

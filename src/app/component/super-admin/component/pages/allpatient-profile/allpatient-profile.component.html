@@ -1,0 +1,59 @@
+<div class="row">
+    <h2 > All Patients</h2>
+</div>
+<mat-tab-group animationDuration="0ms">
+    <mat-tab label=All({{allpatientcount}})  >
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+
+         
+            <div class="col-md-11">
+                <div id="dataDisplay" class="row border mb-2  hover-section" *ngFor="let app of patientData">
+                    <div class="col-md-8 mt-2">
+                        <div class="d-flex py-3 ">
+                            <img class=""
+                                src="https://doctors.bajajfinservhealth.in/static/media/man-avatar.1de9adcdfee719fb708bede12529476c.svg">
+                            <p class="m-0 p-0 ms-2 mt-2 " style="cursor: pointer; " (click)="openpatienthistory(app._id)"><b class="txt"  style="color: black;" > {{app.firstname}}   {{app.lastname}} </b><br>{{app.gender}} / {{app.age}} Years old| {{app.phone}}</p>
+                        </div>
+                    </div> 
+                    <div class="col-md-4 mt-2 ">
+                        <div class="float-end">
+                            <p class="m-0 p-0 mt-4">{{app._id}} <span><i
+                                class="fa-solid fa-ellipsis-vertical ms-1"></i></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </mat-tab>
+    <mat-tab label="Recent({{allpatientrecentcount}})">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="row border mb-2  hover-section" *ngFor="let app of patientallData">
+                        <div class="col-md-8 mt-2">
+                            <div class="d-flex py-3 ">
+                                <img class=""
+                                    src="https://doctors.bajajfinservhealth.in/static/media/woman-avatar.cce9fb0bfbcc47e0d41780bbe32b50b4.svg">
+                                <p class="m-0 p-0 ms-2 mt-2 " style="cursor: pointer; " (click)="openpatienthistory(app._id)"><b class="txt"  style="color: black;" > {{app.firstname}}  {{app.lastname}} </b><br>{{app.gender}} / {{app.age}} Years old| {{app.phone}}</p>
+                            </div>
+                        </div> 
+                        <div class="col-md-4 mt-2 ">
+                            <div class="float-end">
+                                <p class="m-0 p-0 mt-4">{{app._id}} <span><i
+                                    class="fa-solid fa-ellipsis-vertical ms-1"></i></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+  </mat-tab-group>
+  <!-- <app-calender></app-calender> -->

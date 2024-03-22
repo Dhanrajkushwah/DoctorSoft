@@ -1,0 +1,26 @@
+*{
+margin: 0px;
+
+box-sizing: border-box;
+}
+  .price-badge {
+      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+
+  .set_btn{
+    border: 1px solid #1c232f;
+    background-color: #005dac;
+    color: #FFF;
+    border-radius: 30px;
+    height: 40px;
+  }
+  .set_btn:hover{
+    background-color: #1c232f;
+  }
+  p:last-child {
+    margin-bottom: 35px;
+}

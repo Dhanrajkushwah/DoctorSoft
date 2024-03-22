@@ -1,0 +1,72 @@
+
+<div class="d-flex  pt-3 pb-2 align-items-center justify-content-between">
+    <div><h2 class="m-0 p-0">
+       Invoice
+    </h2>
+    <p class="p-0 m-0">View/Manage Invoice</p>
+    </div>
+
+    <div (click)="addInvoice()">
+        <button class="btn fs-5  d-flex gap-2 align-items-center" style="background: #005dac; color: #FFF;"> <i
+                class="fa-solid fa-plus"></i></button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card table-card">
+            <div class="card-header card-body table-border-style">
+                <div class="">
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                        <div class="dataTable-container">
+                            <div class="table-responsive">
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                                    <ng-container matColumnDef="invoiceNumber">
+                                        <th mat-header-cell *matHeaderCellDef> Invoice.No </th>
+                                        <td mat-cell *matCellDef="let element;" class="p-0">{{element.invoiceNumber}}
+                                            </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="invoiceDate">
+                                        <th mat-header-cell *matHeaderCellDef> date </th>
+                                        <td mat-cell *matCellDef="let element">{{element.invoiceDate }}</td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="totalAmount">
+                                        <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.price}}</td>
+                                    </ng-container>
+                                    <!-- <ng-container matColumnDef="pendingBalance">
+                                        <th mat-header-cell *matHeaderCellDef> Pending Bbalance </th>
+                                        <td mat-cell *matCellDef="let element"> 0 </td>
+                                    </ng-container> -->
+                                    <ng-container matColumnDef="patientName">
+                                        <th mat-header-cell *matHeaderCellDef> Patient Name </th>
+                                        <td mat-cell *matCellDef="let element">{{element.patientName}}</td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="action">
+                                        <th mat-header-cell *matHeaderCellDef> View Invoice </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            <div class="d-flex justify-content-between">
+                                                <button
+                                                  mat-icon-button matTooltip="Click to View"
+                                                   class="iconbutton" (click)="viewInvoice(element.patientId)"
+                                                color="primary">
+                                                <mat-icon aria-label="View">remove_red_eye</mat-icon>
+                                            </button>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                                <mat-paginator #myPaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                                    aria-label="Select page of periodic elements">
+                                </mat-paginator>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

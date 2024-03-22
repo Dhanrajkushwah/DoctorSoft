@@ -1,0 +1,140 @@
+
+<div class="mb-4">
+    <h2 class=" m-0">Add New Invoice</h2>
+    <span style="cursor: pointer;" (click)="closeInvoice()" ><i class="fa fa-arrow-left"></i>  Invoice List</span>
+</div>
+
+<div class="container-fluid mt-5">
+    <div class="card p-3">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <form [formGroup]="addInvoiceForm">
+                
+                    <div class="row mt-3">
+                        <div class="form-group col-md-4">
+                            <label class="control-label  mb-2">
+                                <b>Invoice Date :</b> </label>
+
+                            <input type="date" name="family_name" formControlName="invoiceDate"
+                                [ngClass]="{'is-invalid': checkForm && addInvoiceForm.controls['invoiceDate'].errors}"
+                                class="form-control" value="">
+                            <small class="text-danger"
+                                *ngIf=" checkForm && addInvoiceForm.controls['invoiceDate'].errors">Invoice Date is
+                                required field</small>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class=" control-label mb-2"> <b>Patient Name :</b> </label>
+                            <div class="">
+                                <select name="" id="" class="form-select" formControlName="patientName"
+                                    [ngClass]="{'is-invalid': checkForm && addInvoiceForm.controls['patientName'].errors}">
+                                    <option value="">Select Patient</option>
+                                    <option *ngFor="let p of allPatientData">{{p.firstname}} &nbsp;{{p.lastname}}</option>
+                            
+                                </select>
+                                <small class="text-danger"
+                                    *ngIf=" checkForm && addInvoiceForm.controls['patientName'].errors">Patient Name is
+                                    required field</small>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+
+                            <label class=" control-label mb-2"> <b>Doctor Name :</b> </label>
+                            <select name="" id="" class="form-select" formControlName="doctorName"
+                                [ngClass]="{'is-invalid': checkForm && addInvoiceForm.controls['doctorName'].errors}">
+                                <option>Select Doctor</option>
+                                <option *ngFor="let d of allDoctorData">{{d.firstName}}&nbsp;{{d.middleName}} {{d.lastName}}</option>
+                              
+                            </select>
+                            <small class="text-danger"
+                                *ngIf=" checkForm && addInvoiceForm.controls['doctorName'].errors">Doctor Name is
+                                required field</small>
+
+                        </div>
+                  
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 p-1">
+                            <button #tooltip="matTooltip" matTooltip="ADD" class="btn  align-items-center ms-2"
+                                (click)="addControl()" style="background-color: #005DAC; color: #ffffff"> <i
+                                    class="fa-solid fa-plus mx-2"></i>Invoice detail</button>
+                        </div>
+                    </div>
+            
+                    <div class="mt-3"  formArrayName="billDetails">
+                        <div class="row" *ngFor="let control of billDetails.controls; let i=index" [formGroupName]="i">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="">Service Name</label>                                  
+                                        <select name="" id="" class="form-control" formControlName="serviceName">
+                                            <option value="">Select Service</option>
+                                            <option *ngFor="let service of selectservices">{{service}}</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="">Description</label>
+                                    <input class="form-control " placeholder="description"
+                                        formControlName="description"  type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label for="">Units</label>
+                                    <input (input)="updateAmounts()" class="form-control " placeholder="unit"
+                                        formControlName="quantity" value="0" >
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="">Price</label>
+                                    <input (input)="updateAmounts()" formControlName="price" placeholder="price"
+                                        id="price_item_1" class="price_item1 form-control " type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="">Discount</label>
+                                    <input (input)="updateAmounts()" class="form-control " placeholder="discount"
+                                        formControlName="discount" placeholder="Discount">
+                                </div>
+                            </div>
+                       
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for=""> Amount</label>
+                                    <input [value]="billDetails.get('amount')?.value" class="total_price form-control "
+                                        placeholder="Amount" formControlName="amount" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-1 mt-3 pt-1">
+                                    <button (click)="removeFormArrayBill(i)" mat-icon-button matTooltip="Click to Delete" class="btn  btn-secondary"
+                                                    color="secondary">
+                                                    <mat-icon aria-label="Delete">delete</mat-icon>
+                                     </button>                         
+                            </div>
+                        </div>
+                    </div>
+                             <div class="col-md-2" *ngIf="total">
+                                <div class="form-group">
+                                    <label for="">Total Amount</label>
+                                    <input 
+                                    formControlName="totalAmountCalc"
+                                    [value]="total"
+                                     class="total_price form-control "
+                                        placeholder="Amount"  type="text">
+                                </div>
+                            </div> 
+                    <div class="form-group row mb-0 pb-0">
+                        <div class="col-offes-3 col-md-4 m-0 p-1">
+                            <button class="btn btn-submit mx-2" (click)="saveInvoice()">Submit</button>
+                            <button class="btn btn-submit" (click)="closeInvoice()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

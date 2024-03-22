@@ -1,0 +1,25 @@
+.backimg {
+    background-image: url("https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh; /* Adjust the height as needed */
+}
+.login-card {
+    margin-top: 100px;
+    transition: .5s;
+}
+.login-card:hover {
+    box-shadow: 2px 2px 5px 2px rgb(70, 69, 69);
+}
+.loginBtn{
+    background-color: #0e2749;
+    color: white;
+}
+.loginBtn:hover{
+    background-color: #08182F;
+    color: rgba(255, 255, 255, 0.836);
+}
+.shadowCard{
+    box-shadow: 1px 1px 10px 1px rgb(113, 206, 230);
+}

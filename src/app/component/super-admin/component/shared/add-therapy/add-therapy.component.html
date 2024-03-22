@@ -1,0 +1,30 @@
+<div class="mb-4">
+    <h2 class=" m-0">Create New Physical Health</h2>
+    <span style="cursor: pointer;" (click)="opensend()"><i class="fa fa-arrow-left"></i>Physical Health List</span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="addphyscialhealsss">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Physical Health :<span class="mandatory">*</span></label>
+                        <input  type="no" class="form-control" formControlName="physicalHealth"
+                            [ngClass]="{'is-invalid': addphyscialhealsss.controls['physicalHealth'].errors && ck }"
+                            placeholder="Enter your Physical Health">
+                        <p class="text-danger" *ngIf="addphyscialhealsss.controls['physicalHealth'].errors && ck"> Enter Your
+                            Physical Health
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-sm-12 pb-2">
+            <button  *ngIf="!id" class="btn btn-submit me-2" (click)="addphysicalhealthss()"
+            value="Create">Submit</button>
+            <button *ngIf="id" class="btn btn-submit me-2" (click)="update()"
+            value="Create">Update</button>
+            <a class="btn btn-cancel" (click)="cancelCoupan()">Cancel</a>
+        </div>
+        </div>
+</div>

@@ -1,0 +1,160 @@
+<div class="mb-4">
+    <h2 class=" m-0">Create Hospital</h2>
+    <span style="cursor: pointer;"  (click)="closehospital()"><i class="fa fa-arrow-left"></i>  Hospital List</span>
+</div>
+<div class="card">
+    <form [formGroup]="addhospitalform">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Hospital Name <span class="mandatory">*</span></label>
+                        <input type="text" formControlName="name"
+                            [ngClass]="{'is-invalid': addhospitalform.controls['name'].errors && ckDep }"
+                            placeholder="Enter your Name">
+                        <p class="text-danger" *ngIf="addhospitalform.controls['name'].errors && ckDep"> Enter Your Name
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Email Address <span class="mandatory">*</span></label>
+                        <input type="text" formControlName="email"
+                            [ngClass]="{'is-invalid': addhospitalform.controls['email'].errors && ckDep }"
+                            placeholder="Enter your Email">
+                        <p class="text-danger" *ngIf="addhospitalform.controls['email'].errors && ckDep">Enter Your Email
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12"  *ngIf="!id">
+                    <div class="form-group">
+                        <label>Password <span class="mandatory">*</span></label>
+                        <input type="password" formControlName="password"
+                            [ngClass]="{'is-invalid': addhospitalform.controls['password'].errors && ckDep }"
+                            placeholder="Enter your Password">
+                        <p class="text-danger" *ngIf="addhospitalform.controls['password'].errors && ckDep">Enter Your
+                            Password
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Department <span class="mandatory">*</span></label>
+                        <select formControlName="department" class="form-control"  [ngClass]="{'is-invalid': addhospitalform.controls['department'].errors && ckDep }">
+                            <option [ngValue]="null" disabled>Choose Your Department</option>
+                            <option *ngFor="let dpt of departmentData" [ngValue]="dpt.name">
+                                {{ dpt.name }}
+                            </option>
+                        </select>
+                        <p class="text-danger" *ngIf="addhospitalform.controls['department'].errors && ckDep"> Enter Your
+                            Department
+                        </p>
+                    </div>
+                </div>
+               
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Address <span class="mandatory">*</span></label>
+                        <input type="text" formControlName="address"
+                            [ngClass]="{'is-invalid': addhospitalform.controls['address'].errors && ckDep }"
+                            placeholder="Address">
+                        <p class="text-danger" *ngIf="addhospitalform.controls['address'].errors && ckDep">Enter Your
+                            Address
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Phone Number <span class="mandatory">*</span></label>
+                        <input type="text" formControlName="phone"
+                            [ngClass]="{'is-invalid': addhospitalform.controls['phone'].errors && ckDep }"
+                            placeholder="Phone Number">
+                        <p class="text-danger" *ngIf="addhospitalform.controls['phone'].errors && ckDep">Enter Your Phone
+                            Number
+                        </p>
+                    </div>
+                </div>
+               
+
+            </div>
+            <div class="row">
+
+
+                <div class="col-lg-12 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Descrption <span class="mandatory">*</span></label>
+                        <textarea type="text" formControlName="descrption"
+                            [ngClass]="{'is-invalid': addhospitalform.controls['descrption'].errors && ckDep }"
+                            placeholder="Descrption Number"></textarea>
+                        <p class="text-danger" *ngIf="addhospitalform.controls['descrption'].errors && ckDep">Enter Your Descrption
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label> Hospital Image <span class="mandatory">*</span></label>
+                        <div class="image-upload">
+                            <input formControlName="image"
+                                [ngClass]="{'is-invalid': addhospitalform.controls['image'].errors && ckDep }"
+                                (change)="Onupload($event)" type="file" />
+
+                            <div class="image-uploads">
+                                <img src="assets/img/icons/upload.svg" alt="img" />
+                                <h4>Drag and drop a file to upload</h4>
+                            </div>
+
+                        </div>
+                        <p class="text-danger" *ngIf="addhospitalform.controls['image'].errors && ckDep">Please select Your Image
+                        </p>
+                    </div>
+                </div>
+                <!-- <div class="col-12 mx-2">
+                    <div class="product-list">
+                      <ul class="row">
+                        <li class="ps-0">
+                          <div
+                            class="productviews"
+                            [ngClass]="{ 'd-none': removeClass === false }"
+                          >
+                            <div class="productviewsimg" >
+                              <img [src]="imagesBox" alt="img" />
+                            </div>
+                            <div class="productviewscontent">
+                              <div class="productviewsname">
+                                <h2>macbookpro.jpg</h2>
+                                <h3>581kb</h3>
+                              </div>
+                              <a
+                                href="javascript:void(0);"
+                                class="hideset"
+                                (click)="removeBtn()"
+                                >x</a
+                              >
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+               
+            </div>
+           -->
+            </div>
+
+        </div>
+    </form>
+    <div class="col-sm-12 pb-2">
+        <button class="btn btn-submit me-2"*ngIf="!id"  (click)="addHospital()">Submit</button>
+        <button  class="btn btn-submit me-2"  *ngIf="id" (click)="updateHospital()">Update</button>
+        <a class="btn btn-cancel" (click)="closehospital()">Cancel</a>
+    </div>
+</div>

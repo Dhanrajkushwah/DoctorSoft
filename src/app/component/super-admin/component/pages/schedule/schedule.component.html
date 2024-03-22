@@ -1,0 +1,76 @@
+
+<div class="d-flex  pt-3 pb-2 align-items-center justify-content-between">
+    <div><h2 class="m-0 p-0">
+        Schedule List
+    </h2>
+    <p class="p-0 m-0">View/Manage Schedule</p>
+    
+    </div>
+    <div (click)="addschedule()">
+        <button class="btn fs-5  d-flex gap-2 align-items-center" style="background: #005dac; color: #FFF;"> <i
+                class="fa-solid fa-plus"></i></button>
+    </div>
+</div> 
+
+<div class="row">
+    <div class="dataTable-top">
+        <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..."
+                (keyup)="applyFilter($event)" #input type="text">
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card table-card">
+            <div class="card-header card-body table-border-style">
+                <div class="">
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                        <div class="dataTable-container">
+                            <div class="table-responsive">
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                                    <ng-container matColumnDef="Sno">
+                                        <th mat-header-cell *matHeaderCellDef>S.No </th>
+                                        <td mat-cell *matCellDef="let element let i=index"> {{i+1}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="Name">
+                                        <th mat-header-cell *matHeaderCellDef>Name </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.selectDoctor}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="SelectDay">
+                                        <th mat-header-cell *matHeaderCellDef> 	SelectDay </th>
+                                        <td mat-cell *matCellDef="let element" > {{element.selectDay}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="StartTime">
+                                        <th mat-header-cell *matHeaderCellDef> 	StartTime</th>
+                                        <td mat-cell *matCellDef="let element"> {{element.startTime}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="Endtime">
+                                        <th mat-header-cell *matHeaderCellDef> 	Endtime</th>
+                                        <td mat-cell *matCellDef="let element"> {{element.endtime}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="Per Patient Time">
+                                        <th mat-header-cell *matHeaderCellDef> PerPatientTime</th>
+                                        <td mat-cell *matCellDef="let element"> {{element.perPatientTime}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="Visibility">
+                                        <th mat-header-cell *matHeaderCellDef> 	Visibility</th>
+                                        <td mat-cell *matCellDef="let element"> {{element.visibility}} </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="4">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                                    aria-label="Select page of periodic elements">
+                                </mat-paginator> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

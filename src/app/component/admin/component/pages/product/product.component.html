@@ -1,0 +1,104 @@
+<div class="dash-content">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Product List</h4>
+            <h6>Manage Your Product</h6>
+        </div>
+        <div class="page-btn">
+            <a class="btn btn-added" (click)="addProduct()"><img src="assets/img/icons/plus.svg" alt="img" class="me-1" /></a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="dataTable-top">
+            <div class="dataTable-dropdown"><label><select class="dataTable-selector">
+                        <option value="5">5</option>
+                        <option value="10" selected="">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                    </select> entries per page</label></div>
+            <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..."
+                    type="text"></div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header card-body table-border-style">
+                    <div class="table-responsive">
+                        <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                            
+                            <div class="dataTable-container">
+                                <table class="table pc-dt-simple dataTable-table">
+                                    <thead>
+                                        <tr>
+                                            <th data-sortable="" style="width: 12.9556%;"><a href="#"
+                                                    class="dataTable-sorter">Product Name</a></th>
+                                            <th data-sortable="" style="width: 11.5773%;"><a href="#"
+                                                    class="dataTable-sorter">Product Price</a></th>
+                                            <th data-sortable="" style="width: 10.291%;"><a href="#"
+                                                    class="dataTable-sorter">Product Type</a></th>
+                                            <th data-sortable="" style="width: 11.6692%;"><a href="#"
+                                                    class="dataTable-sorter">Product Description</a></th>
+                                            <th data-sortable="" style="width:1%;"><a href="#"
+                                                    class="dataTable-sorter">Product Image</a></th>
+                                            <th width="150px" data-sortable="" style="width: 13.7825%;"><a href="#"
+                                                    class="dataTable-sorter">Action</a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let p of productData;">
+                                            <td>{{p.productName}}</td>
+                                            <td>{{p.price}}</td>
+                                            <td>{{p.type}}</td>
+                                            <td>{{p.description}}</td>
+                                            <td><img [src]="p.image" style="border-radius: 50px;"></td>
+                                            <td >
+                                                <!-- <div class="action-btn bg-info ms-2"  (click)="editProduct(p._id)">
+                                                    <a class="mx-3 btn btn-sm d-inline-flex align-items-center" >
+                                                  <span class="text-white"><i class="ti ti-pencil text-white"></i></span>
+                                                </a>
+                                                  </div> -->
+                                                  <!-- <div class="action-btn bg-danger ms-2"  (click)="deleteProduct(p._id)">
+                                                    <a class="mx-3 btn btn-sm d-inline-flex align-items-center" >
+                                                        <span class="text-white"> <i class="ti ti-trash"></i></span>  
+                                                    </a>
+                                                  </div> -->
+                                              
+                                                <!-- <div class="action-btn bg-info ms-2" (click)="editProduct(p._id)">
+                                                    <a  data-size="lg"
+                                                        data-url="https://demo.rajodiya.com/leadgo-saas/coupons/1/edit"
+                                                      ><i
+                                                            class="ti ti-pencil text-white"></i></a>
+                                                </div> -->
+                                                <!-- delete -->
+                                                <!-- <div class="action-btn  ms-2" (click)="deleteProduct(p._id)" style="background-color: #FF3A6E;" >
+                                                    <a  data-size="lg" > 
+                                                    <i class="fa-solid fa-trash custom-icon" ></i>
+                                                    </a>
+                                                </div> -->
+                                                <!-- p85 -->
+
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div class="dataTable-bottom">
+                                <div class="dataTable-info">Showing 1 to 1 of 1 entries</div>
+                                <nav class="dataTable-pagination">
+                                    <ul class="dataTable-pagination-list"></ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

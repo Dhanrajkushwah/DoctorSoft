@@ -1,0 +1,57 @@
+<div class="mb-4">
+    <h2 class=" m-0">
+       Private Note For Patient </h2>
+    <span style="cursor: pointer;" (click)="cancel()"><i class="fa fa-arrow-left"></i>
+        Private Note For Patient</span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="addPrescription">
+            <div class="row">
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Patient Name:</label>
+                        <select formControlName="patientName"  class="form-control" (change)="slectname($event)"
+                            placeholder="patient Name" [ngClass]="{'is-invalid': addPrescription.controls['patientName'].errors && ck }">
+                            <option value="">Choose Your Patient</option>
+                            <option *ngFor="let doc of patientdataById"
+                                value="{{doc.firstname}},{{doc._id}}">
+                                {{ doc.firstname }}&nbsp;{{ doc.lastname }}
+                            </option>
+                        </select>
+                        <p class="text-danger" *ngIf="addPrescription.controls['patientName'].errors && ck"> Enter Your
+                            patient Name
+                        </p>
+                    </div>
+                </div>
+             
+                <div class="col-lg-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Date:</label>
+                        <input formControlName="date" class="form-control" placeholder="Enter Date" type="date"  [ngClass]="{'is-invalid': addPrescription.controls['date'].errors && ck }" />
+                        <p class="text-danger" *ngIf="addPrescription.controls['date'].errors && ck"> Enter Your
+                            Date
+                        </p>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label>Enter Note:</label>
+                        <textarea formControlName="note" class="form-control" placeholder="Enter Note"  [ngClass]="{'is-invalid': addPrescription.controls['note'].errors && ck }" >
+                        </textarea>
+                        <p class="text-danger" *ngIf="addPrescription.controls['note'].errors && ck"> Enter Your
+                            Note
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-sm-12 m-0 p-0">
+            <button class="btn btn-submit me-2" (click)="onSubmit()">Submit</button>
+            <a class="btn btn-cancel" (click)="cancel()">Cancel</a>
+        </div>
+        </div>
+</div>

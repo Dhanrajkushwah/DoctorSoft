@@ -1,0 +1,204 @@
+
+<div class="mb-4">
+    <h2 class=" m-0">Create New Patient</h2>
+    <span style="cursor: pointer;" (click)="cancelCoupan()"><i class="fa fa-arrow-left"></i>Patient List</span>
+</div>
+<div class="card">
+        <div class="card-body">
+            <form [formGroup]="addPatient">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>First Name <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="firstname"
+                            [ngClass]="{'is-invalid': addPatient.controls['firstname'].errors && ck }"
+                            placeholder="First Name">
+                        <p class="text-danger" *ngIf="addPatient.controls['firstname'].errors && ck"> Enter Your First Name
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Last Name <span class="mandatory">*</span></label>
+                        <input type="text" class=" form-control" formControlName="lastname"
+                            [ngClass]="{'is-invalid': addPatient.controls['lastname'].errors && ck }"
+                            placeholder=" Last Name">
+                        <p class="text-danger" *ngIf="addPatient.controls['lastname'].errors && ck"> Enter Your Last Name
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div >  
+                        <div class="form-group">
+                        <label>Gender <span class="mandatory">*</span></label>
+                        <div class="d-sm-flex mt-3">
+                            <input type="radio" id="checkbox2_5" formControlName="gender" required value="Male">
+                            <label for="checkbox2_5" class="mx-2"> <b >Male</b> </label>
+                            <input type="radio" id="checkbox2_10" formControlName="gender" required value="Female">
+                            <label for="checkbox2_10" class="mx-2"> <b> Female </b></label>
+                            <input type="radio" id="checkbox2_15" formControlName="gender" required value="Other">
+                            <label for="checkbox2_15" class="mx-2"> <b> Others </b></label>
+                        </div>
+                    </div>
+                        <div>
+                            <p class="text-danger" *ngIf="addPatient.controls['gender'].errors && ck"> Enter Your
+                                Gender
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+               
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="disabledTextInput" class="form-label">D.O.B</label>
+                            <input type="date"  class=" form-control" formControlName="dateOfBirth" style="padding:1.2rem 1rem !important"
+                            [ngClass]="{'is-invalid': addPatient.controls['dateOfBirth'].errors && ck }"
+                            placeholder=" Date Of Birth">
+                            <p class="text-danger" *ngIf="addPatient.controls['dateOfBirth'].errors && ck"> Enter Your
+                                Date Of Birth
+                            </p>
+                    </div>
+                   
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Age <span class="mandatory">*</span></label>
+                        <input type="text"  class=" form-control" formControlName="age" (keypress)="keyPressNumbers($event)"
+                            [ngClass]="{'is-invalid': addPatient.controls['age'].errors && ck }" placeholder="Age">
+                        <p class="text-danger" *ngIf="addPatient.controls['age'].errors && ck"> Enter Your Age
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Blood Group <span class="mandatory">*</span></label>
+                            <select id="bloodgroup" class="form-select" formControlName="bloodgroup"
+                            class="form-control" placeholder="Select Blood Group" 
+                            [ngClass]="{'is-invalid': addPatient.controls['bloodgroup'].errors && ck }">
+                            <option value="O -ve">O -ve</option>
+                            <option value="O +ve">O +ve</option>
+                            <option value="A -ve"> A -ve</option>
+                            <option value="A +ve">A +ve</option>
+                            <option value="B -ve">B -ve</option>
+                            <option value="B +ve">B +ve</option>
+                            <option value="AB -ve">AB -ve</option>
+                            <option value="AB +ve">AB +ve</option>
+                        </select>
+                        <p class="text-danger" *ngIf="addPatient.controls['bloodgroup'].errors && ck"> Enter Your Blood Group
+                        </p>
+                    </div>
+                </div>
+
+            
+            </div>
+
+            <div class="row">
+                
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Mobile <span class="mandatory">*</span></label>
+                        <input type="text"   class=" form-control  "formControlName="phone" 
+                            [ngClass]="{'is-invalid': addPatient.controls['phone'].errors && ck }"
+                            placeholder="Mobile">
+                        <p class="text-danger" *ngIf="addPatient.controls['phone'].errors && ck"> Enter Your Mobile
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Alternate Mobile No. (optional) </label>
+                        <input type="text"  class=" form-control" formControlName="ultemobile"
+                            placeholder="Alternate Mobile">
+                    </div>
+                </div>
+              
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>Email <span class="mandatory">*</span></label>
+                        <input type="text"  class=" form-control" formControlName="email"
+                            [ngClass]="{'is-invalid': addPatient.controls['email'].errors && ck }"
+                            placeholder="Email">
+                        <p class="text-danger" *ngIf="addPatient.controls['email'].errors && ck"> Enter Your Email
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12" >
+                    <div class="form-group mb-0">
+                        <label>Password <span class="mandatory">*</span></label>
+                        <input type="text"  class=" form-control" formControlName="password" 
+                            [ngClass]="{'is-invalid': addPatient.controls['password'].errors && ck }" placeholder="Password">
+                        <p class="text-danger" *ngIf="addPatient.controls['password'].errors && ck"> Enter Your Password
+                        </p>
+                    </div>
+                </div>
+               
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label class="form-label" for="specificSizeSelect">Country:</label>
+                        <select  (change)="setContry_by_state($event)"  formControlName="country" class="form-select"  id="specificSizeSelect">
+                            <option value="">select</option>
+                            <option *ngFor="let country of allContry "><span>{{country.name}}</span> </option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label class="form-label" for="specificSizeSelect">State:</label>
+                        <select   formControlName="state" (change)="getall_city($event)" class="form-select" placeholder="Enter State" id="specificSizeSelect">
+                            <option value="">select</option>
+                            <option *ngFor="let s of allState"><span>{{s.name}}</span> </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label class="form-label" for="specificSizeSelect">City:</label>
+                        <select   formControlName="city" class="form-select"  id="specificSizeSelect">
+                           <option value="">select</option>
+                            <option *ngFor="let city of allCity"><span>{{city.name}}</span> </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-sm-6 col-12">
+                    <div >
+                        <div class="form-group">
+                        <label>Address <span class="mandatory">*</span></label>
+                        <div class="d-sm-flex mt-3">
+                            <textarea class="form-control"  formControlName="address"  rows="3"></textarea>
+                        </div>
+                     </div>
+                        <div>
+                            <p class="text-danger" *ngIf="addPatient.controls['address'].errors && ck"> Enter Your
+                                Address
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+          
+            <br>
+            <div class="col-12  m-0 p-0 mt-2">
+                <button class="btn btn-submit me-2" *ngIf="!id" (click)="addPatients()">Submit</button>
+                <button class="btn btn-submit me-2"  *ngIf="id" (click)="updatePatient()">Update</button>
+                <a class="btn btn-cancel" (click)="cancelCoupan()">Cancel</a>
+            </div>
+        </form>
+        </div>
+</div>

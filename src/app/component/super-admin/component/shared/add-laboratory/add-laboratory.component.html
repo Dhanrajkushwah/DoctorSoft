@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form [formGroup]="verifyOTPform">
+                <div class="card login-card shadow  ">
+                    <div class="card-body">
+                        <h4 class="text-center"><i class="fa-solid fa-lock-keyhole"></i> Enter OTP </h4>
+                        <div class="row">
+                            <div class="col-md-10 offset-md-2">
+                                <p class="my-2" style="font-weight: 500;">Check Your Mobile Number For The OTP</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <div class="my-3 ">
+                                    <label style="font-weight: 600;" class="my-2">OTP Number<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" formControlName="otp" placeholder="Please Enter 6 Digit OTP" class="form-control" 
+                                        [ngClass]="{'is-invalid': verifyOTPform.controls['otp'].errors && ck }">
+                                    <p class="text-danger" *ngIf="verifyOTPform.controls['otp'].errors && ck"> Enter
+                                        Valid OTP
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="super-admin/laboratory"  style="text-decoration: none;">Resend OTP?</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <button type="submit" (click)="addOTP()" class="btn btn-success text-light px-5 my-2">Continue To Booking <i
+                                        class="fa-regular fa-lock-keyhole"></i></button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

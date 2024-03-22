@@ -1,0 +1,144 @@
+<div class="account-content">
+  <div class="login-wrapper">
+    <div class="login-content">
+      <div class="login-userset">
+        <div class="login-logo logo-normal">
+          <img src="assets/img/doctor.png"  alt="img" />
+        </div>
+        <a [routerLink]="routes.dashboard" class="login-logo logo-white">
+          <img src="assets/img/logo-white.png" alt="" />
+        </a>
+        <div class="login-userheading">
+          <h3>Login</h3>
+          <h4>Please login to your account</h4>
+        </div>
+        <form [formGroup]="form">
+          <div class="form-login">
+            <label>Email</label>
+            <div class="form-addons">
+              <input
+                type="text"
+                placeholder="Enter your phone number"
+                formControlName="phone"
+                id="phone"
+                [ngClass]="{
+                  'is-invalid': f['phone'].touched && f['phone'].invalid
+                }"
+              />
+              <img src="assets/img/icons/mail.svg" alt="img" />
+              <div
+                *ngIf="f['phone'].touched && f['phone'].invalid"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['phone'].errors && f['phone'].errors['required']">
+                  Email is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-login">
+            <label>Password</label>
+            <div class="pass-group">
+              <input
+                [type]="password ?  'taxt' : 'password'"
+                class="pass-input"
+                placeholder="Enter your password"
+                formControlName="password"
+                id="password"
+                [ngClass]="{
+                  'is-invalid': f['password'].touched && f['password'].invalid
+                }"
+              />
+              <div
+                *ngIf="f['password'].touched && f['password'].invalid"
+                class="invalid-feedback"
+              >
+                <div
+                  *ngIf="
+                    f['password'].errors && f['password'].errors['required']
+                  "
+                >
+                  Password is required.
+                </div>
+              </div>
+              <span
+                class="fas toggle-password fa-eye"
+                
+                (click)="onClick()"
+                *ngIf="show"
+              ></span>
+              <span
+                class="fas toggle-password fa-eye-slash"
+                (click)="onClick()"
+                *ngIf="!show"
+              ></span>
+            </div>
+          </div>
+          <div class="form-login">
+            <div class="alreadyuser">
+              <h4>
+                <a  class="hover-a"
+                  >Forgot Your Password?</a
+                >
+              </h4>
+            </div>
+          </div>
+          <div class="form-login">
+            <button
+              (click)="submit()"
+              [disabled]="form.invalid"
+              class="btn btn-login"
+              type="submit"
+            >
+            Login
+            </button>
+          </div>
+        </form>
+        <div class="signinform text-center ">
+          <h4>
+            Don't have an account?
+            <a routerLink="/sign-in/staffregister" class="hover-a ">Doctor Register</a>/
+            <a routerLink="/sign-in/patientegister" class="hover-a ">Patient Register</a>
+          </h4>
+        </div>
+        <div class="form-sociallink row" >
+       
+              <div class="form-login col">
+                <button
+                  class="btn btn-login"
+                  type="button"
+                  (click)="onChanges('Super-Admin')"
+                >
+                Super-Admin Login
+                </button>
+              </div>
+           
+            <div class="form-login col">
+              <button
+                class="btn btn-login"
+                type="button"
+                (click)="onChanges('Doctor-Admin')"
+              >
+              Doctor Login
+              </button>
+            </div>
+         
+            <div class="form-login col">
+              <button
+                class="btn btn-login"
+                type="button"
+                (click)="onChanges('Patient-Admin')"
+              >
+             Patient Login
+              </button>
+            </div>
+         
+        </div>
+      
+      </div>
+    </div>
+    <div class="login-img">
+      <img src="assets/img/logo.jpg" alt="img" />
+    </div>
+  </div>
+</div>
